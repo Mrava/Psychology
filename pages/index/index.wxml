@@ -1,10 +1,65 @@
-<swiper class='swiperClass' autoplay indicator-color="#a39f99" indicator-active-color="#f49641" interval="4000" duration="1000" previous-margin="80rpx" next-margin="80rpx" circular bindchange="bindchange" style='height: {{swiperHeight}}rpx'>
-    <block wx:for="{{imgUrls}}" wx:key="{{index}}">
-        <swiper-item>
-            <image bindtap='ss' src="{{item}}" class="slide-image {{swiperIndex == index ? 'active' : 'quiet'}}" mode='aspectFill'>
-            </image>
-        </swiper-item>
-    </block>
+<swiper class='swiperClass' autoplay indicator-color="#a39f99" indicator-active-color="#f49641" interval="4000"
+ duration="1000" previous-margin="80rpx" next-margin="80rpx" circular bindchange="bindchange" style='height: {{swiperHeight}}rpx'>
+	<block wx:for="{{imgUrls}}" wx:key="{{index}}">
+		<swiper-item>
+			<image bindtap='ss' src="{{item}}" class="slide-image {{swiperIndex == index ? 'active' : 'quiet'}}" mode='aspectFill'>
+			</image>
+		</swiper-item>
+	</block>
 </swiper>
 
-<button bindtap='go'>获取数据</button>
+<view class="nav shadow" wx:if='{{nav.length!=0}}'>
+	<view class="item" wx:for="{{nav}}">
+		<image class="img" src="{{item.img}}" mode="widthFix" />
+		<view class="text">{{item.title}}</view>
+	</view>
+</view>
+
+<view class="people">
+	<view class="Title">
+		<view class="h"></view>
+		<view>专家推荐</view>
+	</view>
+	<view class="plist">
+		<block wx:for='{{people_list}}'>
+			<view class="item">
+				<view class="pic">
+					<image src="{{item.pic}}" mode="widthFix"></image>
+				</view>
+				<view class="panle">
+					<view class="content">
+						<view class="name">{{item.name}}</view>
+						<view class="star">{{item.star}}</view>
+						<view class="tags">{{item.tags}}</view>
+						<view class="present">{{item.present}}</view>
+					</view>
+					<view class="address">{{item.address}}</view>
+				</view>
+			</view>
+			<view class="l"></view>
+		</block>
+	</view>
+</view>
+
+
+<view class="info">
+	<view class="Title">
+		<view class="h"></view>
+		<view>最新资讯</view>
+	</view>
+	<view class="list">
+		<block wx:for='{{info_list}}'>
+			<view class="item">
+				<view class="icon">
+					<image src="{{item.icon}}" mode="widthFix"></image>
+				</view>
+				<view class="content">
+					<view class="t">{{item.title}}</view>
+					<view class="c">{{item.content}}</view>
+					<view class="s">{{item.time}}</view>
+				</view>
+			</view>
+			<view class="l"></view>
+		</block>
+	</view>
+</view>

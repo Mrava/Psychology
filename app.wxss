@@ -5,20 +5,29 @@
     color: #00d853;
 }
 
-red-b{
+.red-b{
     background-color: #f91154;
 }
-red-c{
+.red-c{
     color: #f91154;
 }
 
-navy-b{
+.navy-b{
     background-color: #47505b;
 }
-navy-c{
+.navy-c{
     color: #47505b;
 }
 
 page{
-    background-color: #f9fbfb;
+    background-color: #fdfdfd;
+}
+
+view{
+	font-size: 25rpx;
+	color: #47505b;
+}
+
+.shadow{
+	box-shadow:0 0 25rpx 5rpx rgba(1,227,88,0.1) ; 
 }
