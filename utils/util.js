@@ -1,3 +1,4 @@
+var api = require('api')
 const formatTime = date => {
   const year = date.getFullYear()
   const month = date.getMonth() + 1
@@ -14,6 +15,28 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+function login(userinfo){
+    wx.login({
+        success: function(res) {
+            console.log(res)
+            var data={
+                user_code:res.code,
+                user_name: userinfo
+            }
+            wx.request({
+                url: api.Anum.signup,
+                data: data,
+                method: 'POST',
+                success: function (res) {
+                    console.log(111)
+                },
+            })
+        },
+    })
+    
+}
+
 module.exports = {
-  formatTime: formatTime
+    formatTime: formatTime,
+    login: login
 }
