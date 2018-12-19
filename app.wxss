@@ -1,0 +1,24 @@
+.green-b{
+    background-color: #00d853;
+}
+.green-c{
+    color: #00d853;
+}
+
+red-b{
+    background-color: #f91154;
+}
+red-c{
+    color: #f91154;
+}
+
+navy-b{
+    background-color: #47505b;
+}
+navy-c{
+    color: #47505b;
+}
+
+page{
+    background-color: #f9fbfb;
+}

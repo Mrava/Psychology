@@ -1,0 +1,10 @@
+<swiper class='swiperClass' autoplay indicator-color="#a39f99" indicator-active-color="#f49641" interval="4000" duration="1000" previous-margin="80rpx" next-margin="80rpx" circular bindchange="bindchange" style='height: {{swiperHeight}}rpx'>
+    <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+        <swiper-item>
+            <image bindtap='ss' src="{{item}}" class="slide-image {{swiperIndex == index ? 'active' : 'quiet'}}" mode='aspectFill'>
+            </image>
+        </swiper-item>
+    </block>
+</swiper>
+
+<button bindtap='go'>获取数据</button>
