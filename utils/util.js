@@ -15,10 +15,10 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
-function login(userinfo){
+//注册
+function signup(userinfo){
     wx.login({
         success: function(res) {
-            console.log(res)
             var data={
                 user_code:res.code,
                 user_name: userinfo
@@ -38,5 +38,5 @@ function login(userinfo){
 
 module.exports = {
     formatTime: formatTime,
-    login: login
+    signup: signup
 }
