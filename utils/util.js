@@ -28,7 +28,7 @@ function login(userinfo){
                 data: data,
                 method: 'POST',
                 success: function (res) {
-                    console.log(111)
+                    console.log(res)
                 },
             })
         },
