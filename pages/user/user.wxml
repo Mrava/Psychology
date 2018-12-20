@@ -1,2 +1,80 @@
-<!--pages/user/user.wxml-->
-<text>pages/user/user.wxml</text>
+<view class="animation-wave" style="height: 100%;">
+	<image style="width: 100%;" mode="widthFix" src="https://nxxlzx.tpengyun.com/res/user_top_banner.jpg">
+	</image>
+	<custom style="height:{{CustomBar}}px;" style='position: absolute;z-index: 1100;top: 0;'>
+		<bar class="fixed text-sm" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;background-color: transparent;justify-content:left;">
+			<icon class="icon-settings" style="margin-left: 10rpx;"></icon> 修改资料
+		</bar>
+	</custom>
+	<view class="padding user-icon">
+		<avatar class="round lg margin-bottom" style="background-image:url(https://image.weilanwl.com/img/square-1.jpg);width: 150rpx;height: 150rpx;">
+			<tag class="badge {{index%2==0?'icon-female bg-pink':'icon-male bg-blue'}}" style='top: 3rpx;right: 5rpx;'></tag>
+		</avatar>
+		<tag class="radius margin-bottom">LoveEmpathy</tag>
+		<view class="text-sm" style="background-color: rgba(255,255,255,0.5);padding: 10rpx;">
+			<icon class="icon-locationfill lg text-red"></icon>
+			<text class="text-black">很懒，没有填写地址</text>
+		</view>
+	</view>
+	<view class="wave"></view>
+</view>
+
+<list class="menu no-padding card-menu margin-bottom-xl margin-top-xl">
+	<item>
+		<view class="content text-df">
+			<icon class="icon-phone text-purple"></icon>
+			<text class="text-grey">联系电话</text>
+		</view>
+		<view class="action">
+			<button class="round bg-purple">
+				立即获取
+			</button>
+		</view>
+	</item>
+
+	<item>
+		<view class="content text-df">
+			<icon class="icon-favor text-olive"></icon>
+			<text class="text-grey">预约订单</text>
+		</view>
+		<view class="action">
+			<tag class="bg-olive round">9</tag>
+		</view>
+	</item>
+
+	<item>
+		<view class="content text-df">
+			<icon class="icon-comment text-blue"></icon>
+			<text class="text-grey">留言信息</text>
+		</view>
+		<view class="action text-df">
+			<tag class="bg-blue round">11</tag>
+		</view>
+	</item>
+
+	<item class="arrow">
+		<view class="content text-df">
+			<icon class="icon-vip text-red"></icon>
+			<text class="text-grey">成为专家</text>
+		</view>
+	</item>
+
+	<item class="arrow">
+		<view class="content text-df">
+			<icon class="icon-expressman text-orange"></icon>
+			<text class="text-grey">专家登录</text>
+		</view>
+	</item>
+
+	<item class="arrow">
+		<view class="content text-df">
+			<icon class="icon-write text-yellow"></icon>
+			<text class="text-grey">意见反馈</text>
+		</view>
+		<view class="action">
+			<text class="text-grey text-sm">反馈意见、遇到的问题</text>
+		</view>
+	</item>
+</list>
+
+<include src='../../dist/copyright/copyright.wxml' />

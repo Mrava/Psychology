@@ -1,3 +1,8 @@
+<custom style="height:{{CustomBar}}px;">
+    <bar class="fixed" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;justify-content: center;padding-right:0">
+            首页
+    </bar>
+</custom>
 <swiper class='swiperClass' autoplay indicator-color="#a39f99" indicator-active-color="#f49641" interval="4000"
  duration="1000" previous-margin="80rpx" next-margin="80rpx" circular bindchange="bindchange" style='height: {{swiperHeight}}rpx'>
 	<block wx:for="{{imgUrls}}" wx:key="{{index}}">

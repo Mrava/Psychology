@@ -1,0 +1,39 @@
+.UCenter-bg {
+    background-image: url(https://nxxlzx.tpengyun.com/res/shouquan.png);
+    background-size: cover;
+    height: 700rpx;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+    font-weight: 500;
+    text-shadow: 0 0 3px rgba(49, 17, 17, 0.5);
+}
+.UCenter-bg::after {
+    content: "";
+    position: absolute;
+    width: 100vw;
+    height: 50vw;
+    background-color: #fdfdfd;
+    transform: rotate(-10deg) scale(2,2);
+    bottom: -60vw;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.UCenter-bg text {
+    opacity: 0.8;
+}
+
+.logo{
+	border-radius: 350rpx;
+	background: #FFF;
+    margin:15rpx;
+    width: 250rpx;
+    height: 250rpx;
+    padding: 20rpx;
+}

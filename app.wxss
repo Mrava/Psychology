@@ -1,3 +1,6 @@
+@import 'dist/ui.wxss';
+@import 'dist/copyright/copyright.wxss';
+
 .green-b{
     background-color: #00d853;
 }
@@ -19,13 +22,13 @@
     color: #47505b;
 }
 
-page{
-    background-color: #fdfdfd;
-}
-
-view{
-	font-size: 25rpx;
-	color: #47505b;
+page {
+    background: #fdfdfd;
+    font-size: 25rpx;
+    color: #47505b;
+    line-height: 1;
+    vertical-align: 2px;
+    font-family: Helvetica Neue,Helvetica,sans-serif;
 }
 
 .shadow{

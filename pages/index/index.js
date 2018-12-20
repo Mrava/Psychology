@@ -1,8 +1,12 @@
 //程序集变量
 var code = getApp().globalData.code; //用户code
+var app = getApp()
 Page({
 
 	data: {
+		StatusBar: app.globalData.StatusBar,
+        CustomBar: app.globalData.CustomBar,
+		width:wx.getSystemInfoSync().windowWidth,
 		imgUrls: [
 			'http://g.hiphotos.baidu.com/image/h%3D300/sign=db097dbddcc8a786a12a4c0e5709c9c7/5bafa40f4bfbfbed5572eb3875f0f736afc31f4a.jpg',
 			'http://a.hiphotos.baidu.com/image/h%3D300/sign=de08a1f093510fb367197197e932c893/b999a9014c086e062550d0020f087bf40bd1cbfb.jpg',
@@ -46,28 +50,28 @@ Page({
 		}, ],
 		people_list:[{
 			pic:"http://e.hiphotos.baidu.com/image/h%3D300/sign=b7b87a749f45d688bc02b4a494c37dab/4b90f603738da9774d57356cbd51f8198618e379.jpg",
-			name:"马勇龙",
+			name:"LoveEmpathy",
 			star:"★★★★☆",
 			tags:"",
 			present:"这里是简介！！！！！",
 			address:"宁夏银川兴庆区解放西街建发现代城"
 		},{
 			pic:"http://e.hiphotos.baidu.com/image/h%3D300/sign=b7b87a749f45d688bc02b4a494c37dab/4b90f603738da9774d57356cbd51f8198618e379.jpg",
-			name:"马勇龙",
+			name:"LoveEmpathy",
 			star:"★★★★☆",
 			tags:"",
 			present:"这里是简介！！！！！",
 			address:"宁夏银川兴庆区解放西街建发现代城"
 		},{
 			pic:"http://e.hiphotos.baidu.com/image/h%3D300/sign=b7b87a749f45d688bc02b4a494c37dab/4b90f603738da9774d57356cbd51f8198618e379.jpg",
-			name:"马勇龙",
+			name:"LoveEmpathy",
 			star:"★★★★☆",
 			tags:"",
 			present:"这里是简介！！！！！",
 			address:"宁夏银川兴庆区解放西街建发现代城"
 		},{
 			pic:"http://e.hiphotos.baidu.com/image/h%3D300/sign=b7b87a749f45d688bc02b4a494c37dab/4b90f603738da9774d57356cbd51f8198618e379.jpg",
-			name:"马勇龙",
+			name:"LoveEmpathy",
 			star:"★★★★☆",
 			tags:"",
 			present:"这里是简介！！！！！",
