@@ -1,7 +1,5 @@
 .copyright {
-    position: absolute;
     width: 100%;
-    bottom: 20rpx;
     justify-content: center;
     display: flex;
 }

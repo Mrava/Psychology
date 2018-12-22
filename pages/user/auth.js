@@ -8,7 +8,8 @@ Page({
     onGetUserInfo: function(t) {
         var errMsg = t.detail.errMsg
         if (errMsg == 'getUserInfo:ok'){
-            wx.setStorageSync("user_info", t.detail.userInfo)
+            wx.setStorageSync("userInfo", t.detail.userInfo)
+            wx.setStorageSync("userData", t.detail)
             wx.navigateBack({
                 delta: 1,
             })
