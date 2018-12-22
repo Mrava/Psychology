@@ -1,4 +1,4 @@
-var api = require('utils/api.js')
+
 App({
     onLaunch: function() {
         var t = this;

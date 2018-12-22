@@ -26,6 +26,22 @@ function getPhoneNmu(encryptedData, iv, that) {
             return '';
         },
         success: function(res) {
+            wx.login({
+                success: function(e) {
+                    var data = {
+                        user_code : e.code,
+                        token : app.globalData.token
+                    }
+                    wx.request({
+                        url: 'https://nxxlzx.tpengyun.com/users/session_key',
+                        data: data,
+                        method: 'GET',
+                        success: function(res) {
+                            console.log(res)
+                        },
+                    })
+                },
+            })
             wx.request({
                 url: api.loginInfo,
                 data: {
@@ -50,19 +66,22 @@ function getPhoneNmu(encryptedData, iv, that) {
 }
 
 function getLoginInfo() {
-    
+
 }
 
 //注册
-function signup(userinfo) {
+function signup(data) {
     this.getLoginInfo()
-    // var data = {
-    //     user_code: res.code,
-    //     user_name: userinfo
-    // }
+    var data = {
+        id: data.id,
+        user_name: "张三",
+        telephone: "null",
+        address: "null"
+    }
+    console.log(api.url("signup"))
     wx.request({
-        url: api.Anum.signup,
-        data: "data",
+        url: api.url("signup"),
+        data: data,
         method: 'POST',
         success: function(res) {
             console.log(res)
@@ -71,13 +90,11 @@ function signup(userinfo) {
 
 }
 
-function updateInfo(){
-    var arr=Array(
-        {
-            "sds":1,
-            "ddd":2
-        }
-    )
+function updateInfo() {
+    var arr = Array({
+        "sds": 1,
+        "ddd": 2
+    })
     console.log(arr)
 }
 
@@ -90,44 +107,28 @@ function login() {
         })
         return null;
     }
-    wx.checkSession({
-        fail: function (res) { //身份过期
-            wx.login({
-                success: function (res) {
-                    var data = {
-                        user_code: res.code,
+    wx.login({
+        success: function(res) {
+            var data = {
+                user_code: res.code,
+            }
+            wx.request({
+                url: api.Anum.login,
+                data: data,
+                method: 'POST',
+                success: function(e) {
+                    //console.log(e)
+                    app.globalData.token = e.data.data.token
+                    var status = e.data.status
+                    if (status == 9001) { //用户未注册
+                        t.signup(e.data.data)
+                        console.log('用户未注册')
                     }
-                    wx.request({
-                        url: api.Anum.login,
-                        data: data,
-                        method: 'POST',
-                        success: function (e) {
-                            console.log(e)
-                            wx.setStorageSync("session_key", e.data.$session_key)
-                            app.globalData.token = e.data.token
-                        },
-                    })
-                    // wx.request({
-                    //     url: 'https://api.weixin.qq.com/sns/jscode2session',
-                    //     data: {
-                    //         appid: appId,
-                    //         secret: secret,
-                    //         js_code: res.code,
-                    //         grant_type: "authorization_code"
-                    //     },
-                    //     method: 'GET',
-                    //     success: function (res) {
-                    //         var userData = wx.getStorageSync("userData")
-                    //         wx.setStorageSync("session_key", res.data.session_key)
-                    //         wx.setStorageSync("openid", res.data.openid)
-                    //         t.login()
-                    //     },
-                    // })
                 },
             })
-        }
+        },
     })
-    
+
     //this.updateInfo()
 }
 
