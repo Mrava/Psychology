@@ -1,5 +1,6 @@
 var api = require('api')
 var app = getApp()
+var globalData = app.globalData
 const formatTime = date => {
     const year = date.getFullYear()
     const month = date.getMonth() + 1
@@ -18,73 +19,63 @@ const formatNumber = n => {
 
 //获取手机号
 function getPhoneNmu(encryptedData, iv, that) {
-    wx.checkSession({
-        fail: function(res) { //身份过期
-            wx.navigateTo({
-                url: 'auth',
-            })
-            return '';
-        },
-        success: function(res) {
-            wx.login({
-                success: function(e) {
-                    var data = {
-                        user_code : e.code,
-                        token : app.globalData.token
-                    }
+    wx.login({
+        success: function(e) {
+            var data = {
+                user_code: e.code
+            }
+            wx.request({
+                url: api.url('session_key'),
+                data: data,
+                method: 'GET',
+                success: function(res) {
                     wx.request({
-                        url: 'https://nxxlzx.tpengyun.com/users/session_key',
-                        data: data,
-                        method: 'GET',
+                        url: api.loginInfo,
+                        data: {
+                            sessionKey: res.data.data.session_key,
+                            encryptedData: encryptedData,
+                            iv: iv,
+                        },
+                        header: {
+                            'content-type': 'application/x-www-form-urlencoded'
+                        },
+                        method: 'POST',
                         success: function(res) {
-                            console.log(res)
+                            var errMsg = res.data
+                            if (errMsg != -1) {
+                                that.setData({
+                                    phoneNum: res.data.phoneNumber
+                                })
+                            }
                         },
                     })
                 },
             })
-            wx.request({
-                url: api.loginInfo,
-                data: {
-                    sessionKey: wx.getStorageSync("session_key"),
-                    encryptedData: encryptedData,
-                    iv: iv,
-                },
-                header: {
-                    'content-type': 'application/x-www-form-urlencoded'
-                },
-                method: 'POST',
-                success: function(res) {
-                    console.log(res)
-                    wx.setStorageSync("phoneNum", res.data.phoneNumber)
-                    that.setData({
-                        phoneNum: res.data.phoneNumber
-                    })
-                },
-            })
-        }
+        },
     })
 }
 
-function getLoginInfo() {
-
-}
-
 //注册
-function signup(data) {
-    this.getLoginInfo()
+function signup(d) {
+    var user = wx.getStorageSync("userInfo")
     var data = {
-        id: data.id,
-        user_name: "张三",
+        id: d.id,
+        user_name: user.nickName,
         telephone: "null",
-        address: "null"
+        address: "null",
+        gender: '1'
     }
-    console.log(api.url("signup"))
+    //console.log(d)
     wx.request({
         url: api.url("signup"),
         data: data,
         method: 'POST',
         success: function(res) {
-            console.log(res)
+            globalData.id = res.id
+            globalData.name = user.nickName
+            globalData.iconUrl = !data.portrait ? user.avatarUrl : data.portrait
+            console.log('用户已注册成功')
+            //console.log(res)
         },
     })
 
@@ -103,10 +94,11 @@ function login() {
     var t = this
     if (!wx.getStorageSync("userData")) {
         wx.navigateTo({
-            url: 'auth',
+            url: '/pages/user/auth',
         })
         return null;
     }
+    var user = wx.getStorageSync("userInfo")
     wx.login({
         success: function(res) {
             var data = {
@@ -117,12 +109,19 @@ function login() {
                 data: data,
                 method: 'POST',
                 success: function(e) {
-                    //console.log(e)
-                    app.globalData.token = e.data.data.token
+                    globalData.token = e.data.data.token
+                    wx.setStorageSync("user_id", e.data.data.id)
                     var status = e.data.status
+                    //console.log(e)
                     if (status == 9001) { //用户未注册
                         t.signup(e.data.data)
                         console.log('用户未注册')
+                    } else if (status == 0) {
+                        var data = e.data.data
+                        globalData.id = data.id
+                        globalData.name = data.user_name
+                        globalData.iconUrl = !data.portrait ? user.avatarUrl : data.portrait
+                        console.log('用户已注册')
                     }
                 },
             })
@@ -136,7 +135,6 @@ module.exports = {
     formatTime: formatTime,
     signup: signup,
     login: login,
-    getLoginInfo: getLoginInfo,
     getPhoneNmu: getPhoneNmu,
     updateInfo: updateInfo,
 }

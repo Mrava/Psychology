@@ -1,4 +1,6 @@
-var a = getApp();
+var a = getApp()
+var api = require('../../utils/api.js')
+var utils = require('../../utils/util.js')
 
 Page({
     data: {

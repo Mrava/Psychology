@@ -1,6 +1,7 @@
+var app = getApp()
+var allData = app.globalData
 var api = require('../../utils/api.js')
 var utils = require('../../utils/util.js')
-var app = getApp()
 Page({
 
     /**
@@ -10,14 +11,13 @@ Page({
         StatusBar: app.globalData.StatusBar,
         CustomBar: app.globalData.CustomBar,
         user_info: wx.getStorageSync("userInfo"),
-        phoneNum: wx.getStorageSync("phoneNum"),
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-
+        
     },
 
     getPhoneNumber(e) {
@@ -25,9 +25,10 @@ Page({
     },
 
     onShow: function() {
-        utils.login()
         this.setData({
-            user_info: wx.getStorageSync("userInfo")
+            iconUrl: allData.iconUrl,
+            userName: allData.name,
+            phoneNum: allData.phoneNum
         })
     },
 

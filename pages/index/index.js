@@ -1,6 +1,6 @@
-//程序集变量
-var code = getApp().globalData.code; //用户code
 var app = getApp()
+var api = require('../../utils/api.js')
+var utils = require('../../utils/util.js')
 Page({
 
 	data: {
@@ -88,8 +88,11 @@ Page({
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function(options) {
-
+        utils.login()
 	},
+
+    onShow: function () {
+    },
 
 	ss(e) {
 		console.log(e)

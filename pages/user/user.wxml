@@ -7,10 +7,10 @@
         </bar>
     </custom>
     <view class="padding user-icon">
-        <avatar class="round lg margin-bottom" style="background-image:url({{user_info.avatarUrl}});width: 150rpx;height: 150rpx;">
+        <avatar class="round lg margin-bottom" style="background-image:url({{iconUrl}});width: 150rpx;height: 150rpx;">
             <tag class="badge {{user_info.gender==1?'icon-female bg-pink':'icon-male bg-blue'}}" style='top: 3rpx;right: 5rpx;'></tag>
         </avatar>
-        <tag class="radius margin-bottom">{{user_info.nickName}}</tag>
+        <tag class="radius margin-bottom">{{userName}}</tag>
         <view class="text-sm" style="background-color: rgba(255,255,255,0.5);padding: 10rpx;">
             <icon class="icon-locationfill lg text-red"></icon>
             <text class="text-black">很懒，没有填写地址</text>

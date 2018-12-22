@@ -1,4 +1,3 @@
-
 App({
     onLaunch: function() {
         var t = this;
@@ -9,6 +8,11 @@ App({
         });
     },
     globalData: {
-        token:''
+        token:'',
+        name:'',
+        address:'',
+        phoneNum:'',
+        iconUrl:'',
+        userID:'',
     }
 })
