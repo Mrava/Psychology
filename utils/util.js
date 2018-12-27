@@ -122,14 +122,13 @@ function login() {
     })
 }
 
-function uploadFile(urlkey, cb,temp,data) {
+function uploadFile(urlkey, cb,data) {
     var url = api.url(urlkey)
     console.log(url)
-    wx.uploadFile({
+    wx.request({
         url: url,
-        filePath: temp,
-        name: 'file',
-        formData: data,
+        data: data,
+        method: 'PUT',
         success: function(res) {
             wx.hideLoading();
             return typeof cb == "function" && cb(res.data)
