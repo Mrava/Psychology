@@ -39,8 +39,9 @@ Page({
                 allData.iconUrl = iconUrl
                 allData.userID = res.data.id
                 allData.gender = res.data.gender
+                
+                //防止点击过快出现数据为缓存后，无法自动再次加载的尴尬情况
                 allData.isGetUser = !res.data.address && !res.data.user_name && !res.data.gender? false:true
-                console.log(res.data.address)
                 t.setData({
                     address: res.data.address,
                     userName: res.data.user_name,

@@ -149,6 +149,7 @@ function uploadFile(urlkey, cb,temp,data) {
 function getReq(urlkey, cb, token) {
     var url = api.url(urlkey)
     url = token == true ? url + '&token=' + globalData.token : url
+    console.log(url)
     wx.request({
         url: url,
         method: 'GET',
