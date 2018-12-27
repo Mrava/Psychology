@@ -63,11 +63,10 @@ Page({
             user_name:'---',
             year:'23',
             telephone:'15595108859',
-            address: "------",
-            portrait: t.data.iconUrl
+            address:"------"
         }
         utils.UpLoadFile('upload_user_icon', function (res) {
             console.log(res)
-        },data)
+        },t.data.iconUrl,data)
     },
 })

@@ -39,7 +39,8 @@ Page({
                 allData.iconUrl = iconUrl
                 allData.userID = res.data.id
                 allData.gender = res.data.gender
-                allData.isGetUser = true
+                allData.isGetUser = !res.data.address && !res.data.user_name && !res.data.gender? false:true
+                console.log(res.data.address)
                 t.setData({
                     address: res.data.address,
                     userName: res.data.user_name,
