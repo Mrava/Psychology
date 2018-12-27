@@ -2307,31 +2307,31 @@ button.shadow[class*="-black"] {
 }
 
 .text-sm {
-    font-size: 12px;
+    font-size: 21rpx;
 }
 
 .text-df {
-    font-size: 14px;
+    font-size: 25rpx;
 }
 
 .text-lg {
-    font-size: 16px;
+    font-size: 30rpx;
 }
 
 .text-xl {
-    font-size: 18px;
+    font-size: 34rpx;
 }
 
 .text-xxl {
-    font-size: 22px;
+    font-size: 40rpx;
 }
 
 .text-sl {
-    font-size: 40px;
+    font-size: 75rpx;
 }
 
 .text-xsl {
-    font-size: 60px;
+    font-size: 120rpx;
 }
 
 .text-Abc {

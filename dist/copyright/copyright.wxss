@@ -2,4 +2,8 @@
     width: 100%;
     justify-content: center;
     display: flex;
+    position: fixed;
+    padding-bottom: 20rpx;
+    bottom: 0rpx;
+    background-color: #FFF;
 }

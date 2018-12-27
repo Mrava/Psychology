@@ -1,9 +1,9 @@
 {
     "pages": [
         "pages/index/index",
+        "pages/user/editInfo",
         "pages/user/user",
         "pages/user/auth"
-		
     ],
     "window": {
         "backgroundTextStyle": "light",

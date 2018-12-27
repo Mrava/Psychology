@@ -14,5 +14,7 @@ App({
         phoneNum:'',
         iconUrl:'',
         userID:'',
+        gender:'',
+        isGetUser:false
     }
 })

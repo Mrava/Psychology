@@ -31,6 +31,7 @@ page {
     font-family: Helvetica Neue,Helvetica,sans-serif;
 }
 
+
 .shadow{
 	box-shadow:0 0 25rpx 5rpx rgba(1,227,88,0.1) ; 
 }

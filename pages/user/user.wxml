@@ -1,25 +1,27 @@
 <view class="animation-wave" style="height: 100%;">
-    <image style="width: 100%;" mode="widthFix" src="https://nxxlzx.tpengyun.com/res/user_top_banner.jpg">
-    </image>
+    <!-- <image style="width: 100%;" mode="widthFix" src="https://nxxlzx.tpengyun.com/res/user_top_banner.jpg"/> -->
+    <view class='gradual-green shadow-blur' style='width:100%;height:550rpx'></view>
     <custom style="height:{{CustomBar}}px;" style='position: absolute;z-index: 1100;top: 0;'>
         <bar class="fixed text-sm text-white" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;background-color: transparent;justify-content:left;">
-            <icon class="icon-settings" style="margin-left: 10rpx;"></icon> 修改资料
+            <view bindtap='editInfo' style='display:flex'>
+                <icon class="icon-settings" style="margin-left: 10rpx;"></icon> 修改资料</view>
         </bar>
     </custom>
+    
     <view class="padding user-icon">
         <avatar class="round lg margin-bottom" style="background-image:url({{iconUrl}});width: 150rpx;height: 150rpx;">
-            <tag class="badge {{user_info.gender==1?'icon-female bg-pink':'icon-male bg-blue'}}" style='top: 3rpx;right: 5rpx;'></tag>
+            <tag class="badge {{gender==2?'icon-female bg-pink':'icon-male bg-blue'}}" style='top: 3rpx;right: 5rpx;'></tag>
         </avatar>
         <tag class="radius margin-bottom">{{userName}}</tag>
-        <view class="text-sm" style="background-color: rgba(255,255,255,0.5);padding: 10rpx;">
+        <view class="text-sm radius" style="background-color: rgba(255,255,255,0.8);padding: 10rpx;display:flex;">
             <icon class="icon-locationfill lg text-red"></icon>
-            <text class="text-black">很懒，没有填写地址</text>
+            <text class="text-black">{{!address||address=='null'?'很懒，没有填写地址':address}}</text>
         </view>
     </view>
     <view class="wave"></view>
 </view>
 
-<list class="menu no-padding card-menu margin-bottom-xl margin-top-xl" style='margin-bottom:20rpx'>
+<list class="menu no-padding card-menu margin-bottom-xl" style='margin-bottom:30rpx'>
     <item>
         <view class="content text-df">
             <icon class="icon-phone text-purple"></icon>

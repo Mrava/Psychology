@@ -42,10 +42,12 @@ function getPhoneNmu(encryptedData, iv, that) {
                         method: 'POST',
                         success: function(res) {
                             var errMsg = res.data
+                            console.log(res.data)
                             if (errMsg != -1) {
                                 that.setData({
                                     phoneNum: res.data.phoneNumber
                                 })
+                                globalData.phoneNum = res.data.phoneNumber
                             }
                         },
                     })
@@ -60,33 +62,23 @@ function signup(d) {
     var user = wx.getStorageSync("userInfo")
     var data = {
         id: d.id,
-        user_name: user.nickName,
-        telephone: "null",
-        address: "null",
-        gender: '1'
+        user_name: !globalData.name ? user.nickName : globalData.name,
+        telephone: "",
+        address: "",
+        gender: !globalData.gender ? user.gender : globalData.gender
     }
-    //console.log(d)
     wx.request({
         url: api.url("signup"),
         data: data,
         method: 'POST',
         success: function(res) {
-            globalData.id = res.id
-            globalData.name = user.nickName
-            globalData.iconUrl = !data.portrait ? user.avatarUrl : data.portrait
-            console.log('用户已注册成功')
-            //console.log(res)
+            globalData.userID = res.data.id
+            globalData.isGetUser = false
+            globalData.iconUrl = !res.data.portrait ? user.avatarUrl : res.data.portrait
+            console.log('用户注册',res)
         },
     })
 
-}
-
-function updateInfo() {
-    var arr = Array({
-        "sds": 1,
-        "ddd": 2
-    })
-    console.log(arr)
 }
 
 //登录
@@ -112,14 +104,15 @@ function login() {
                     globalData.token = e.data.data.token
                     wx.setStorageSync("user_id", e.data.data.id)
                     var status = e.data.status
-                    //console.log(e)
                     if (status == 9001) { //用户未注册
-                        t.signup(e.data.data)
-                        console.log('用户未注册')
+                        setTimeout(function(){
+                            t.signup(e.data.data)
+                        },1500)
                     } else if (status == 0) {
                         var data = e.data.data
-                        globalData.id = data.id
+                        globalData.userID = data.id
                         globalData.name = data.user_name
+                        globalData.isGetUser = false
                         globalData.iconUrl = !data.portrait ? user.avatarUrl : data.portrait
                         console.log('用户已注册')
                     }
@@ -127,8 +120,75 @@ function login() {
             })
         },
     })
+}
 
-    //this.updateInfo()
+function uploadFile(urlkey, cb,temp,data) {
+    var url = api.url(urlkey)
+    console.log(url)
+    wx.uploadFile({
+        url: url,
+        filePath: temp,
+        name: 'file',
+        formData: data,
+        success: function(res) {
+            wx.hideLoading();
+            return typeof cb == "function" && cb(res.data)
+        },
+        fail: function(res) {
+            wx.hideLoading();
+            wx.showModal({
+                title: '网络错误',
+                content: '网络出错，请刷新重试',
+                showCancel: false
+            })
+            return typeof cb == "function" && cb(false)
+        },
+    })
+}
+
+function getReq(urlkey, cb, token) {
+    var url = api.url(urlkey)
+    url = token == true ? url + '&token=' + globalData.token : url
+    wx.request({
+        url: url,
+        method: 'GET',
+        success: function (res) {
+            wx.hideLoading();
+            return typeof cb == "function" && cb(res.data)
+        },
+        fail: function () {
+            wx.hideLoading();
+            wx.showModal({
+                title: '网络错误',
+                content: '网络出错，请刷新重试',
+                showCancel: false
+            })
+            return typeof cb == "function" && cb(false)
+        }
+    })
+}
+
+function postReq(url, data, cb) {
+    console.log(url)
+    wx.request({
+        url: url,
+        data: data,
+        method: 'POST',
+        success: function(res) {
+            wx.hideLoading();
+            return typeof cb == "function" && cb(res.data)
+        },
+        fail: function() {
+            wx.hideLoading();
+            wx.showModal({
+                title: '网络错误',
+                content: '网络出错，请刷新重试',
+                showCancel: false
+            })
+            return typeof cb == "function" && cb(false)
+        }
+    })
+
 }
 
 module.exports = {
@@ -136,5 +196,7 @@ module.exports = {
     signup: signup,
     login: login,
     getPhoneNmu: getPhoneNmu,
-    updateInfo: updateInfo,
+    GET: getReq,
+    POST: postReq,
+    UpLoadFile: uploadFile,
 }
