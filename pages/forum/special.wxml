@@ -9,5 +9,6 @@
     </bar>
 </view>
 
-<view style='padding-top:105rpx;'>
-<include src='list.wxml'/></view>
+<view style='padding-top:130rpx;'>
+    <include src='list.wxml' />
+</view>

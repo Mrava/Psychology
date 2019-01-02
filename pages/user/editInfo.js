@@ -29,7 +29,6 @@ Page({
     onShow: function(res) {
         var t = this,
             gender = allData.gender == 1 ? false : true
-
         t.setData({
             iconUrl: allData.iconUrl,
             userName: allData.name,
@@ -63,7 +62,8 @@ Page({
             user_name:'---',
             year:'23',
             telephone:'15595108859',
-            address:"------"
+            address:"------",
+            gender:1
         }
         utils.UpLoadFile('upload_user_icon', function (res) {
             console.log(res)

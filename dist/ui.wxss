@@ -2520,7 +2520,7 @@ button.shadow[class*="-black"] {
 }
 
 .shadow-lg {
-    box-shadow: 0px 20px 50px 0px rgba(0,0,0,0.07);
+    box-shadow: 0rpx 20rpx 50rpx 0rpx rgba(0,0,0,0.05);
 }
 
 .shadow-warp {
@@ -4065,7 +4065,7 @@ swiper.square-dot.card-swiper .wx-swiper-dot {
     border-radius: 5px;
 }
 /*! Import end */
-@import "../pages/plugin/animation/animation.wxss";
+@import "animation.wxss";
 
 .nav-list {
     display: flex;

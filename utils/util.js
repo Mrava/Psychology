@@ -122,13 +122,14 @@ function login() {
     })
 }
 
+//上传修改的资料
 function uploadFile(urlkey, cb,temp,data) {
     var url = api.url(urlkey)
     console.log(url)
     wx.uploadFile({
         url: url,
         filePath: temp,
-        name: 'file',
+        name: 'portrait',
         formData: data,
         success: function(res) {
             wx.hideLoading();
