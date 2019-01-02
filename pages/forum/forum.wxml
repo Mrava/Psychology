@@ -18,7 +18,7 @@
     </scroll-view>
 </view>
 
-<view style='padding-top:210rpx'>
+<view style='padding-top:230rpx'>
     <wux-animation-group in="{{ news.in }}" exit='{{news.exit}}' class-names="{{ news.classNames }}">
         <include src='list.wxml' />
     </wux-animation-group>
