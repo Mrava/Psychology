@@ -1,0 +1,47 @@
+<view class='a-fixed'>
+    <view class='bg-green' style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;display:flex;flex-direction:column;justify-content:center;">
+        <bar class="search bg-green" style="width:550rpx">
+            <view class='serach-form round'>
+                <icon class="icon-search" />
+                <input type="text" placeholder="搜索问题、答案" confirm-type="search" />
+            </view>
+        </bar>
+    </view>
+
+    <scroll-view scroll-x class="bg-green shadow-blur nav text-center">
+        <item class="{{0==TabCur?'text-white cur':''}}" bindtap='tabSelect' data-id="0">
+            <icon class='icon-new'></icon> 最新
+        </item>
+        <item class="{{1==TabCur?'text-white cur':''}}" bindtap='tabSelect' data-id="1">
+            <icon class='icon-discover'></icon> 专题
+        </item>
+    </scroll-view>
+</view>
+
+<view style='padding-top:210rpx'>
+    <wux-animation-group in="{{ news.in }}" exit='{{news.exit}}' class-names="{{ news.classNames }}">
+        <include src='list.wxml' />
+    </wux-animation-group>
+</view>
+
+<view class='shadow' style='margin:30rpx;'>
+    <wux-animation-group in="{{ special.in }}" exit='{{special.exit}}' class-names="{{ special.classNames }}">
+        <block wx:for='{{sp_list}}' wx:for-item="i">
+            <bar class="margin-top solid-bottom" style='height:100rpx'>
+                <view class='action'>
+                    <icon class='icon-title text-{{i.color}}' /> {{i.title}}
+                </view>
+            </bar>
+            <list class="grid no-border col-4">
+                <block wx:for='{{i.items}}' wx:for-item="a">
+                    <item style='align-items:center;'>
+                        <view class='v' hover-class='v-hover' bindtap='toSpecial' data-title='{{a.name}}' data-id='{{i.id}}'>
+                            <image style='width:56rpx' mode='widthFix' src='{{a.icon}}' />
+                            <text>{{a.name}}</text>
+                        </view>
+                    </item>
+                </block>
+            </list>
+        </block>
+    </wux-animation-group>
+</view>

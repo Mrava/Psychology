@@ -1,0 +1,89 @@
+<card class="dynamic">
+    <item wx:for="1" wx:key class="shadow">
+        <list class="menu menu-avatar">
+            <item>
+                <avatar class="round lg" style="background-image:url(https://image.weilanwl.com/img/square-1.jpg);"></avatar>
+                <view class='content flex-sub'>
+                    <view>晓晓萌</view>
+                    <view class='text-gray text-sm flex justify-between'>
+                        2018年12月3日
+                    </view>
+                </view>
+            </item>
+        </list>
+        <view class='text-content'>
+            你们的铲屎官是不是经常突然对手机傻笑？我家铲屎官常常坐沙发上笑的发抖！
+        </view>
+        <view class='text-gray text-sm text-right padding '>
+            <icon class="icon-attentionfill" /> 10
+            <icon class="icon-messagefill" /> 30
+        </view>
+
+        <list class="menu menu-avatar comment solids-top">
+            <item wx:for="{{2}}" wx:key>
+                <avatar class="round" style="background-image:url(https://image.weilanwl.com/img/square-1.jpg);"></avatar>
+                <view class='content'>
+                    <view class='text-grey'>猪皮蛋</view>
+                    <view class='text-gray text-content text-df'>
+                        我家铲屎官不舔毛，还抠脚！
+                    </view>
+                    <view class='bg-grey padding-sm radius margin-top-sm  text-sm' wx:if="{{index==1}}">
+                        <view class="flex {{index!=0?'margin-top-sm':'' }}" wx:for="{{2}}" wx:key>
+                            <view>我：</view>
+                            <view class='flex-sub'>我家的铲屎官也不舔毛！</view>
+                        </view>
+                    </view>
+                    <view class='margin-top-sm flex justify-between'>
+                        <view class='text-gray text-df'>2018年12月5日</view>
+                        <icon class="icon-messagefill text-gray margin-left-sm" />
+                    </view>
+                </view>
+            </item>
+        </list>
+    </item>
+</card>
+
+<card class="dynamic">
+    <item wx:for="1" wx:key class="shadow">
+        <list class="menu menu-avatar">
+            <item>
+                <avatar class="round lg" style="background-image:url(https://image.weilanwl.com/img/square-1.jpg);"></avatar>
+                <view class='content flex-sub'>
+                    <view>晓晓萌</view>
+                    <view class='text-gray text-sm flex justify-between'>
+                        2018年12月3日
+                    </view>
+                </view>
+            </item>
+        </list>
+        <view class='text-content'>
+            你们的铲屎官是不是经常突然对手机傻笑？我家铲屎官常常坐沙发上笑的发抖！
+        </view>
+        <view class='text-gray text-sm text-right padding '>
+            <icon class="icon-attentionfill" /> 10
+            <icon class="icon-messagefill" /> 30
+        </view>
+
+        <list class="menu menu-avatar comment solids-top">
+            <item wx:for="{{2}}" wx:key>
+                <avatar class="round" style="background-image:url(https://image.weilanwl.com/img/square-1.jpg);"></avatar>
+                <view class='content'>
+                    <view class='text-grey'>猪皮蛋</view>
+                    <view class='text-gray text-content text-df'>
+                        我家铲屎官不舔毛，还抠脚！
+                    </view>
+                    <view class='bg-grey padding-sm radius margin-top-sm  text-sm' wx:if="{{index==1}}">
+                        <view class="flex {{index!=0?'margin-top-sm':'' }}" wx:for="{{2}}" wx:key>
+                            <view>我：</view>
+                            <view class='flex-sub'>我家的铲屎官也不舔毛！</view>
+                        </view>
+                    </view>
+                    <view class='margin-top-sm flex justify-between'>
+                        <view class='text-gray text-df'>2018年12月5日</view>
+                        <icon class="icon-messagefill text-gray margin-left-sm" />
+                    </view>
+                </view>
+            </item>
+        </list>
+    </item>
+</card>

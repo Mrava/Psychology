@@ -1,5 +1,5 @@
 <custom style="height:{{CustomBar}}px;">
-    <bar class="fixed" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;justify-content: center;padding-right:0">
+    <bar class="fixed bg-green" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;justify-content: center;padding-right:0">
             首页
     </bar>
 </custom>
@@ -13,7 +13,7 @@
 	</block>
 </swiper>
 
-<view class="nav shadow" wx:if='{{nav.length!=0}}'>
+<view class="nav shadow-blur" wx:if='{{nav.length!=0}}'>
 	<view class="item" wx:for="{{nav}}">
 		<image class="img" src="{{item.img}}" mode="widthFix" />
 		<view class="text">{{item.title}}</view>

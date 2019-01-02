@@ -61,7 +61,7 @@
             </tag>
         </capsule>
     </form-group>
-    <form-group  style='margin-bottom:20rpx'>
+    <form-group style='margin-bottom:20rpx'>
         <view class='title'>现住址</view>
         <picker mode="region" bindchange="RegionChange">
             <view class="picker {{!region.length?'icon-discover text-green':'icon-locationfill text-blue'}}">

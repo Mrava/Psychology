@@ -1,24 +1,28 @@
 @import 'dist/ui.wxss';
+@import 'dist/icon.wxss';
 @import 'dist/copyright/copyright.wxss';
 
-.green-b{
+.green-b {
     background-color: #00d853;
 }
-.green-c{
+
+.green-c {
     color: #00d853;
 }
 
-.red-b{
+.red-b {
     background-color: #f91154;
 }
-.red-c{
+
+.red-c {
     color: #f91154;
 }
 
-.navy-b{
+.navy-b {
     background-color: #47505b;
 }
-.navy-c{
+
+.navy-c {
     color: #47505b;
 }
 
@@ -28,10 +32,17 @@ page {
     color: #47505b;
     line-height: 1;
     vertical-align: 2px;
-    font-family: Helvetica Neue,Helvetica,sans-serif;
+    font-family: Helvetica Neue, Helvetica, sans-serif;
 }
 
+.shadow {
+    box-shadow: 0 0 25rpx 5rpx rgba(0, 0, 0, 0.1);
+}
 
-.shadow{
-	box-shadow:0 0 25rpx 5rpx rgba(1,227,88,0.1) ; 
+.a-fixed {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
 }

@@ -3,7 +3,9 @@
         "pages/index/index",
         "pages/user/editInfo",
         "pages/user/user",
-        "pages/user/auth"
+        "pages/user/auth",
+        "pages/forum/forum",
+        "pages/forum/special"
     ],
     "window": {
         "backgroundTextStyle": "light",
@@ -33,7 +35,7 @@
             {
                 "iconPath": "pages/images/tabBar/wenda.png",
                 "selectedIconPath": "pages/images/tabBar/wenda_i.png",
-                "pagePath": "pages/index/index",
+                "pagePath": "pages/forum/forum",
                 "text": "问答"
             },
             {

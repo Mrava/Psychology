@@ -3182,7 +3182,6 @@ bar {
     position: relative;
     align-items: center;
     background: #fff;
-    height: 50px;
     justify-content: space-between;
     font-size: 16px;
 }
@@ -3212,7 +3211,7 @@ bar .action:last-child {
 }
 
 bar .action>icon[class*="icon"] {
-    font-size: 18px;
+    font-size: 32rpx;
     height: 100%;
     width: 1.4em;
 }
@@ -3230,8 +3229,8 @@ bar .content {
     bottom: 8px;
     margin: auto;
     height: 30px;
-    font-size: 18px;
-    line-height: 30px;
+    font-size: 32rpx;
+    line-height: 64rpx;
     cursor: none;
     pointer-events: none;
     text-overflow: ellipsis;
@@ -3427,7 +3426,7 @@ custom bar {
 }
 
 .nav item {
-    height: 45px;
+    height: 43px;
     display: inline-block;
     line-height: 45px;
     margin: 0 5px;
@@ -3625,8 +3624,8 @@ card>item {
     display: block;
     background: #fff;
     overflow: hidden;
-    border-radius: 5px;
-    margin: 15px;
+    /* border-radius: 10rpx; */
+    margin: 15rpx 30rpx;
 }
 
 card>item.shadow-blur {
