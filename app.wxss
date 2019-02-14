@@ -1,5 +1,6 @@
 @import 'dist/ui.wxss';
 @import 'dist/icon.wxss';
+@import 'dist/animation.wxss';
 @import 'dist/copyright/copyright.wxss';
 
 .green-b {

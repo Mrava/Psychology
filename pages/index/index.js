@@ -5,7 +5,7 @@ Page({
 
 	data: {
 		StatusBar: app.globalData.StatusBar,
-        CustomBar: app.globalData.CustomBar,
+    CustomBar: app.globalData.CustomBar,
 		width:wx.getSystemInfoSync().windowWidth,
 		imgUrls: [
 			'http://g.hiphotos.baidu.com/image/h%3D300/sign=db097dbddcc8a786a12a4c0e5709c9c7/5bafa40f4bfbfbed5572eb3875f0f736afc31f4a.jpg',
