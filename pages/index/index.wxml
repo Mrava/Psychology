@@ -1,5 +1,5 @@
 <view class="cu-custom" style="height:{{CustomBar}}px;">
-  <view class="cu-bar fixed bg-green" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;justify-content: center;padding-right:0">
+  <view class="cu-bar fixed bg-green shadow-blur" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;justify-content: center;padding-right:0">
     首页
   </view>
 </view>
@@ -19,7 +19,7 @@
   </view>
 </view>
 
-<view class="people">
+<view class="people shadow">
   <view class="Title">
     <view class="h"></view>
     <view>专家推荐</view>
@@ -45,8 +45,7 @@
   </view>
 </view>
 
-
-<view class="info">
+<view class="info shadow">
   <view class="Title">
     <view class="h"></view>
     <view>最新资讯</view>
@@ -67,3 +66,5 @@
     </block>
   </view>
 </view>
+
+<view class='division'></view>

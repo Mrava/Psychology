@@ -3,6 +3,11 @@
 @import 'dist/animation.wxss';
 @import 'dist/copyright/copyright.wxss';
 
+.division{
+  width:1;
+  height:140rpx;
+}
+
 .green-b {
     background-color: #00d853;
 }
@@ -28,7 +33,7 @@
 }
 
 page {
-    background: #fdfdfd;
+    background: #f5f5f5;
     font-size: 25rpx;
     color: #47505b;
     line-height: 1;

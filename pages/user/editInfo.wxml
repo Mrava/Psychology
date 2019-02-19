@@ -61,7 +61,6 @@
     <view class='title'>性别</view>
     <text class='text-df' style='flex:1'>{{gender?'男士':'女士'}}</text>
     <switch class='switch-sex sm' checked='{{gender}}' bindchange="switch2Change" />
-
   </view>
 
   <!-- 现住址 -->

@@ -47,13 +47,13 @@ image.quiet {
 
 .info{
 	margin: 25rpx;
-	padding: 15rpx 0;
+	padding: 25rpx 25rpx 0rpx 25rpx;
 	background-color: #fff;
 }
 
 .Title{
 	display: flex;
-	align-content: center;
+	align-items: center;
 }
 
 .Title .h{
@@ -64,7 +64,7 @@ image.quiet {
 }
 
 .list{
-	padding: 25rpx 0;
+	padding: 25rpx 15rpx;
 }
 
 .list .item{
@@ -102,12 +102,12 @@ image.quiet {
 
 .people{
 	margin: 25rpx;
-	padding: 15rpx 0;
+	padding: 25rpx 25rpx 0 25rpx;
 	background-color: #fff;
 }
 
 .plist{
-	padding: 0 20rpx;
+	padding: 15rpx 20rpx;
 }
 
 .plist .item{

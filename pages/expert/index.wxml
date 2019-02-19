@@ -1,0 +1,47 @@
+<!-- 顶部页面 -->
+<view class="a-fixed bg-green shadow-blur">
+  <view style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;display:flex;flex-direction:column;justify-content:center;">
+    <view class="cu-bar search" style="width:550rpx;min-height:0rpx;">
+      <view class='search-form round' style="height:60rpx">
+        <text class="icon-search"></text>
+        <input type="text" placeholder="搜索专家名称" confirm-type="search" />
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 专家list -->
+<view class="expert-p shadow" style="padding-top:{{CustomBar+5}}px">
+  <view class="expert-i" wx:for="{{expert_list}}">
+    <view class="expert-icon">
+      <!-- 头像 -->
+      <image mode="aspectFill" src="{{item.icon}}" />
+    </view>
+    <!-- 内容 -->
+    <view class="expert-content">
+      <view class="content-title">
+        <!-- 专家名称 -->
+        <view class="content-name padding-top_bottom">{{item.name}}</view>
+        <!-- 专家星级 -->
+        <view class='padding-top_bottom'>
+          <wux-rater disabled fontSize="20" default-value="{{item.star}}" />
+        </view>
+      </view>
+      <view class="content-info padding-top_bottom text-grey">
+        <!-- 专家详情 -->
+        <view class="info-text text-cut">地址:{{item.info}}</view>
+      </view>
+      <view class="text-cut content-tag padding-top_bottom">
+        <block wx:for="{{5}}" wx:for-item="i">
+          <!-- tag标签 -->
+          <view class="cu-tag bg-{{item.tags[i].color}} radius">{{item.tags[i].name}}</view>
+        </block>
+      </view>
+    </view>
+    <!-- 操作 -->
+    <view class="expert-do text-white  bg-gradual-green shadow">
+      <view class="do-call">拨打电话</view>
+      <!-- <view class="do-call"></view> -->
+    </view>
+  </view>
+</view>
+<view class='division'></view>

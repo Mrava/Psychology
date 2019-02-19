@@ -1,34 +1,35 @@
-<view class='a-fixed'>
-  <view class='bg-green' style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;display:flex;flex-direction:column;justify-content:center;">
+<view class='bg-green a-fixed shadow-blur'>
+  <view style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;display:flex;flex-direction:column;justify-content:center;">
     <view class="cu-bar search bg-green" style="width:550rpx">
-      <view class='search-form round'>
+      <view class='search-form round' style="height:60rpx">
         <text class="icon-search"></text>
         <input type="text" placeholder="搜索问题、答案" confirm-type="search" />
       </view>
     </view>
   </view>
-  <scroll-view scroll-x class="bg-green shadow-blur nav text-center">
+  <scroll-view scroll-x class="nav text-center">
     <view class="cu-item {{0==TabCur?'text-white cur':''}}" bindtap='tabSelect' data-id="0">
-      <text class='icon-new'></text> 最新
+      <text class='icon-new'></text>
+      最新
     </view>
     <view class="cu-item {{1==TabCur?'text-white cur':''}}" bindtap='tabSelect' data-id="1">
-      <text class='icon-discover'></text> 专题
+      <text class='icon-discover'></text>
+      专题
     </view>
   </scroll-view>
 </view>
-
 <view style='padding-top:230rpx'>
   <wux-animation-group in="{{ news.in }}" exit='{{news.exit}}' class-names="{{ news.classNames }}">
     <include src='list.wxml' />
   </wux-animation-group>
 </view>
-
-<view class='shadow' style='margin:30rpx;'>
+<view style='margin:30rpx;'>
   <wux-animation-group in="{{ special.in }}" exit='{{special.exit}}' class-names="{{ special.classNames }}">
     <block wx:for='{{sp_list}}' wx:for-item="i">
       <view class="cu-bar margin-top solid-bottom" style='height:100rpx'>
         <view class='action'>
-          <text class='icon-title text-{{i.color}}'></text> {{i.title}}
+          <text class='icon-title text-{{i.color}}'></text>
+          {{i.title}}
         </view>
       </view>
       <view class="cu-list grid no-border col-4">
@@ -44,3 +45,5 @@
     </block>
   </wux-animation-group>
 </view>
+
+<view class='division'></view>

@@ -1,9 +1,5 @@
 const app = getApp();
-Page({
-
-    /**
-     * 页面的初始数据
-     */
+Component({
     data: {
         StatusBar: app.globalData.StatusBar,
         CustomBar: app.globalData.CustomBar,
@@ -168,31 +164,40 @@ Page({
             }, ]
         }, ]
     },
-
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    onLoad: function(options) {
-
+    pageLifetimes: {
+        show() {
+            if (typeof this.getTabBar === 'function' &&
+                this.getTabBar()) {
+                this.getTabBar().setData({
+                    selected: 3
+                })
+            }
+        }
     },
-    tabSelect(e) {
-        var id = e.currentTarget.dataset.id,
-            news = 'news.in',
-            special = 'special.in',
-            show = id == '0' ? true : false,
-            noshow = id == '1' ? true : false
-        this.setData({
-            TabCur: id,
-            scrollLeft: (e.currentTarget.dataset.id - 1) * 60,
-            [news]: show,
-            [special]: noshow
-        })
-    },
-    toSpecial(e) {
-        var title = e.currentTarget.dataset.title,
-            id = e.currentTarget.dataset.id
-        wx.navigateTo({
-            url: "special?title=" + title + "&id=" + id,
-        })
+    methods: {
+        onLoad: function (options) {
+
+        },
+        tabSelect(e) {
+            var id = e.currentTarget.dataset.id,
+                news = 'news.in',
+                special = 'special.in',
+                show = id == '0' ? true : false,
+                noshow = id == '1' ? true : false
+            this.setData({
+                TabCur: id,
+                scrollLeft: (e.currentTarget.dataset.id - 1) * 60,
+                [news]: show,
+                [special]: noshow
+            })
+        },
+        toSpecial(e) {
+            var title = e.currentTarget.dataset.title,
+                id = e.currentTarget.dataset.id
+            wx.navigateTo({
+                url: "special?title=" + title + "&id=" + id,
+            })
+        },
     }
+
 })
