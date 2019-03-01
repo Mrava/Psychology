@@ -100,22 +100,28 @@ function login() {
                 url: api.Anum.login,
                 data: data,
                 method: 'POST',
+                header:{
+                "content-type": "application/x-www-form-urlencoded"
+                },
                 success: function(e) {
                     globalData.token = e.data.data.token
                     wx.setStorageSync("user_id", e.data.data.id)
                     var status = e.data.status
-                    if (status == 9001) { //用户未注册
-                        setTimeout(function(){
-                            t.signup(e.data.data)
-                        },1500)
-                    } else if (status == 0) {
-                        var data = e.data.data
-                        globalData.userID = data.id
-                        globalData.name = data.user_name
-                        globalData.isGetUser = false
-                        globalData.iconUrl = !data.portrait ? user.avatarUrl : data.portrait
-                        console.log('用户已注册')
-                    }
+                    console.log(e)
+                    // if (status == 9001) { //用户未注册
+                    //     setTimeout(function(){
+                    //         t.signup(e.data.data)
+                    //     },1500)
+                    //   console.log('用户未注册', e)
+                    // } else if (status == 0) {
+                    //     var data = e.data.data
+                    //     globalData.userID = data.id
+                    //     globalData.name = data.user_name
+                    //     globalData.isGetUser = false
+                    //     globalData.iconUrl = !data.portrait ? user.avatarUrl : data.portrait
+                    //     console.log('用户已注册')
+                    // }
+                    
                 },
             })
         },

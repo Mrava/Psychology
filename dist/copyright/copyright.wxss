@@ -3,5 +3,4 @@
     justify-content: center;
     display: flex;
     margin-bottom: 150rpx;
-    background-color: #FFF;
 }

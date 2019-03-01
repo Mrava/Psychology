@@ -106,13 +106,5 @@ Component({
         utils.login()
       }
     },
-
-    ss(e) {
-      console.log(e)
-    },
-
-    go() {
-      console.log(code)
-    }
   }
 })
