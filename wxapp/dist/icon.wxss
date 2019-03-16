@@ -1,3 +1,27 @@
+@font-face {
+  font-family: 'myIcon';  /* project id 994948 */
+  src: url('//at.alicdn.com/t/font_994948_qdz6vcdvajh.eot');
+  src: url('//at.alicdn.com/t/font_994948_qdz6vcdvajh.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_994948_qdz6vcdvajh.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_994948_qdz6vcdvajh.woff') format('woff'),
+  url('//at.alicdn.com/t/font_994948_qdz6vcdvajh.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_994948_qdz6vcdvajh.svg#iconfont') format('svg');
+}
+
+.myIcon {
+    font-family: "myIcon" !important;
+    font-size: inherit;
+    font-style: normal;
+}
+
+.biaoti:before {
+  content: "\e69a";
+}
+
+.shequ:before {
+  content: "\e61c";
+}
+
 @keyframes icon-spin {
     0% {
         -webkit-transform: rotate(0);
