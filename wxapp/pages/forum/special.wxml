@@ -1,0 +1,17 @@
+<view class="bg-green a-fixed">
+  <view class='cu-bar text-white' style="height:{{CustomBar}}px;background-color:transparent">
+
+    <navigator class='action' open-type="navigateBack" delta="1" hover-class="none" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
+      <text class='icon-back'></text> 返回
+    </navigator>
+
+    <view class='action' style="flex:1;height:{{CustomBar}}px;padding-top:{{StatusBar}}px;font-size:30rpx">{{Title}}</view>
+
+    <view style='width:120rpx'></view>
+
+  </view>
+</view>
+
+<view style='padding-top:150rpx;'>
+  <include src='list.wxml' />
+</view>

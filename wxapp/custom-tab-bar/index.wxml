@@ -1,0 +1,37 @@
+<view class="cu-bar tabbar bg-white shadow">
+  <view data-class='scale-down' class="action {{index==2?'add-action':''}}" wx:for="{{list}}" wx:key="index" data-path="{{item.pagePath}}" data-index="{{index}}" bindtap="switchTab">
+    <view class="animation-{{animation=='scale-down'&&selected===index&&index!==2? 'scale-down' :''}}">
+      <view class="icon-cu-image">
+        <view wx:if="{{index==2}}" class='cu-btn icon-add shadow' style="color:#FFF;top:0rpx;background:{{selectedColor}}"></view>
+        <image wx:else src='{{selected === index ? item.selectedIconPath : item.iconPath}}' class='{{selected === index ? "animation" : "animation"}}'></image>
+      </view>
+      <view style='color:{{selected === index ? selectedColor : color}}'>{{item.text}}</view>
+    </view>
+  </view>
+</view>
+<!-- <view class="cu-bar tabbar margin-bottom-xl bg-white">
+  <view class="action text-green">
+    <view class='icon-homefill'></view>
+    首页
+  </view>
+  <view class="action text-gray">
+    <view class='icon-similar'></view>
+    分类
+  </view>
+  <view class="action text-gray add-action">
+    <button class='cu-btn icon-add bg-green shadow'></button>
+    发布
+  </view>
+  <view class="action text-gray">
+    <view class='icon-cart'>
+      <view class='cu-tag badge'>99</view>
+    </view>
+    购物车
+  </view>
+  <view class="action text-gray">
+    <view class='icon-my'>
+      <view class='cu-tag badge'></view>
+    </view>
+    我的
+  </view>
+</view> -->
