@@ -24,14 +24,14 @@ Component({
       {
         iconPath: "/pages/images/tabBar/wenda.png",
         selectedIconPath: "/pages/images/tabBar/wenda_i.png",
-        pagePath: "/pages/release/index",
-        text: "发布"
-      },
-      {
-        iconPath: "/pages/images/tabBar/wenda.png",
-        selectedIconPath: "/pages/images/tabBar/wenda_i.png",
         pagePath: "/pages/forum/forum",
         text: "问答"
+      },
+      {
+        iconPath: "/pages/images/tabBar/message.png",
+        selectedIconPath: "/pages/images/tabBar/message_i.png",
+        pagePath: "/pages/chat/chat",
+        text: "消息"
       },
       {
         iconPath: "/pages/images/tabBar/wode.png",
