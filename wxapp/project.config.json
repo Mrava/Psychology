@@ -15,7 +15,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.6.1",
-	"appid": "wx737c3211676c7ff5",
+	"appid": "wx87b67e3dec04be95",
 	"projectname": "%E5%AE%81%E5%A4%8F%E5%BF%83%E7%90%86%E5%92%A8%E8%AF%A2",
 	"debugOptions": {
 		"hidedInDevtools": []
@@ -44,7 +44,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 4,
+			"current": 6,
 			"list": [
 				{
 					"id": -1,
@@ -68,17 +68,30 @@
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "专家",
+					"id": 4,
+					"name": "专家详情",
 					"pathName": "pages/expert/info/expert_info",
 					"query": "",
 					"scene": null
 				},
 				{
 					"id": -1,
-					"name": "专家",
-					"pathName": "pages/expert/info/expert_info",
+					"name": "消息",
+					"pathName": "pages/chat/chat",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "界面",
+					"pathName": "pages/chat/chatUI/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "test",
+					"pathName": "pages/test",
 					"scene": null
 				}
 			]

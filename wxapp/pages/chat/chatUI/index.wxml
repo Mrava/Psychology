@@ -1,0 +1,32 @@
+<view class="cu-custom" style="height:{{CustomBar}}px;">
+  <view class="cu-bar fixed bg-gradual-green" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
+    <navigator class='action' open-type="navigateBack" delta="1" hover-class="none">
+      <text class='icon-back'></text>
+      聊天
+    </navigator>
+  </view>
+</view>
+
+<view class="cu-chat">
+  <view class="cu-item {{item.role}}" wx:for="{{chatContentList}}" style="padding:10rpx 10rpx 60rpx">
+    <view class="cu-avatar radius" wx:if="{{!item.role}}" style="background-image:url({{item.role?selfAvatar:otherAvatar}});"></view>
+    <view class="main">
+      <view class="content {{item.role?'bg-green':''}} shadow">
+        <text>{{item.chatContent}}</text>
+      </view>
+    </view>
+    <view class="cu-avatar radius" wx:if="{{item.role}}" style="background-image:url({{item.role?selfAvatar:otherAvatar}});"></view>
+    <view class='date'>{{item.time}}</view>
+  </view>
+</view>
+
+<view class="cu-bar foot input">
+  <view class='action'>
+    <text class='icon-sound text-grey'></text>
+  </view>
+  <input class='solid-bottom' focus="{{false}}" maxlength="300" cursor-spacing="10"></input>
+  <view class='action'>
+    <text class='icon-emojifill text-grey'></text>
+  </view>
+  <button class='cu-btn bg-green shadow'>发送</button>
+</view>

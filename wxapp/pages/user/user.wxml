@@ -38,7 +38,7 @@
         <text class="text-grey text-xs">{{phoneNum}}</text>
       </view>
     </view>
-  </view> -->
+  </view>
 
   <view class='cu-item'>
     <view class="content">
@@ -48,12 +48,12 @@
     <view class="action">
       <view class="cu-tag bg-olive round">9</view>
     </view>
-  </view>
+  </view> -->
 
   <view class='cu-item'>
     <view class="content">
       <text class="icon-comment text-blue text-sm"></text>
-      <text class="text-grey text-sm">留言信息</text>
+      <text class="text-grey text-sm">我的帖子</text>
     </view>
     <view class="action">
       <view class="cu-tag bg-blue round text-xs">11</view>

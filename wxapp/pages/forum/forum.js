@@ -23,28 +23,28 @@ Component({
             id: '1',
             items: [{
                 name: '暗恋',
-                icon: '../images/wx.png'
+                icon: '../images/1.png'
             }, {
                 name: '早恋',
-                icon: '../images/wx.png'
+                icon: '../images/2.png'
             }, {
                 name: '初恋',
-                icon: '../images/wx.png'
+                icon: '../images/3.png'
             }, {
                 name: '失恋',
-                icon: '../images/wx.png'
+                icon: '../images/4.png'
             }, {
                 name: '单恋',
-                icon: '../images/wx.png'
+                icon: '../images/1.png'
             }, {
                 name: '异地恋',
-                icon: '../images/wx.png'
+                icon: '../images/2.png'
             }, {
                 name: '谈恋爱',
-                icon: '../images/wx.png'
+                icon: '../images/3.png'
             }, {
                 name: '恋爱恐慌',
-                icon: '../images/wx.png'
+                icon: '../images/4.png'
             }, ]
         }, {
             title: "婚姻",
@@ -52,28 +52,28 @@ Component({
             id: '2',
             items: [{
                 name: '离婚',
-                icon: '../images/wx.png'
+                icon: '../images/1.png'
             }, {
                 name: '出轨',
-                icon: '../images/wx.png'
+                icon: '../images/2.png'
             }, {
                 name: '结婚',
-                icon: '../images/wx.png'
+                icon: '../images/3.png'
             }, {
                 name: '闪婚',
-                icon: '../images/wx.png'
+                icon: '../images/4.png'
             }, {
                 name: '隐婚',
-                icon: '../images/wx.png'
+                icon: '../images/1.png'
             }, {
                 name: '毕婚',
-                icon: '../images/wx.png'
+                icon: '../images/2.png'
             }, {
                 name: '婚外恋',
-                icon: '../images/wx.png'
+                icon: '../images/3.png'
             }, {
                 name: '异国婚姻',
-                icon: '../images/wx.png'
+                icon: '../images/4.png'
             }, ]
         }, {
             title: "婚姻",
@@ -81,28 +81,28 @@ Component({
             id: '2',
             items: [{
                 name: '离婚',
-                icon: '../images/wx.png'
+                icon: '../images/1.png'
             }, {
                 name: '出轨',
-                icon: '../images/wx.png'
+                icon: '../images/2.png'
             }, {
                 name: '结婚',
-                icon: '../images/wx.png'
+                icon: '../images/3.png'
             }, {
                 name: '闪婚',
-                icon: '../images/wx.png'
+                icon: '../images/4.png'
             }, {
                 name: '隐婚',
-                icon: '../images/wx.png'
+                icon: '../images/1.png'
             }, {
                 name: '毕婚',
-                icon: '../images/wx.png'
+                icon: '../images/2.png'
             }, {
                 name: '婚外恋',
-                icon: '../images/wx.png'
+                icon: '../images/3.png'
             }, {
                 name: '异国婚姻',
-                icon: '../images/wx.png'
+                icon: '../images/4.png'
             }, ]
         }, {
             title: "婚姻",
@@ -110,28 +110,28 @@ Component({
             id: '2',
             items: [{
                 name: '离婚',
-                icon: '../images/wx.png'
+                icon: '../images/1.png'
             }, {
                 name: '出轨',
-                icon: '../images/wx.png'
+                icon: '../images/2.png'
             }, {
                 name: '结婚',
-                icon: '../images/wx.png'
+                icon: '../images/3.png'
             }, {
                 name: '闪婚',
-                icon: '../images/wx.png'
+                icon: '../images/4.png'
             }, {
                 name: '隐婚',
-                icon: '../images/wx.png'
+                icon: '../images/1.png'
             }, {
                 name: '毕婚',
-                icon: '../images/wx.png'
+                icon: '../images/2.png'
             }, {
                 name: '婚外恋',
-                icon: '../images/wx.png'
+                icon: '../images/3.png'
             }, {
                 name: '异国婚姻',
-                icon: '../images/wx.png'
+                icon: '../images/4.png'
             }, ]
         }, {
             title: "婚姻",
@@ -139,28 +139,28 @@ Component({
             id: '2',
             items: [{
                 name: '离婚',
-                icon: '../images/wx.png'
+                icon: '../images/1.png'
             }, {
                 name: '出轨',
-                icon: '../images/wx.png'
+                icon: '../images/2.png'
             }, {
                 name: '结婚',
-                icon: '../images/wx.png'
+                icon: '../images/3.png'
             }, {
                 name: '闪婚',
-                icon: '../images/wx.png'
+                icon: '../images/4.png'
             }, {
                 name: '隐婚',
-                icon: '../images/wx.png'
+                icon: '../images/1.png'
             }, {
                 name: '毕婚',
-                icon: '../images/wx.png'
+                icon: '../images/2.png'
             }, {
                 name: '婚外恋',
-                icon: '../images/wx.png'
+                icon: '../images/3.png'
             }, {
                 name: '异国婚姻',
-                icon: '../images/wx.png'
+                icon: '../images/4.png'
             }, ]
         }, ]
     },

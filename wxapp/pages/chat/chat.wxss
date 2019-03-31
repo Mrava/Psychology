@@ -1,1 +1,4 @@
-/* pages/chat/chat.wxss */
+.content{
+    padding: 10rpx;
+    margin: 10rpx 0;
+}

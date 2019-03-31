@@ -33,7 +33,7 @@
 }
 
 page {
-    background: #f5f5f5;
+    background: #f1f1f1;
     font-size: 25rpx;
     color: #47505b;
     line-height: 1;

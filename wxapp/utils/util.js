@@ -104,11 +104,11 @@ function login(that) {
           "content-type": "application/x-www-form-urlencoded"
         },
         success: function(e) {
+          console.log('登录调试:' + e)
           globalData.token = e.data.data.token
           wx.setStorageSync("user_id", e.data.data.id)
           var status = e.data.status
           if (!e.data.data.portrait) { //登录成功
-
             var data = e.data.data
             globalData.userID = data.id
             globalData.name = data.user_name
