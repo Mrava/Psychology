@@ -1,15 +1,31 @@
-var api = require('api')
-var app = getApp()
-var globalData = app.globalData
-const formatTime = date => {
-  const year = date.getFullYear()
-  const month = date.getMonth() + 1
-  const day = date.getDate()
-  const hour = date.getHours()
-  const minute = date.getMinutes()
-  const second = date.getSeconds()
-
-  return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
+var api = require('api');
+var app = getApp();
+var globalData = app.globalData;
+var HEADER="application/x-www-form-urlencoded";
+function formatTime (type) {
+  var date = new Date()
+  var year = date.getFullYear()
+  var month = date.getMonth() + 1
+  var day = date.getDate()
+  var hour = date.getHours()
+  var minute = date.getMinutes()
+  var second = date.getSeconds()
+  var time = [hour, minute, second].map(formatNumber).join(':'),
+    ydate = [year, month, day].map(formatNumber).join('/')
+  /**
+   * type:1：返回当前时间;2：返回当前年月日;other：返回当前年月日及时间
+   */
+  switch (type) {
+    case 1:
+      return time
+      break;
+  case 2:
+      return ydate
+      break;
+  default:
+      return ydate + ' ' + time
+      break;
+  }
 }
 
 const formatNumber = n => {
@@ -37,7 +53,7 @@ function getPhoneNmu(encryptedData, iv, that) {
               iv: iv,
             },
             header: {
-              'content-type': 'application/x-www-form-urlencoded'
+              'content-type': HEADER
             },
             method: 'POST',
             success: function(res) {
@@ -69,7 +85,7 @@ function signup(d) {
     data: data,
     method: 'POST',
     header: {
-      "content-type": "application/x-www-form-urlencoded"
+      "content-type": HEADER
     },
     success: function(res) {
       globalData.userID = res.data.id
@@ -96,28 +112,29 @@ function login(that) {
       var data = {
         user_code: res.code,
       }
+      // console.log(res.code)
+      // return null;
       wx.request({
         url: api.Anum.login,
         data: data,
         method: 'POST',
         header: {
-          "content-type": "application/x-www-form-urlencoded"
+          "content-type": HEADER
         },
         success: function(e) {
-          console.log('登录调试:' + e)
           globalData.token = e.data.data.token
           wx.setStorageSync("user_id", e.data.data.id)
           var status = e.data.status
-          if (!e.data.data.portrait) { //登录成功
+          if (e.data.status==0) { //登录成功
             var data = e.data.data
             globalData.userID = data.id
             globalData.name = data.user_name
             globalData.isGetUser = false
             globalData.iconUrl = !data.portrait ? user.avatarUrl : data.portrait
-            console.log('用户已登录:',e)
+            console.log('用户已登录:', e)
           } else {
             t.signup(e.data.data)
-            console.log('用户未注册')
+            console.log('用户未注册,正在自动注册...')
           }
         },
       })
@@ -159,7 +176,7 @@ function getReq(urlkey, cb, token) {
     url: url,
     method: 'GET',
     header: {
-      "content-type": "application/x-www-form-urlencoded"
+      "content-type": HEADER
     },
     success: function(res) {
       wx.hideLoading();
@@ -179,13 +196,13 @@ function getReq(urlkey, cb, token) {
 
 function postReq(urlkey, data, cb) {
   var url = api.url(urlkey)
-  console.log(url,data)
+  console.log(url, data)
   wx.request({
     url: url,
     data: data,
     method: 'POST',
     header: {
-      "content-type": "application/x-www-form-urlencoded"
+      "content-type": HEADER
     },
     success: function(res) {
       wx.hideLoading();
@@ -211,5 +228,5 @@ module.exports = {
   getPhoneNmu: getPhoneNmu,
   GET: getReq,
   POST: postReq,
-  UpLoadFile: uploadFile,
+  UpLoadFile: uploadFile
 }

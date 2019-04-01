@@ -80,7 +80,7 @@ Component({
     },
 
     toChatUI(e) {
-      console.log('被单击')
+      //console.log('被单击')
       wx.navigateTo({
         url:'chatUI/index'
       })

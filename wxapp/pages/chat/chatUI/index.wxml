@@ -1,8 +1,7 @@
 <view class="cu-custom" style="height:{{CustomBar}}px;">
   <view class="cu-bar fixed bg-gradual-green" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
     <navigator class='action' open-type="navigateBack" delta="1" hover-class="none">
-      <text class='icon-back'></text>
-      聊天
+      <text class='icon-back'></text> 聊天
     </navigator>
   </view>
 </view>
@@ -24,9 +23,9 @@
   <view class='action'>
     <text class='icon-sound text-grey'></text>
   </view>
-  <input class='solid-bottom' focus="{{false}}" maxlength="300" cursor-spacing="10"></input>
+  <input class='solid-bottom' focus="{{false}}" bindinput='inputSendMessage' maxlength="300" cursor-spacing="10" value='{{MessageInputValue}}'></input>
   <view class='action'>
     <text class='icon-emojifill text-grey'></text>
   </view>
-  <button class='cu-btn bg-green shadow'>发送</button>
+  <button bindtap='sendMessage' class='cu-btn bg-green shadow'>发送</button>
 </view>

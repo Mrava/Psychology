@@ -12,11 +12,19 @@
 <!-- 专家list -->
 <view class="cu-card case" style="padding-top:{{CustomBar+5}}px">
   <view wx:for="{{expert_list}}" wx:key class="cu-item shadow">
-    <view class='image'>
+    <view class='image' bindtap='seeInfo' data-id='{{index}}'>
       <image src="{{item.photo}}" mode="aspectFill" style="height:500rpx"></image>
       <view class="cu-tag bg-blue">{{item.classify}}</view>
-      <view class='cu-bar bg-white' style="background-image:linear-gradient(rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 1));">
-        <text class='text-cut text-black' style="width:100%;">{{item.info}}</text>
+      <view class="cu-bar bg-white {{info_class.style!=''&&info_class.index==index?'':'info'}}"
+       style="{{info_class.index==index?info_class.style:''}};padding: 30rpx;">
+        <block wx:if="{{info_class.style!=''&&info_class.index==index}}">
+          <scroll-view scroll-y style='height:100%'>
+            <text class="text-grey" style="width:100%;">{{item.info}}</text>
+          </scroll-view>
+        </block>
+        <block wx:else>
+          <text class="text-cut text-black" style="width:100%;">{{item.info}}</text>
+        </block>
       </view>
     </view>
     <view class="cu-list menu menu-avatar">
@@ -39,8 +47,8 @@
       </view>
     </view>
     <view class='do'>
-      <view class="icon-phone text-blue" catch:tap="call"> 电话联系</view>
-      <view class="icon-message  text-green"> 在线沟通</view>
+      <view class="icon-phone text-blue" catch:tap="call">电话联系</view>
+      <view class="icon-message  text-green">在线沟通</view>
     </view>
   </view>
 </view>

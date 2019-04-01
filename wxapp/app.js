@@ -1,5 +1,8 @@
+const WebSocket = require('/utils/WebSocket.js')
 App({
   onLaunch: function() {
+    
+    WebSocket.InitializationSocket();
     var t = this;
     wx.getSystemInfo({
       success: function(a) {
@@ -18,5 +21,6 @@ App({
     age:'',
     expert_data:'',
     isGetUser: false
-  }
+  },
+  
 })
