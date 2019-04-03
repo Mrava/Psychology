@@ -1,12 +1,15 @@
 const app = getApp();
 const util = require('../../../utils/util.js')
 const WebSocket = require('../../../utils/WebSocket.js')
-var msg = '';
-Page({
-  data: {
-    StatusBar: app.globalData.StatusBar,
-    CustomBar: app.globalData.CustomBar,
-    chatContentList: [{
+var chatContentList = [], MessageInputValue = '', msg = '';
+
+/**
+ * 初始化数据
+ */
+function initData(that) {
+  setScrollViewHeight(that)
+  chatContentList = [
+    {
       role: 'self',
       chatContent: '在吗?',
       time: '16:03:13'
@@ -34,41 +37,64 @@ Page({
       role: 'self',
       chatContent: "中国人和喜欢的人说话，会先问一句 '在吗?'",
       time: '16:07:15'
-    },],
+    }
+  ]
+
+  that.setData({
+    StatusBar: app.globalData.StatusBar,
+    CustomBar: app.globalData.CustomBar,
+    chatContentList,
     selfAvatar: 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=4207483386,3661573472&fm=11&gp=0.jpg',
     otherAvatar: 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1975714303,1337345037&fm=26&gp=0.jpg',
+  });
+}
+
+/**
+ * 计算聊天scroll-view实际占界面的高度
+ */
+function setScrollViewHeight(that) {
+  var TopHeight = app.globalData.CustomBar, //获取顶部高度
+    ScreenHeight = wx.getSystemInfoSync().windowHeight, //获取屏幕高度
+    query = wx.createSelectorQuery();//获取底部输入框所占屏幕高度  单位px；
+  query.select('#inputView').boundingClientRect(function (rect) {
+
+    that.setData({
+      ScrollViewHeight: ScreenHeight - TopHeight - rect.height
+    })
+  }).exec();
+}
+Page({
+  data: {
   },
+
   onLoad: function () {
     var that = this
+    initData(that);
     wx.onSocketMessage(function (e) {
       console.log(e)
       that.setChatContentList(false, e.data)
     })
   },
 
-  sendMessage(e) {
-    WebSocket.sendMessage(msg)
-    this.setChatContentList(true, msg)
+  onReady: function () {
+    this.setData({
+      toMsg: 'msg-' + (chatContentList.length - 1),
+    })
   },
 
   setChatContentList(self, content) {
-    var chatContentList = this.data.chatContentList,
-      role = self ? 'self' : '',
-      data = {
-        role: role,
-        chatContent: content,
-        time: util.formatTime(1)
-      }
+    var role = self ? 'self' : ''
     self ? this.setData({
       MessageInputValue: '',
     }) : null;
-    chatContentList.push(data)
-    this.setData({
-      chatContentList: chatContentList
+    chatContentList.push({
+      role: role,
+      chatContent: content,
+      time: util.formatTime(1)
     })
-    // wx.pageScrollTo({
-    //   scrollTop: wx.getSystemInfoSync().windowHeight,
-    // })
+    this.setData({
+      chatContentList, toMsg: 'msg-' + (chatContentList.length - 1),
+    })
   },
 
   //将输入框输入的内容保存到msg
@@ -76,5 +102,13 @@ Page({
     var value = e.detail.value,
       cursor = e.detail.cursor;
     msg = value
+  },
+
+  /**
+   * 发送点击监听
+   */
+  sendClick: function (e) {
+    WebSocket.sendMessage(msg)
+    this.setChatContentList(true, e.detail.value)
   },
 });

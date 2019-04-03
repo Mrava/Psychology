@@ -10,7 +10,8 @@
     "pages/release/index",
     "pages/expert/info/expert_info",
     "pages/chat/chat",
-    "pages/chat/chatUI/index"
+    "pages/chat/chatUI/index",
+    "pages/forum/info/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

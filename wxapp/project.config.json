@@ -44,7 +44,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 6,
+			"current": 7,
 			"list": [
 				{
 					"id": -1,
@@ -92,6 +92,14 @@
 					"id": -1,
 					"name": "test",
 					"pathName": "pages/test",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 7,
+					"name": "帖子详情",
+					"pathName": "pages/forum/info/index",
+					"query": "",
 					"scene": null
 				}
 			]
