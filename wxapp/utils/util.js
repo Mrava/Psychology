@@ -2,6 +2,7 @@ var api = require('api');
 var app = getApp();
 var globalData = app.globalData;
 var HEADER="application/x-www-form-urlencoded";
+var userCode,token;
 function formatTime (type) {
   var date = new Date()
   var year = date.getFullYear()
@@ -80,6 +81,8 @@ function signup(d) {
     token: d.token,
     user_name: !globalData.name ? user.nickName : globalData.name,
   }
+  // console.log()
+  // return null;
   wx.request({
     url: api.url("signup"),
     data: data,
@@ -124,16 +127,15 @@ function login(that) {
         success: function(e) {
           globalData.token = e.data.data.token
           wx.setStorageSync("user_id", e.data.data.id)
-          var status = e.data.status
+          var status = e.data.status,data = e.data.data
           if (e.data.status==0) { //登录成功
-            var data = e.data.data
             globalData.userID = data.id
             globalData.name = data.user_name
             globalData.isGetUser = false
             globalData.iconUrl = !data.portrait ? user.avatarUrl : data.portrait
             console.log('用户已登录:', e)
           } else {
-            t.signup(e.data.data)
+            t.signup(data)
             console.log('用户未注册,正在自动注册...')
           }
         },
@@ -143,14 +145,13 @@ function login(that) {
 }
 
 //上传修改的资料
-function uploadFile(urlkey, cb, temp, data) {
+function uploadFile(urlkey, cb, temp) {
   var url = api.url(urlkey)
   console.log(url)
   wx.uploadFile({
     url: url,
     filePath: temp,
-    name: 'portrait',
-    formData: data,
+    name: 'file',
     success: function(res) {
       wx.hideLoading();
       return typeof cb == "function" && cb(res.data)
@@ -222,10 +223,10 @@ function postReq(urlkey, data, cb) {
 }
 
 module.exports = {
-  formatTime: formatTime,
-  signup: signup,
-  login: login,
-  getPhoneNmu: getPhoneNmu,
+  formatTime,
+  signup,
+  login,
+  getPhoneNmu,
   GET: getReq,
   POST: postReq,
   UpLoadFile: uploadFile

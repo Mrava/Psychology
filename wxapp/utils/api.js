@@ -11,14 +11,14 @@ function url(links) {
         link = root + "users/signup"
         break
       }
+    case 'upload':
+      link = root+'/upload/upload?token=' + token
+      break
     case 'session_key':
       link = root + "users/session_key?token=" + token
       break
     case 'userInfo':
       link = root + 'users/' + (!user_id ? wx.getStorageSync("user_id") : user_id)
-      break
-    case 'upload_user_icon':
-      link = root + 'users/' + (!user_id ? wx.getStorageSync("user_id") : user_id) + '?token=' + token
       break
   }
   return link

@@ -58,15 +58,8 @@ Page({
   },
   updataUserInfo(e) {
     var t = this
-    var data = {
-      user_name: '---',
-      year: '23',
-      telephone: '15595108859',
-      address: "------",
-      gender: 1
-    }
-    utils.UpLoadFile('upload_user_icon', function(res) {
+    utils.UpLoadFile('upload', function(res) {
       console.log(res)
-    }, t.data.iconUrl, data)
+    }, t.data.iconUrl)
   },
 })
