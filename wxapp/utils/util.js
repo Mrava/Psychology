@@ -91,17 +91,18 @@ function signup(d) {
       "content-type": HEADER
     },
     success: function(res) {
-      globalData.userID = res.data.id
-      globalData.isGetUser = false
-      globalData.iconUrl = !res.data.portrait ? user.avatarUrl : res.data.portrait
+      // globalData.userID = res.data.id
+      // globalData.isGetUser = false
+      // globalData.iconUrl = !res.data.portrait ? user.avatarUrl : res.data.portrait
       console.log('用户注册:', res)
+      login()//再次执行登录
     },
   })
 
 }
 
 //登录
-function login(that) {
+function login() {
   var t = this
   if (!wx.getStorageSync("userData")) {
     wx.navigateTo({
