@@ -58,6 +58,7 @@ Page({
   },
   updataUserInfo(e) {
     var t = this
+    console.log('选择的图片：',t.data.iconUrl)
     utils.UpLoadFile('upload', function(res) {
       console.log(res)
     }, t.data.iconUrl)

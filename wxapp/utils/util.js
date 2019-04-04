@@ -151,7 +151,7 @@ function uploadFile(urlkey, cb, temp) {
   wx.uploadFile({
     url: url,
     filePath: temp,
-    name: 'png',
+    name: 'file',
     success: function(res) {
       wx.hideLoading();
       return typeof cb == "function" && cb(res.data)
