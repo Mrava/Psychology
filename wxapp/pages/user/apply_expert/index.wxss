@@ -1,1 +1,17 @@
-/* pages/user/apply_expert/index.wxss */
+.cu-form-group .title {
+  min-width: calc(4em + 30rpx);
+}
+.grid.grid-square >view>text[class*="icon"] {
+    font-size: 52rpx;
+    position: absolute;
+    color: #f37b1d;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }

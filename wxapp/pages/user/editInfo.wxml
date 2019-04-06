@@ -1,4 +1,4 @@
-<view class="bg-img bg-gradual-blue shadow-blur">
+<view class="bg-img bg-gradual-orange shadow-blur">
   
   <view class='cu-bar text-white' style="height:{{CustomBar}}px;background-color:transparent">
     <navigator class='action' open-type="navigateBack" delta="1" hover-class="none" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
