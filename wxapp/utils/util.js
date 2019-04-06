@@ -136,7 +136,7 @@ function login() {
             globalData.iconUrl = !data.portrait ? user.avatarUrl : data.portrait
             console.log('用户已登录:', e)
           } else {
-            t.signup(data)
+            signup(data)
             console.log('用户未注册,正在自动注册...')
           }
         },
