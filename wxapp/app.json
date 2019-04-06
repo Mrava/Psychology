@@ -11,7 +11,8 @@
     "pages/expert/info/expert_info",
     "pages/chat/chat",
     "pages/chat/chatUI/index",
-    "pages/forum/info/index"
+    "pages/forum/info/index",
+    "pages/user/apply_expert/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

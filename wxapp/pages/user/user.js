@@ -2,6 +2,7 @@ var app = getApp()
 var allData = app.globalData
 var api = require('../../utils/api.js')
 var utils = require('../../utils/util.js')
+
 Component({
   /**
    * 页面的初始数据
@@ -61,52 +62,14 @@ Component({
         },true)
       }
     },
-
-    editInfo: function() {
+    
+    //跳转页面
+    toPage(e){
+      var page = e.target.dataset.page
       wx.navigateTo({
-        url: 'editInfo',
+        url: page,
       })
-    },
+    }
 
-    //获取手机号  暂时废弃
-    /*getPhoneNmu(encryptedData, iv) {
-      var that = this
-      wx.login({
-        success: function(e) {
-          var data = {
-            user_code: e.code
-          }
-          wx.request({
-            url: api.url('session_key'),
-            data: data,
-            method: 'GET',
-            success: function(res) {
-              wx.request({
-                url: api.loginInfo,
-                data: {
-                  sessionKey: res.data.data.session_key,
-                  encryptedData: encryptedData,
-                  iv: iv,
-                },
-                header: {
-                  'content-type': 'application/x-www-form-urlencoded'
-                },
-                method: 'POST',
-                success: function(res) {
-                  var errMsg = res.data
-                  console.log(res.data)
-                  if (errMsg != -1) {
-                    that.setData({
-                      phoneNum: res.data.phoneNumber
-                    })
-                    allData.phoneNum = res.data.phoneNumber
-                  }
-                },
-              })
-            },
-          })
-        },
-      })
-    }*/
   }
 })

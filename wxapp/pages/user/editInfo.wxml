@@ -20,8 +20,6 @@
 
 </view>
 
-<form>
-
   <!-- 头像Title -->
   <view class='cu-bar margin-top'>
     <view class='action margin-top'>
@@ -47,13 +45,13 @@
   <!-- 用户名 -->
   <view class='cu-form-group'>
     <view class='title'>用户名</view>
-    <input placeholder="请输入用户名" class='radius' value='{{userName}}' name='input'></input>
+    <input placeholder="请输入用户名" class='radius' value='{{userName}}' bindinput='changeInput' data-name='name'></input>
   </view>
 
   <!-- 年龄 -->
   <view class='cu-form-group'>
     <view class='title'>年龄</view>
-    <input placeholder="实际年龄" maxlength='3' type='number' class='radius' value='{{age}}' name='input'></input>
+    <input placeholder="实际年龄" maxlength='3' type='number' class='radius' value='{{age}}' bindinput='changeInput' data-name='age'></input>
     <view class='title'>岁</view>
   </view>
 
@@ -69,7 +67,7 @@
     <view class='title'>现住址</view>
     <picker mode="region" bindchange="RegionChange">
       <view class="picker {{!region.length?'icon-discover text-green':'icon-locationfill text-blue'}}">
-        {{!region.length?'很懒，没有选择地址':region[0]+','+region[1]+','+region[2]}}
+        {{!region.length?'很懒，没有选择地址':region}}
       </view>
     </picker>
   </view>
@@ -77,7 +75,7 @@
   <!-- 手机号码 -->
   <view class='cu-form-group'>
     <view class='title'>手机号码</view>
-    <input placeholder="11位手机号码" maxlength='11' class='radius' type='number' name='input'></input>
+    <input placeholder="11位手机号码" maxlength='11' value="{{phoneNum}}" class='radius' type='number' bindinput='changeInput' data-name='phone'></input>
     <view class="cu-capsule radius">
       <view class='cu-tag bg-blue '>
         +86
@@ -88,7 +86,6 @@
     </view>
   </view>
 
-</form>
 <view class="cu-bar margin-top btn-group" style='position:fixed;bottom:0rpx;padding-bottom:15rpx;width:100%'>
   <button bindtap='updataUserInfo' class='cu-btn bg-blue shadow-blur round'>保存</button>
 </view>

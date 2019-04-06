@@ -1,10 +1,9 @@
 var root = "https://nxxlzx.tpengyun.com/v1/";
 var wss = "wss://nxxlzxim.tpengyun.com/echo";
-
 function url(links) {
   var link, token = getApp().globalData.token,
-    user_id = getApp().globalData.userID,
-    user = wx.getStorageSync("userInfo")
+    user = wx.getStorageSync("userInfo"),
+    userID = !getApp().globalData.userID ? wx.getStorageSync("user_id") : getApp().globalData.userID
   switch (links) {
     case 'signup':
       {
@@ -18,7 +17,10 @@ function url(links) {
       link = root + "users/session_key?token=" + token
       break
     case 'userInfo':
-      link = root + 'users/' + (!user_id ? wx.getStorageSync("user_id") : user_id)
+      link = root + 'users/' + userID + '?token=' + token
+      break
+    case 'updateUserInfo':
+      link = root + '/users/' + userID + '?token=' + token
       break
   }
   return link

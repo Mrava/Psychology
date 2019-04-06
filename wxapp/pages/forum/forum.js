@@ -1,4 +1,15 @@
 const app = getApp();
+/**
+ * 计算顶部高度
+ */
+function getNavHeight(that) {
+    var query = wx.createSelectorQuery();//单位px；
+    query.select('#nav').boundingClientRect(function (rect) {
+        that.setData({
+            NavHeight: rect.height + app.globalData.CustomBar
+        })
+    }).exec();
+}
 Component({
     data: {
         StatusBar: app.globalData.StatusBar,
@@ -176,7 +187,7 @@ Component({
     },
     methods: {
         onLoad: function (options) {
-
+            getNavHeight(this)
         },
         tabSelect(e) {
             var id = e.currentTarget.dataset.id,

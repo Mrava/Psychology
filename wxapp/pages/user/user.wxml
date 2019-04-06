@@ -2,7 +2,7 @@
 
   <view class='cu-custom' style="height:{{CustomBar}}px;" style='position: absolute;z-index: 1100;top: 0;'>
     <view class="cu-bar fixed text-sm text-white" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;background-color: transparent;justify-content:left;">
-      <view bindtap='editInfo' style='display:flex;font-size:25rpx'>
+      <view bindtap='toPage' data-page='editInfo' style='display:flex;font-size:25rpx'>
         <text class="icon-settings" style="margin:0 10rpx 0 30rpx;"></text> 修改资料</view>
     </view>
   </view>
@@ -11,10 +11,10 @@
     <view class="cu-avatar round lg margin-bottom" style="background-image:url({{iconUrl}});width: 150rpx;height: 150rpx;">
       <taxt class="cu-tag badge1 {{gender==2?'icon-female bg-pink':'icon-male bg-blue'}}" style='top: 3rpx;right: 5rpx;'></taxt>
     </view>
-    <text class="cu-tag radius margin-bottom">{{userName}}</text>
-    <view class="text-sm radius" style="background-color: rgba(255,255,255,0.8);padding: 10rpx;display:flex;">
+    <text class="cu-tag radius margin-bottom transparent">{{userName}}</text>
+    <view class="text-sm radius transparent" style="background-color: rgba(255,255,255,0.8);padding: 10rpx;display:flex;">
       <text class="icon-locationfill lg text-red"></text>
-      <text class="text-black">{{!address||address=='null'?'很懒，没有填写地址':address}}</text>
+      <text class="text-white" style="padding-left:5rpx">{{!address||address=='null'?'很懒，没有填写地址':address}}</text>
     </view>
   </view>
   <view style='height:100%;width:100%;display:flex;flex-direction:column-reverse'>
@@ -61,7 +61,7 @@
   </view>
 
   <view class="cu-item arrow">
-    <view class="content">
+    <view class="content" bind:tap='toPage' data-page='apply_expert/index'>
       <text class="icon-vip text-red text-sm"></text>
       <text class="text-grey text-sm">成为专家</text>
     </view>

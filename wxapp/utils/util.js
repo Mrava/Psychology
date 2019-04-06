@@ -146,16 +146,23 @@ function login() {
 }
 
 //上传修改的资料
+/**
+ * UPDATE_FILE
+ * @param {String} urlkey URL标识符
+ * @param {function} cb 回调函数
+ * @param {String} temp 选择的图片路径
+ */
 function uploadFile(urlkey, cb, temp) {
   var url = api.url(urlkey)
-  console.log(url)
+  //console.log(url)
   wx.uploadFile({
     url: url,
     filePath: temp,
     name: 'file',
     success: function(res) {
-      wx.hideLoading();
-      return typeof cb == "function" && cb(res.data)
+      var obj = JSON.parse(res.data);
+      obj.status != 0 ? wx.hideLoading():null
+      return typeof cb == "function" && cb(obj)
     },
     fail: function(res) {
       wx.hideLoading();
@@ -169,14 +176,19 @@ function uploadFile(urlkey, cb, temp) {
   })
 }
 
-function getReq(urlkey, cb, token) {
+/**
+ * GET
+ * @param {String} urlkey URL标识符
+ * @param {function} cb 回调函数
+ * @param {String} token 令牌
+ */
+function getReq(urlkey, cb, data) {
   var url = api.url(urlkey)
-  url = (token == true ? url + '?token=' + globalData.token : url)
   //console.log('URL:', api.url(urlkey))
-  //console.log('token:', globalData.token)
   wx.request({
     url: url,
     method: 'GET',
+    data: data,
     header: {
       "content-type": HEADER
     },
@@ -195,7 +207,12 @@ function getReq(urlkey, cb, token) {
     }
   })
 }
-
+/**
+ * POST
+ * @param {String} urlkey URL标识符
+ * @param {String[]} data 提交的数据
+ * @param {function} cb 回调函数
+ */
 function postReq(urlkey, data, cb) {
   var url = api.url(urlkey)
   console.log(url, data)
@@ -223,6 +240,38 @@ function postReq(urlkey, data, cb) {
 
 }
 
+/**
+ * PUT
+ * @param {String} urlkey URL标识符
+ * @param {String[]} data 提交的数据
+ * @param {function} cb 回调函数
+ */
+function putReq(urlkey, data, cb) {
+  var url = api.url(urlkey)
+  wx.request({
+    url: url,
+    data: data,
+    method: 'PUT',
+    header: {
+      "content-type": HEADER
+    },
+    success: function (res) {
+      wx.hideLoading();
+      return typeof cb == "function" && cb(res.data)
+    },
+    fail: function () {
+      wx.hideLoading();
+      wx.showModal({
+        title: '网络错误',
+        content: '网络出错，请刷新重试',
+        showCancel: false
+      })
+      return typeof cb == "function" && cb(false)
+    }
+  })
+
+}
+
 module.exports = {
   formatTime,
   signup,
@@ -230,5 +279,6 @@ module.exports = {
   getPhoneNmu,
   GET: getReq,
   POST: postReq,
+  PUT: putReq,
   UpLoadFile: uploadFile
 }
