@@ -50,11 +50,11 @@ Component({
         info_list = res.data
         //console.log(res.data)
         res.status == 0 ? t.setData({ info_list })
-          : wx.showToast({
+          :  t.setData({ info_list: 'ErrorNetwork' })&wx.showToast({
             title: '错误:' + res.msg,
             icon: 'none',
             mask: true,
-          }) & t.setData({ info_list: 'ErrorNetwork' })
+          })
       })
     },
 

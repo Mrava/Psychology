@@ -32,6 +32,12 @@
     color: #47505b;
 }
 
+.ErrorNetwork{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
 page {
     background: #f1f1f1;
     font-size: 25rpx;

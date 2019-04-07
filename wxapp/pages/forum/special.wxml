@@ -1,17 +1,16 @@
+<!-- 顶部栏 -->
 <view class="bg-blue a-fixed">
-  <view class='cu-bar text-white' style="height:{{CustomBar}}px;background-color:transparent">
-
-    <navigator class='action' open-type="navigateBack" delta="1" hover-class="none" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
-      <text class='icon-back'></text> 返回
-    </navigator>
-
-    <view class='action' style="flex:1;height:{{CustomBar}}px;padding-top:{{StatusBar}}px;font-size:30rpx">{{Title}}</view>
-
-    <view style='width:120rpx'></view>
-
-  </view>
+    <view class='cu-bar text-white' style="justify-content:left !important;height:{{CustomBar}}px;background-color:transparent">
+        <navigator id="toback" class='action' open-type="navigateBack" delta="1" hover-class="none" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
+            <text class='icon-back'></text>
+            返回
+        </navigator>
+        <view  class='action' style="height:{{CustomBar}}px;padding:{{StatusBar}}px 0 0 5px;font-size:30rpx;">
+            <text class="text-center" style='padding-left:{{titleMarginLeft}}px;width:{{titleWidth}}px;'>{{indexTitle}}</text>
+        </view>
+    </view>
 </view>
 
-<view style='padding-top:150rpx;'>
+<view style='padding-top:{{CustomBar}}px;'>
   <include src='list.wxml' />
 </view>

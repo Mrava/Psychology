@@ -5,21 +5,28 @@
             <text class='icon-back'></text>
             返回
         </navigator>
-        <view  class='action' style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px 0 0 5px;font-size:30rpx;">
-            <text class="text-cut" style='width:{{titleWidth}}px;'>{{idInformationInfo!='ErrorNetwork'?idInformationInfo.title:'请求错误'}}</text>
+        <view  class='action' style="height:{{CustomBar}}px;padding:{{StatusBar}}px 0 0 5px;font-size:30rpx;">
+            <text class="text-center" style='padding-left:{{titleMarginLeft}}px;width:{{titleWidth}}px;'>{{indexTitle}}</text>
         </view>
     </view>
 </view>
 
 <!-- 加载中 -->
-<block wx:if="{{!idInformationInfo&&idInformationInfo!='ErrorNetwork'}}"></block>
+<block wx:if="{{!idInformationInfo&&idInformationInfo!='ErrorNetwork'}}">
 <view class="loading" style="height:{{ViewHeight}}px;">
     <image mode="widthFix" src="https://image.weilanwl.com/gif/loading-1.gif" />
     <view class='text-grey text-center'>正在加载</view>
 </view>
+</block>
+
+<block wx:if="{{idInformationInfo=='ErrorNetwork'}}">
+  <view class="padding-xl ErrorNetwork" style="height:{{ViewHeight}}px;">
+    <image src="../../images/ErrorNetwork.png" mode="widthFix" style='width:60%' />
+  </view>
+</block>
 
 <!-- 资讯内容 -->
-<block>
+<block wx:if="{{!idInformationInfo&&idInformationInfo!='ErrorNetwork'}}">
     <scroll-view scroll-y style="height:{{ViewHeight}}px;width:100%;" class="padding">
         <view class="img">
             <image mode="widthFix" src="{{informationInfo}}" style="width:100%" />

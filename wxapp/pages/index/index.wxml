@@ -60,16 +60,16 @@
   </view>
 </view> -->
 <block wx:if="{{info_list=='ErrorNetwork'}}">
-  <view class="padding-xl" style="display:flex;justify-content:center;padding-top:70rpx">
+  <view class="padding-xl ErrorNetwork">
     <image src="../images/ErrorNetwork.png" mode="widthFix" style='width:60%' />
   </view>
 </block>
 <block wx:if="{{!info_list.length}}">
-  <view class="padding-xl" style="display:flex;justify-content:center;padding-top:70rpx">
+  <view class="padding-xl ErrorNetwork">
     <image src="../images/NotAvailable.png" mode="widthFix" style='width:60%' />
   </view>
 </block>
-<block wx:if="{{info_list.length>0}}">
+<block wx:if="{{info_list.length&&info_list!='ErrorNetwork'}}">
   <view class="cu-card article">
     <navigator wx:for="{{info_list}}" wx:key class="cu-item shadow" url='../information/info/index?id={{item.Id}}'>
       <view class="title">{{item.Title}}</view>
