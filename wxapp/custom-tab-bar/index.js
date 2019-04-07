@@ -6,7 +6,7 @@ Component({
   data: {
     selected: 0,
     color: "#47505b",
-    selectedColor: "#00d853",
+    selectedColor: "#0081ff",
     backgroundColor: "#FFF",
     borderStyle: "white",
     list: [{

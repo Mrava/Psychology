@@ -2,7 +2,7 @@ var api = require('api');
 var app = getApp();
 var globalData = app.globalData;
 var HEADER="application/x-www-form-urlencoded";
-var userCode,token;
+var userCode, token, mthat;
 function formatTime (type) {
   var date = new Date()
   var year = date.getFullYear()
@@ -84,7 +84,7 @@ function signup(d) {
   // console.log()
   // return null;
   wx.request({
-    url: api.url("signup"),
+    url: api.Anum.signup,
     data: data,
     method: 'POST',
     header: {
@@ -95,14 +95,15 @@ function signup(d) {
       // globalData.isGetUser = false
       // globalData.iconUrl = !res.data.portrait ? user.avatarUrl : res.data.portrait
       console.log('用户注册:', res)
-      login()//再次执行登录
+      login(mthat)//再次执行登录
     },
   })
 
 }
 
 //登录
-function login() {
+function login(that) {
+  mthat = that
   var t = this
   if (!wx.getStorageSync("userData")) {
     wx.navigateTo({
@@ -135,6 +136,8 @@ function login() {
             globalData.isGetUser = false
             globalData.iconUrl = !data.portrait ? user.avatarUrl : data.portrait
             console.log('用户已登录:', e)
+            that.getInformationList()
+            that.getBanner()
           } else {
             signup(data)
             console.log('用户未注册,正在自动注册...')
@@ -184,7 +187,7 @@ function uploadFile(urlkey, cb, temp) {
  */
 function getReq(urlkey, cb, data) {
   var url = api.url(urlkey)
-  //console.log('URL:', api.url(urlkey))
+  console.log('请求链接:', url)
   wx.request({
     url: url,
     method: 'GET',

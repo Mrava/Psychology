@@ -4,7 +4,7 @@
 .grid.grid-square >view>text[class*="icon"] {
     font-size: 52rpx;
     position: absolute;
-    color: #f37b1d;
+    color: #0081ff;
     margin: auto;
     top: 0;
     bottom: 0;

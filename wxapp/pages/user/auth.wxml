@@ -7,7 +7,7 @@
   </view>
 </view>
 <view class="padding-xl">
-  <button bindgetuserinfo="onGetUserInfo" class=" bg-green shadow lg block" openType="getUserInfo">微信登录</button>
+  <button bindgetuserinfo="onGetUserInfo" class="bg-blue shadow lg block" openType="getUserInfo">微信登录</button>
 </view>
 
 <include src='../../dist/copyright/copyright.wxml' />

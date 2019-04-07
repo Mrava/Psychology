@@ -1,7 +1,7 @@
-<view class='bg-green a-fixed shadow-blur'>
+<view class='bg-blue a-fixed shadow-blur'>
   <view style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;display:flex;flex-direction:column;justify-content:center;">
-    <view class="cu-bar search bg-green" style="width:550rpx">
-      <view class='search-form round' style="height:60rpx">
+    <view class="cu-bar search bg-blue" style="width:{{searchWidth}}px">
+      <view class='search-form round' style="height:{{searchHeight}}px">
         <text class="icon-search"></text>
         <input type="text" placeholder="搜索问题、答案" confirm-type="search" />
       </view>

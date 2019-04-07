@@ -67,7 +67,7 @@ Component({
     toPage(e){
       var page = e.target.dataset.page
       wx.navigateTo({
-        url: page,
+        url: page
       })
     }
 

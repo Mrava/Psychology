@@ -1,12 +1,9 @@
-<view class="cu-custom" style="height:{{CustomBar}}px;">
-  <view class="cu-bar fixed bg-green shadow-blur" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;justify-content: center;padding-right:0">
-    首页
-  </view>
-</view>
+<import src="../../dist/template/title.wxml"></import>
+<template is="title" data="{{CustomBar,StatusBar,titleWidth,indexTitle}}"></template>
 <swiper class='swiperClass' autoplay indicator-color="#a39f99" indicator-active-color="#f49641" interval="4000" duration="1000" previous-margin="80rpx" next-margin="80rpx" circular bindchange="bindchange" style='height: {{swiperHeight}}rpx'>
   <block wx:for="{{imgUrls}}" wx:key="{{index}}">
     <swiper-item>
-      <image bindtap='ss' src="{{item}}" class="slide-image {{swiperIndex == index ? 'active' : 'quiet'}}" mode='aspectFill'></image>
+      <image bindtap='toLinks' data-type='{{item.Type}}'  data-url='{{item.Url}}' src="{{item.ImgUrls}}" class="slide-image {{swiperIndex == index ? 'active' : 'quiet'}}" mode='aspectFill'></image>
     </swiper-item>
   </block>
 </swiper>
@@ -62,18 +59,30 @@
     </block>
   </view>
 </view> -->
-<view class="cu-card article">
-  <view wx:for="{{info_list}}" wx:key class="cu-item shadow">
-    <view class="title">{{item.title}}</view>
-    <view class="content">
-      <image src="{{item.icon}}" mode="aspectFill"></image>
-      <view class="desc">
-        <view class='text-content'>{{item.content}}</view>
-        <view>
-          <view class='cu-tag bg-red light sm round'>{{item.time}}</view>
+<block wx:if="{{info_list=='ErrorNetwork'}}">
+  <view class="padding-xl" style="display:flex;justify-content:center;padding-top:70rpx">
+    <image src="../images/ErrorNetwork.png" mode="widthFix" style='width:60%' />
+  </view>
+</block>
+<block wx:if="{{!info_list.length}}">
+  <view class="padding-xl" style="display:flex;justify-content:center;padding-top:70rpx">
+    <image src="../images/NotAvailable.png" mode="widthFix" style='width:60%' />
+  </view>
+</block>
+<block wx:if="{{info_list.length>0}}">
+  <view class="cu-card article">
+    <navigator wx:for="{{info_list}}" wx:key class="cu-item shadow" url='../information/info/index?id={{item.Id}}'>
+      <view class="title">{{item.Title}}</view>
+      <view class="content">
+        <image src="{{item.Icon}}" mode="aspectFill"></image>
+        <view class="desc">
+          <view class='text-content'>{{item.Content}}</view>
+          <view>
+            <view class='cu-tag bg-red light sm round'>{{item.Time}}</view>
+          </view>
         </view>
       </view>
-    </view>
+    </navigator>
   </view>
-</view>
+</block>
 <view class='division'></view>

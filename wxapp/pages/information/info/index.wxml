@@ -1,0 +1,28 @@
+<!-- 顶部栏 -->
+<view class="bg-blue">
+    <view class='cu-bar text-white' style="justify-content:left !important;height:{{CustomBar}}px;background-color:transparent">
+        <navigator id="toback" class='action' open-type="navigateBack" delta="1" hover-class="none" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
+            <text class='icon-back'></text>
+            返回
+        </navigator>
+        <view  class='action' style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px 0 0 5px;font-size:30rpx;">
+            <text class="text-cut" style='width:{{titleWidth}}px;'>{{idInformationInfo!='ErrorNetwork'?idInformationInfo.title:'请求错误'}}</text>
+        </view>
+    </view>
+</view>
+
+<!-- 加载中 -->
+<block wx:if="{{!idInformationInfo&&idInformationInfo!='ErrorNetwork'}}"></block>
+<view class="loading" style="height:{{ViewHeight}}px;">
+    <image mode="widthFix" src="https://image.weilanwl.com/gif/loading-1.gif" />
+    <view class='text-grey text-center'>正在加载</view>
+</view>
+
+<!-- 资讯内容 -->
+<block>
+    <scroll-view scroll-y style="height:{{ViewHeight}}px;width:100%;" class="padding">
+        <view class="img">
+            <image mode="widthFix" src="{{informationInfo}}" style="width:100%" />
+        </view>
+    </scroll-view>
+</block>

@@ -5,7 +5,7 @@
 
 .division{
   width:1;
-  height:140rpx;
+  height:120rpx;
 }
 
 .green-b {

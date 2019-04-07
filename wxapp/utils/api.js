@@ -1,29 +1,46 @@
 var root = "https://nxxlzx.tpengyun.com/v1/";
 var wss = "wss://nxxlzxim.tpengyun.com/echo";
 function url(links) {
-  var link, token = getApp().globalData.token,
+  var link, token = '?token='+ getApp().globalData.token,
     user = wx.getStorageSync("userInfo"),
-    userID = !getApp().globalData.userID ? wx.getStorageSync("user_id") : getApp().globalData.userID
+    id = !getApp().globalData.userID ? wx.getStorageSync("user_id") : getApp().globalData.userID
   switch (links) {
-    case 'signup':
-      {
-        link = root + "users/signup"
-        break
-      }
     case 'upload':
-      link = root+'/upload/upload?token=' + token
+      link = root + '/upload/upload' 
       break
     case 'session_key':
-      link = root + "users/session_key?token=" + token
+      link = root + "users/session_key"
       break
     case 'userInfo':
-      link = root + 'users/' + userID + '?token=' + token
+      link = root + 'users/' + id
       break
     case 'updateUserInfo':
-      link = root + '/users/' + userID + '?token=' + token
+      link = root + 'users/' + id
       break
+
+    /* 资讯 */
+    case 'getInformation'://获取资讯列表
+      link = root + 'info/'
+      break
+    case 'getInformationInfo'://获取资讯详情
+      link = root + 'info/' + getApp().globalData.idInformationInfoId
+      break
+
+    /* Banner */
+    case 'getBanner'://获取所有的banner条
+      link = root + 'banner/'
+      break
+    
+    /* 问答 */
+    // case 'getCommunity':
+    //   link = root + ''
+    // case 'releaseCommunity':
+    // case 'getCommunityInfo':
+    // case 'updateCommunityInfo':
+    // case 'deleteCommunityInfo':
+
   }
-  return link
+  return link + token
 }
 module.exports = {
   loginInfo: root + "phone/getPhoneNumber.php",
@@ -31,6 +48,7 @@ module.exports = {
   wss: wss,
   Anum: { //账号
     login: root + "users/login",
+    signup: root + "users/signup"
   },
   url: url,
 }

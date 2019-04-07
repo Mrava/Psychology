@@ -1,5 +1,5 @@
 <view class="cu-custom" style="height:{{CustomBar}}px;">
-    <view class="cu-bar fixed bg-green shadow-blur" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;justify-content: center;padding-right:0">
+    <view class="cu-bar fixed bg-blue shadow-blur" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;justify-content: center;padding-right:0">
         首页
     </view>
 </view>

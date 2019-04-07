@@ -4,8 +4,6 @@ var api = require('../../utils/api.js')
 var utils = require('../../utils/util.js')
 Component({
   data: {
-    StatusBar: app.globalData.StatusBar,
-    CustomBar: app.globalData.CustomBar,
     width: wx.getSystemInfoSync().windowWidth,
     info_class: {
       style: '',
@@ -49,7 +47,7 @@ Component({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-
+      app.setTitleWidth(this, true)
     },
     toInfo: function(i) {
       allData.expert_data = this.data.expert_list[i.currentTarget.dataset.index]

@@ -1,8 +1,6 @@
-<view class="cu-custom" style="height:{{CustomBar}}px;">
-  <view class="cu-bar fixed bg-green shadow-blur" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;justify-content: center;padding-right:0">
-    {{Title}}
-  </view>
-</view>
+<!-- 顶部标题 -->
+<import src="../../dist/template/title.wxml"></import>
+<template is="title" data="{{CustomBar,StatusBar,titleWidth,indexTitle}}"></template>
 <!-- 消息列表 -->
 <view class="cu-list menu menu-avatar" style='margin-bottom:140rpx;'>
   <view class="cu-item" wx:for="{{messageList}}" bind:longpress="showMenu" bind:tap="toChatUI">

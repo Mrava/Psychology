@@ -1,4 +1,4 @@
-<view class="bg-img bg-gradual-orange shadow-blur" id="top">
+<view class="bg-img bg-gradual-blue shadow-blur" id="top">
     <view class='cu-bar text-white' style="height:{{CustomBar}}px;background-color:transparent">
         <navigator class='action' open-type="navigateBack" delta="1" hover-class="none" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
             <text class='icon-back text-white'></text>
@@ -33,15 +33,15 @@
             <view class="title">联系电话</view>
             <input placeholder="请填写您的联系电话"></input>
             <view class="cu-capsule radius">
-                <view class="cu-tag bg-orange">+86</view>
-                <view class="cu-tag line-orange">中国大陆</view>
+                <view class="cu-tag bg-blue">+86</view>
+                <view class="cu-tag line-blue">中国大陆</view>
             </view>
         </view>
         <!-- 所属领域 -->
         <view class="cu-form-group">
             <view class="title">所属领域</view>
             <picker mode="multiSelector" bindchange="MultiChange" bindcolumnchange="MultiColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
-                <view class="picker text-orange">
+                <view class="picker text-blue">
                     {{multiArray[0][multiIndex[0]]}}----{{multiArray[1][multiIndex[1]]}}
                 </view>
             </picker>
@@ -49,7 +49,7 @@
         <view class="cu-form-group">
             <view class="title">地址选择</view>
             <picker mode="region" bindchange="RegionChange" value="{{region}}" custom-item="{{customItem}}">
-                <view class="picker text-orange">
+                <view class="picker text-blue">
                     {{!region.length?'请选择所在地':region[0]+'，'+region[1]+'，'+region[2]+'，'}}
                 </view>
             </picker>
@@ -90,7 +90,7 @@
         </view>
         <!-- 提交按钮 -->
         <view class="cu-bar margin-top btn-group" style='padding-bottom:15rpx;width:100%'>
-            <button bindtap='updataUserInfo' class='cu-btn bg-orange shadow-blur round'>提交申请</button>
+            <button bindtap='updataUserInfo' class='cu-btn bg-blue shadow-blur round'>提交申请</button>
         </view>
     </form>
 </scroll-view>

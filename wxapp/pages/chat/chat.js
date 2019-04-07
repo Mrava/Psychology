@@ -2,9 +2,6 @@ const app = getApp();
 var id;
 Component({
   data: {
-    StatusBar: app.globalData.StatusBar,
-    CustomBar: app.globalData.CustomBar,
-    Title: '消息',
     ModalShow: false,
     messageList: [{
       avatar: 'http://img3.imgtn.bdimg.com/it/u=3985330067,2681618210&fm=26&gp=0.jpg',
@@ -68,7 +65,7 @@ Component({
   //处理事件
   methods: {
     onLoad: function (options) {
-
+      app.setTitleWidth(this,'消息')
     },
 
     tabSelect(e) {

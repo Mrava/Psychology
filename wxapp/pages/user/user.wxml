@@ -1,4 +1,4 @@
-<view class="bg-gradual-green" style="height:550rpx;">
+<view class="bg-gradual-blue" style="height:550rpx;">
 
   <view class='cu-custom' style="height:{{CustomBar}}px;" style='position: absolute;z-index: 1100;top: 0;'>
     <view class="cu-bar fixed text-sm text-white" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;background-color: transparent;justify-content:left;">

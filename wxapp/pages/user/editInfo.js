@@ -3,14 +3,24 @@ var allData = app.globalData
 var api = require('../../utils/api.js')
 var utils = require('../../utils/util.js')
 var isChoice, name, age, phone;
+/**
+ * 计算顶部实际占界面的宽度
+ */
+function setTitleWidth(that) {
+  var query = wx.createSelectorQuery(),//单位px；
+    ScreenWidth = wx.getMenuButtonBoundingClientRect().left
+  query.select('#toback').boundingClientRect(function (rect) {
+    that.setData({
+      titleWidth: ScreenWidth - rect.right - 10
+    })
+  }).exec();
+}
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    StatusBar: app.globalData.StatusBar,
-    CustomBar: app.globalData.CustomBar,
   },
 
   /**
@@ -18,10 +28,11 @@ Page({
    */
   onLoad: function (options) {
     isChoice = false
+    setTitleWidth(this)
+    app.setTitleWidth(this)
   },
 
   RegionChange: function (e) {
-    console.log(e)
     this.setData({
       region: e.detail.value
     })

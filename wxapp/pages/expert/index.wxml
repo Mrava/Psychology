@@ -1,8 +1,8 @@
 <!-- 顶部页面 -->
-<view class="a-fixed bg-green shadow-blur">
+<view class="a-fixed bg-blue shadow-blur">
   <view style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;display:flex;flex-direction:column;justify-content:center;">
-    <view class="cu-bar search" style="width:550rpx;min-height:0rpx;">
-      <view class='search-form round' style="height:60rpx">
+    <view class="cu-bar search" style="width:{{searchWidth}}px;min-height:0rpx;">
+      <view class='search-form round' style="height:{{searchHeight}}px">
         <text class="icon-search"></text>
         <input type="text" placeholder="搜索专家名称" confirm-type="search" />
       </view>

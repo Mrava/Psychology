@@ -12,8 +12,6 @@ function getNavHeight(that) {
 }
 Component({
     data: {
-        StatusBar: app.globalData.StatusBar,
-        CustomBar: app.globalData.CustomBar,
         TabCur: 0,
         scrollLeft: 0,
         news: {
@@ -188,6 +186,7 @@ Component({
     methods: {
         onLoad: function (options) {
             getNavHeight(this)
+            app.setTitleWidth(this,true)
         },
         tabSelect(e) {
             var id = e.currentTarget.dataset.id,

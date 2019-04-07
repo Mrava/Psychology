@@ -1,5 +1,4 @@
 const app = getApp();
-const ui = require('../../../utils/Interface.js');
 Page({
 
   /**

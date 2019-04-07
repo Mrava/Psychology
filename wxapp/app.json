@@ -12,14 +12,16 @@
     "pages/chat/chat",
     "pages/chat/chatUI/index",
     "pages/forum/info/index",
-    "pages/user/apply_expert/index"
+    "pages/user/apply_expert/index",
+    "pages/information/index",
+    "pages/information/info/index",
+    "pages/webview/webview"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "宁夏心理咨询",
-    "navigationBarTextStyle": "black",
-    "navigationStyle": "custom"
+    "navigationBarTextStyle": "black"
   },
   "tabBar": {
     "custom": true,
