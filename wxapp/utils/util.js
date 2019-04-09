@@ -1,7 +1,4 @@
-var api = require('api');
-var app = getApp();
-var globalData = app.globalData;
-var HEADER="application/x-www-form-urlencoded";
+const api = require('api'),app = getApp(),globalData = app.globalData,HEADER="application/x-www-form-urlencoded";
 var userCode, token, mthat;
 function formatTime (type) {
   var date = new Date()
@@ -32,46 +29,6 @@ function formatTime (type) {
 const formatNumber = n => {
   n = n.toString()
   return n[1] ? n : '0' + n
-}
-
-//获取手机号
-function getPhoneNmu(encryptedData, iv, that) {
-  wx.login({
-    success: function(e) {
-      var data = {
-        user_code: e.code
-      }
-      wx.request({
-        url: api.url('session_key'),
-        data: data,
-        method: 'POST',
-        success: function(res) {
-          wx.request({
-            url: api.loginInfo,
-            data: {
-              sessionKey: res.data.data.session_key,
-              encryptedData: encryptedData,
-              iv: iv,
-            },
-            header: {
-              'content-type': HEADER
-            },
-            method: 'POST',
-            success: function(res) {
-              var errMsg = res.data
-              console.log(res.data)
-              if (errMsg != -1) {
-                that.setData({
-                  phoneNum: res.data.phoneNumber
-                })
-                globalData.phoneNum = res.data.phoneNumber
-              }
-            },
-          })
-        },
-      })
-    },
-  })
 }
 
 //注册
@@ -280,7 +237,6 @@ module.exports = {
   formatTime,
   signup,
   login,
-  getPhoneNmu,
   GET: getReq,
   POST: postReq,
   PUT: putReq,

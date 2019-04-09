@@ -250,7 +250,6 @@ baseComponent({
         move(diffY) {
             const style = `transition-duration: 0s; transform: translate3d(0, ${diffY}px, 0) scale(1);`
             const className = diffY < this.data.distance ? 'visible' : 'active'
-            console.log(diffY, className, style)
             this.setData({
                 style,
                 [className]: true,

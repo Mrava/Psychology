@@ -26,12 +26,12 @@
   bottom: 0
 }
 .wux-refresher__text-pulling {
-  font-size: 32rpx;
-  line-height: 32rpx
+  font-size: 20rpx;
+  line-height: 25rpx
 }
 .wux-refresher__text-refreshing {
-  font-size: 32rpx;
-  line-height: 32rpx;
+  font-size: 20rpx;
+  line-height: 25rpx;
   display: none
 }
 .wux-refresher__icon-pulling {

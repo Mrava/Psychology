@@ -1,6 +1,5 @@
-var app = getApp()
-var api = require('../../utils/api.js')
-var utils = require('../../utils/util.js')
+const app = getApp(),api = require('../../utils/api.js'),utils = require('../../utils/util.js')
+var gdata
 Component({
   data: {
     width: wx.getSystemInfoSync().windowWidth,
@@ -57,6 +56,10 @@ Component({
             icon: 'none',
             mask: true,
           })
+          gdata = {
+            sortby:'time',
+            order:'desc'
+          }
         //获取资讯列表
         utils.GET('getInformation', function (res) {
           info_list = res.data
@@ -67,7 +70,7 @@ Component({
               mask: true,
             })
           wx.hideLoading()
-        })
+        },gdata)
       })
     },
 
