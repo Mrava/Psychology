@@ -2,5 +2,6 @@
   "usingComponents": {
     "wux-refresher": "../../dist/refresher/index"
   },
-  "navigationStyle": "custom"
+  "navigationStyle": "custom",
+  "onReachBottomDistance":50
 }

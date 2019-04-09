@@ -5,13 +5,14 @@ const app = getApp(),
   allData = getApp().globalData,
   api = require('../../utils/api.js'),
   LIMIT = "10"
+var loading = false
 /**
  * 计算scroll-view实际占界面的高度
  */
 function setHeight(that) {
   var query = wx.createSelectorQuery();// 单位px；
   query.select('#topBar').boundingClientRect(function (rect) {
-    console.log(rect)
+    // console.log(rect)
     that.setData({
       contenHeight: rect.height + allData.CustomBar + rect.top,
       swiperItemHeight: allData.windowHeight
@@ -85,6 +86,7 @@ Page({
       mdata = 'informationClass[' + index + ']'
       //判断是否是下拉刷新触发的，如果是则关闭刷新动画
       if (isStopRefresher) {
+        loading = !loading
         $stopWuxRefresher("#refresher-" + index)
       }
       res.status == 0 ? t.setData({
@@ -108,8 +110,11 @@ Page({
    * @param {*} e 
    */
   tabSelect(e) {
-    var id = e.currentTarget.dataset.id, data = this.data.informationClass[id].length, t = this
-    if (data != 4) this.Initialization(id)
+    if(loading)
+    return
+    var id = e.currentTarget.dataset.id, data = this.data.informationClass[id], t = this
+    //判断是否初始化资讯列表，如果没有，则初始化  否则不执行减少请求次数
+    if (!data.info_list) this.Initialization(id)
     t.setData({
       TabCur: id,
     })
@@ -124,18 +129,20 @@ Page({
   /**
    * 正在刷新:下拉完成的回调函数
    */
-  onRefresh(e) {
+  onRefresh() {
+    var t = this
+    loading = !loading
     /**
      * 下拉刷新时触发初始化获取资讯
      * tip:采用延时操作纯属为了UI好看
      */
     setTimeout(() => {
-      this.Initialization(e.currentTarget.dataset.index, true)
+      t.Initialization(t.data.TabCur, true)
     }, 1000)
   },
 
-  scrolltolower(e) {
-    var t = this, index = e.currentTarget.dataset.index, data = t.data.informationClass[index],
+  onReachBottom() {
+    var t = this, index = t.data.TabCur, data = t.data.informationClass[index],
       mdata = 'informationClass[' + index + '].info_list', moreStatus = 'informationClass[' + index + '].moreStatus',
       Status = t.data.informationClass[index].moreStatus
     /**
