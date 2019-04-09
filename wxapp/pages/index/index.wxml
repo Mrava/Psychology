@@ -8,7 +8,7 @@
   </block>
 </swiper>
 <view class="nav shadow-lg" wx:if='{{nav.length!=0}}'>
-  <view class="item" wx:for="{{nav}}">
+  <view class="item" wx:for="{{nav}}" bindtap='toLinks' data-type='{{item.Type}}'  data-url='{{item.Url}}'>
     <image class="img" src="{{item.img}}" mode="widthFix" />
     <view class="text">{{item.title}}</view>
   </view>
@@ -71,7 +71,7 @@
 </block>
 <block wx:if="{{info_list.length&&info_list!='ErrorNetwork'}}">
   <view class="cu-card article">
-    <navigator wx:for="{{info_list}}" wx:key class="cu-item shadow" url='../information/info/index?id={{item.Id}}'>
+    <navigator wx:for="{{info_list}}" wx:key class="cu-item shadow" url='../information/info/index?id={{item.Id}}&img={{item.Icon}}'>
       <view class="title">{{item.Title}}</view>
       <view class="content">
         <image src="{{item.Icon}}" mode="aspectFill"></image>

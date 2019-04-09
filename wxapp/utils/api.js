@@ -1,5 +1,4 @@
-var root = "https://nxxlzx.tpengyun.com/v1/";
-var wss = "wss://nxxlzxim.tpengyun.com/echo";
+var root = "https://nxxlzx.tpengyun.com/v1/", wss = "wss://nxxlzxim.tpengyun.com/echo";
 function url(links) {
   var link, token = '?token='+ getApp().globalData.token,
     user = wx.getStorageSync("userInfo"),
@@ -19,6 +18,9 @@ function url(links) {
       break
 
     /* 资讯 */
+    case 'getInformationClass'://获取文章分类列表
+      link = root + 'info_class/'
+      break
     case 'getInformation'://获取资讯列表
       link = root + 'info/'
       break
@@ -45,6 +47,7 @@ function url(links) {
 module.exports = {
   loginInfo: root + "phone/getPhoneNumber.php",
   rootUrl: root,
+  loadingImgUrl:'https://nxxlzx.tpengyun.com/static/src/images/loading/',
   wss: wss,
   Anum: { //账号
     login: root + "users/login",

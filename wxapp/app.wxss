@@ -34,8 +34,11 @@
 
 .ErrorNetwork{
     display:flex;
+    flex-direction: column;
     justify-content:center;
     align-items:center;
+    height: 100%;
+    width: 100%;
 }
 
 page {
@@ -45,9 +48,11 @@ page {
     line-height: 1;
     vertical-align: 2px;
     font-family: Helvetica Neue, Helvetica, sans-serif;
+    width: 100%;
+    height: 100%;
 }
 
-.shadow {
+.Gshadow {
     box-shadow: 0 0 25rpx 5rpx rgba(0, 0, 0, 0.1);
 }
 

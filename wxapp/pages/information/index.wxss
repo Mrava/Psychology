@@ -1,1 +1,4 @@
-/* pages/information/index.wxss */
+page{
+    display: flex;
+    flex-direction: column;
+}

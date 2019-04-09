@@ -91,10 +91,8 @@ function signup(d) {
       "content-type": HEADER
     },
     success: function(res) {
-      // globalData.userID = res.data.id
-      // globalData.isGetUser = false
-      // globalData.iconUrl = !res.data.portrait ? user.avatarUrl : res.data.portrait
       console.log('用户注册:', res)
+      wx.hideLoading()
       login(mthat)//再次执行登录
     },
   })
@@ -104,6 +102,10 @@ function signup(d) {
 //登录
 function login(that) {
   mthat = that
+  wx.showLoading({
+    title: '加载中',
+    mask: true,
+  })
   var t = this
   if (!wx.getStorageSync("userData")) {
     wx.navigateTo({
@@ -117,7 +119,7 @@ function login(that) {
       var data = {
         user_code: res.code,
       }
-      // console.log(res.code)
+      console.log(api.Anum.login)
       // return null;
       wx.request({
         url: api.Anum.login,
@@ -136,8 +138,7 @@ function login(that) {
             globalData.isGetUser = false
             globalData.iconUrl = !data.portrait ? user.avatarUrl : data.portrait
             console.log('用户已登录:', e)
-            that.getInformationList()
-            that.getBanner()
+            that.Initialization()
           } else {
             signup(data)
             console.log('用户未注册,正在自动注册...')

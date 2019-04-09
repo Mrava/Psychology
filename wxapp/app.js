@@ -53,10 +53,16 @@ App({
     query.select('#toback').boundingClientRect(function (rect) {
       //console.log(rect)
       var data = t.globalData
+
+      if (title) {
+        that.setData({
+          indexTitle: title,//设置标题文字
+        })
+      }
+
       that.setData({
         StatusBar: data.StatusBar,//设置状态栏高度
         CustomBar: data.CustomBar,//设置顶部标题高度
-        indexTitle: title,//设置标题文字
         titleWidth: ScreenWidth - rect.right - 10,//设置标题宽度
         titleMarginLeft: data.capsuleWidth - rect.right
       })
@@ -64,6 +70,7 @@ App({
   },
   globalData: {
     isGetUser: false,
+    token:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiI4MiIsImV4cCI6IjE1NTQ2OTYxODc2NjI0OTU3OTgiLCJpYXQiOiIwIn0.oCoX8U5Ka0ZgAoXsStFWpBq3SMrOyq8dcMFhEjnQFO0'
   },
 
 })

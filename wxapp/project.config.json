@@ -46,7 +46,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 8,
+			"current": 10,
 			"list": [
 				{
 					"id": -1,
@@ -108,6 +108,20 @@
 					"id": -1,
 					"name": "成为专家",
 					"pathName": "pages/user/apply_expert/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "资讯详情",
+					"pathName": "pages/information/info/index",
+					"query": "id=3&img=https://img.psy525.cn/upload/2018/12/11/ba3223704fe14582a736a2d1addbffef.jpg",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "资讯列表",
+					"pathName": "pages/information/index",
 					"query": "",
 					"scene": null
 				}

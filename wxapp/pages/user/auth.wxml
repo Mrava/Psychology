@@ -1,5 +1,5 @@
 <view class="UCenter-bg">
-  <image class="logo shadow" src="https://download.tpengyun.cn//nxxlzx/images/LOGO.png" style='height:250rpx'></image>
+  <image class="logo shadow" src="https://nxxlzx.tpengyun.com/static/src/images/LOGO.png" style='height:250rpx'></image>
   <view class="text-xl text-black">宁夏心理咨询
   </view>
   <view class="margin-top-sm text-black">

@@ -1,15 +1,14 @@
-var app = getApp()
-var allData = app.globalData
-var api = require('../../utils/api.js')
-var utils = require('../../utils/util.js')
+const app = getApp()
+var allData = app.globalData,
+  utils = require('../../utils/util.js'),
+  init = require('../../utils/init.js'),
+  api = require('../../utils/api')
 
 Component({
   /**
    * 页面的初始数据
    */
   data: {
-    StatusBar: app.globalData.StatusBar,
-    CustomBar: app.globalData.CustomBar,
     user_info: wx.getStorageSync("userInfo"),
   },
   pageLifetimes: {
@@ -26,28 +25,26 @@ Component({
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function(options) {
-
+    onReady: function (options) {
+      if (!allData.isGetUser) wx.showLoading({ title: '加载中', mask: true })
+      !wx.getStorageSync('wave') ?
+        init.seveImage(this, 'wave.gif', 'wave') :
+        this.setData({
+          wave: wx.getStorageSync('wave')
+        }) & this.getUserInfo()
     },
 
-    getPhoneNumber(e) {
-      this.getPhoneNmu(e.detail.encryptedData, e.detail.iv)
-    },
-
-    onShow: function() {
+    getUserInfo: function () {
       var t = this
       if (!allData.isGetUser) {
-        wx.showLoading({
-          title: '加载中',
-        })
-        utils.GET('userInfo',function(res) {
-          console.log('获取用户数据:',res) //回调数据调试
+        app.setTitleWidth(this);
+        utils.GET('userInfo', function (res) {
+          //console.log('获取用户数据:', res) //回调数据调试
           var iconUrl = !res.data.portrait ? allData.iconUrl : res.data.portrait
           allData.name = res.data.user_name
           allData.address = res.data.address
           allData.phoneNum = res.data.telephone
           allData.iconUrl = iconUrl
-          // allData.userID = res.data.id 用户id保存为全局变量，暂时废弃
           allData.gender = res.data.gender
           allData.age = res.data.year
 
@@ -59,12 +56,12 @@ Component({
             gender: res.data.gender,
             iconUrl: iconUrl,
           })
-        },true)
+        }, true)
       }
     },
-    
+
     //跳转页面
-    toPage(e){
+    toPage(e) {
       var page = e.target.dataset.page
       wx.navigateTo({
         url: page

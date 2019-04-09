@@ -12,7 +12,7 @@ function InitializationSocket() {
         method: '',
         protocols: [],
         success: function (res) {
-            console.log("连接成功:",res);
+            //console.log("连接成功:",res);
             onSocketOpen()//开始监听WebSocket连接打开事件
         },
         fail: function (res) {

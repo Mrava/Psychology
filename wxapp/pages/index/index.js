@@ -8,7 +8,9 @@ Component({
     swiperHeight: 350,
     nav: [{
       img: "../images/1.png",
-      title: "文章资讯"
+      title: "文章资讯",
+      Type:1,
+      Url:'/pages/information/index'
     }, {
       img: "../images/2.png",
       title: "趣味测评"
@@ -44,35 +46,28 @@ Component({
       app.setTitleWidth(this,'首页')
     },
 
-    getInformationList() {
-      var t = this, info_list
-      utils.GET('getInformation', function (res) {
-        info_list = res.data
-        //console.log(res.data)
-        res.status == 0 ? t.setData({ info_list })
-          :  t.setData({ info_list: 'ErrorNetwork' })&wx.showToast({
-            title: '错误:' + res.msg,
-            icon: 'none',
-            mask: true,
-          })
-      })
-    },
-
-    getBanner() {
-      var t = this, imgUrls
+    Initialization(){
+      var t = this, imgUrls, info_list
+      //获取Banner
       utils.GET('getBanner', function (res) {
         imgUrls = res.data
-        //console.log(res.data)
         res.status == 0 ? t.setData({ imgUrls })
           : wx.showToast({
             title: '错误:' + res.msg,
             icon: 'none',
             mask: true,
-          }) & t.setData({
-            imgUrls: ['https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=346074524,1781961308&fm=26&gp=0.jpg',
-'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3579190364,240842503&fm=26&gp=0.jpg',
-'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1846852956,672325546&fm=26&gp=0.jpg']
           })
+        //获取资讯列表
+        utils.GET('getInformation', function (res) {
+          info_list = res.data
+          res.status == 0 ? t.setData({ info_list })
+            : t.setData({ info_list: 'ErrorNetwork' }) & wx.showToast({
+              title: '错误:' + res.msg,
+              icon: 'none',
+              mask: true,
+            })
+          wx.hideLoading()
+        })
       })
     },
 
