@@ -159,11 +159,12 @@ Page({
      */
     setTimeout(() => {
       utils.GET('getInformation', function (res) {
+        console.log()
         res.status == 0 ?
           (Array.isArray(res.data) ?
             t.setData({
               [mdata]: data.info_list.concat(res.data),
-              [moreStatus]: ''
+              [moreStatus]: res.data.length<=LIMIT?'over':''
             }) : t.setData({
               [moreStatus]: 'over'
             })
@@ -172,6 +173,6 @@ Page({
             [moreStatus]: 'erro'
           })
       }, { query: 'ClassifyId:' + data.Id, sortby: 'time', order: 'desc', limit: LIMIT, offset: data.info_list.length })
-    }, 5000)
+    }, 1000)
   },
 })
