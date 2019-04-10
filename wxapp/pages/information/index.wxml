@@ -25,18 +25,22 @@
         </scroll-view>
     </view>
 </view>
-<view class="padding-sm bg-white" style="height:100%;padding-top:{{contenHeight}}px" 
-    wx:for="{{informationClass}}" wx:for-item="items" wx:for-index="indexs"
-    wx:if="{{TabCur==indexs}}">
+<view class="padding-sm bg-white" style="height:100%;padding-top:{{contenHeight}}px" wx:for="{{informationClass}}" wx:for-item="items" wx:for-index="indexs" wx:if="{{TabCur==indexs}}">
     <wux-refresher id="wux-refresher" id="refresher-{{indexs}}" bind:pulling="onPulling" bind:refresh="onRefresh" distance="50" data-index="{{indexs}}">
         <block wx:if="{{items.info_list=='ErrorNetwork'}}">
             <view class="ErrorNetwork">
                 <image src="../images/ErrorNetwork.png" mode="widthFix" style='width:60%' />
+                <view class="text-bold text-gray" style="letter-spacing:6rpx;line-height:50rpx;font-size:26rpx">
+                    网络错误
+                </view>
             </view>
         </block>
         <block wx:if="{{!items.info_list&&items.info_list!='ErrorNetwork'}}">
             <view class="ErrorNetwork">
                 <image src="../images/NotAvailable.png" mode="widthFix" style='width:60%' />
+                <view class="text-bold text-gray" style="letter-spacing:6rpx;line-height:50rpx;font-size:26rpx">
+                    暂无资讯
+                </view>
             </view>
         </block>
         <block wx:if="{{items.info_list.length&&items.info_list!='ErrorNetwork'}}">

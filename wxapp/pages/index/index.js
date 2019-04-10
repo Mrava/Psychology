@@ -1,25 +1,10 @@
-const app = getApp(),api = require('../../utils/api.js'),utils = require('../../utils/util.js')
+const app = getApp(), api = require('../../utils/api.js'), utils = require('../../utils/util.js')
 var gdata
 Component({
   data: {
     width: wx.getSystemInfoSync().windowWidth,
-    swiperIndex: 0, //这里不写第一次启动展示的时候会有问题.
+    swiperIndex: 0, //初始化swiper索引
     swiperHeight: 350,
-    nav: [{
-      img: "../images/1.png",
-      title: "文章资讯",
-      Type:1,
-      Url:'/pages/information/index'
-    }, {
-      img: "../images/2.png",
-      title: "趣味测评"
-    }, {
-      img: "../images/3.png",
-      title: "成为专家"
-    }, {
-      img: "../images/4.png",
-      title: "关于我们"
-    },]
   },
   pageLifetimes: {
     show() {
@@ -42,11 +27,14 @@ Component({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-      app.setTitleWidth(this,'首页')
+      app.setTitleWidth(this, '首页')
     },
-
-    Initialization(){
-      var t = this, imgUrls, info_list
+    
+    /**
+     * 初始化页面数据 tip:在utils.login()中执行
+     */
+    Initialization() {
+      var t = this, imgUrls, info_list, nav
       //获取Banner
       utils.GET('getBanner', function (res) {
         imgUrls = res.data
@@ -56,39 +44,47 @@ Component({
             icon: 'none',
             mask: true,
           })
-          gdata = {
-            sortby:'time',
-            order:'desc'
-          }
-        //获取资讯列表
-        utils.GET('getInformation', function (res) {
-          info_list = res.data
-          res.status == 0 ? t.setData({ info_list })
-            : t.setData({ info_list: 'ErrorNetwork' }) & wx.showToast({
+        //获取导航
+        utils.GET('getNav', function (res) {
+          nav = res.data
+          res.status == 0 ? t.setData({ nav })
+            : wx.showToast({
               title: '错误:' + res.msg,
               icon: 'none',
               mask: true,
             })
-          wx.hideLoading()
-        },gdata)
+          //获取资讯列表
+          utils.GET('getInformation', function (res) {
+            info_list = res.data
+            res.status == 0 ? t.setData({ info_list })
+              : t.setData({ info_list: 'ErrorNetwork' }) & wx.showToast({
+                title: '错误:' + res.msg,
+                icon: 'none',
+                mask: true,
+              })
+            wx.hideLoading()
+          }, { sortby: 'time', order: 'desc' })
+        })
       })
     },
 
+    /**
+     * 在每次显示的时候判断是否获取userID，如果没有则执行登录
+     */
     onShow: function () {
       if (!app.globalData.userID) {
         utils.login(this)
       }
     },
 
+    /**
+     * 跳转指定页面
+     * @param {*} e 
+     */
     toLinks(e) {
-      console.log(e)
       var type = e.currentTarget.dataset.type,
-          url = e.currentTarget.dataset.url
-      type==1?wx.navigateTo({
-        url: url
-      }) : wx.navigateTo({
-          url: '../webview/webview?url='+url
-      })
+        url = e.currentTarget.dataset.url
+      type == 1 ? wx.navigateTo({ url: url }) : wx.navigateTo({ url: '../webview/webview?url=' + url })
     },
   }
 })

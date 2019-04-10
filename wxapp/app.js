@@ -70,7 +70,5 @@ App({
   },
   globalData: {
     isGetUser: false,
-    token:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiI4MiIsImV4cCI6IjE1NTQ2OTYxODc2NjI0OTU3OTgiLCJpYXQiOiIwIn0.oCoX8U5Ka0ZgAoXsStFWpBq3SMrOyq8dcMFhEjnQFO0'
-  },
-
+  }
 })

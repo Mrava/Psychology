@@ -26,6 +26,7 @@ image.quiet {
 	display: flex;
 	border-radius:5rpx;
 	background-color: #fff;
+	height: 142rpx;
 }
 
 .nav .item{

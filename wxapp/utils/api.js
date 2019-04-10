@@ -32,7 +32,20 @@ function url(links) {
     case 'getBanner'://获取所有的banner条
       link = root + 'banner/'
       break
-    
+
+    /* nav */
+    case 'getNav'://获取所有的banner条
+      link = root + 'menu/'
+      break
+
+    /* 专家 */
+    case 'getExpert'://获取所有的专家
+      link = root + 'expert/'
+      break
+    case 'getExpertClass'://获取所有的专家分类
+      link = root + 'expert_class/'
+      break
+
     /* 问答 */
     // case 'getCommunity':
     //   link = root + ''

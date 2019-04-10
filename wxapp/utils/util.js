@@ -77,7 +77,6 @@ function login(that) {
         user_code: res.code,
       }
       console.log(api.Anum.login)
-      // return null;
       wx.request({
         url: api.Anum.login,
         data: data,
@@ -95,7 +94,7 @@ function login(that) {
             globalData.isGetUser = false
             globalData.iconUrl = !data.portrait ? user.avatarUrl : data.portrait
             console.log('用户已登录:', e)
-            that.Initialization()
+            that.Initialization()//初始化页面数据
           } else {
             signup(data)
             console.log('用户未注册,正在自动注册...')

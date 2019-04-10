@@ -22,6 +22,9 @@
 <block wx:if="{{idInformationInfo=='ErrorNetwork'}}">
     <view class="padding-xl ErrorNetwork" style="height:{{ViewHeight}}px;padding-top:{{CustomBar}}px">
         <image src="../../images/ErrorNetwork.png" mode="widthFix" style='width:60%' />
+        <view class="text-bold text-gray" style="letter-spacing:6rpx;line-height:50rpx;font-size:26rpx">
+            网络错误
+        </view>
     </view>
 </block>
 <!-- 资讯内容 -->
@@ -40,8 +43,7 @@
         </view>
     </scroll-view>
 </block>
-<view class="padding mshadow justify-between flex text-sm text-center text-blue"
- hidden="{{idInformationInfo.title?false:true}}" id="bottomBar" style="bottom:0rpx">
+<view class="padding mshadow justify-between flex text-sm text-center text-blue" hidden="{{idInformationInfo.title?false:true}}" id="bottomBar" style="bottom:0rpx">
     <button class='button text-blue' hover-class="none">
         <text class="icon-people padding-right-xs"></text>
         {{idInformationInfo.author}}
