@@ -1,4 +1,7 @@
-const app = getApp();
+var app = getApp()
+var allData = app.globalData
+var api = require('../../utils/api.js')
+var utils = require('../../utils/util.js')
 /**
  * 计算顶部高度
  */
@@ -26,152 +29,6 @@ Component({
             exit: false,
             in: false,
         },
-        sp_list: [{
-            title: "恋爱",
-            color: 'red',
-            id: '1',
-            items: [{
-                name: '暗恋',
-                icon: '../images/1.png'
-            }, {
-                name: '早恋',
-                icon: '../images/2.png'
-            }, {
-                name: '初恋',
-                icon: '../images/3.png'
-            }, {
-                name: '失恋',
-                icon: '../images/4.png'
-            }, {
-                name: '单恋',
-                icon: '../images/1.png'
-            }, {
-                name: '异地恋',
-                icon: '../images/2.png'
-            }, {
-                name: '谈恋爱',
-                icon: '../images/3.png'
-            }, {
-                name: '恋爱恐慌',
-                icon: '../images/4.png'
-            }, ]
-        }, {
-            title: "婚姻",
-            color: 'blue',
-            id: '2',
-            items: [{
-                name: '离婚',
-                icon: '../images/1.png'
-            }, {
-                name: '出轨',
-                icon: '../images/2.png'
-            }, {
-                name: '结婚',
-                icon: '../images/3.png'
-            }, {
-                name: '闪婚',
-                icon: '../images/4.png'
-            }, {
-                name: '隐婚',
-                icon: '../images/1.png'
-            }, {
-                name: '毕婚',
-                icon: '../images/2.png'
-            }, {
-                name: '婚外恋',
-                icon: '../images/3.png'
-            }, {
-                name: '异国婚姻',
-                icon: '../images/4.png'
-            }, ]
-        }, {
-            title: "婚姻",
-            color: 'blue',
-            id: '2',
-            items: [{
-                name: '离婚',
-                icon: '../images/1.png'
-            }, {
-                name: '出轨',
-                icon: '../images/2.png'
-            }, {
-                name: '结婚',
-                icon: '../images/3.png'
-            }, {
-                name: '闪婚',
-                icon: '../images/4.png'
-            }, {
-                name: '隐婚',
-                icon: '../images/1.png'
-            }, {
-                name: '毕婚',
-                icon: '../images/2.png'
-            }, {
-                name: '婚外恋',
-                icon: '../images/3.png'
-            }, {
-                name: '异国婚姻',
-                icon: '../images/4.png'
-            }, ]
-        }, {
-            title: "婚姻",
-            color: 'blue',
-            id: '2',
-            items: [{
-                name: '离婚',
-                icon: '../images/1.png'
-            }, {
-                name: '出轨',
-                icon: '../images/2.png'
-            }, {
-                name: '结婚',
-                icon: '../images/3.png'
-            }, {
-                name: '闪婚',
-                icon: '../images/4.png'
-            }, {
-                name: '隐婚',
-                icon: '../images/1.png'
-            }, {
-                name: '毕婚',
-                icon: '../images/2.png'
-            }, {
-                name: '婚外恋',
-                icon: '../images/3.png'
-            }, {
-                name: '异国婚姻',
-                icon: '../images/4.png'
-            }, ]
-        }, {
-            title: "婚姻",
-            color: 'blue',
-            id: '2',
-            items: [{
-                name: '离婚',
-                icon: '../images/1.png'
-            }, {
-                name: '出轨',
-                icon: '../images/2.png'
-            }, {
-                name: '结婚',
-                icon: '../images/3.png'
-            }, {
-                name: '闪婚',
-                icon: '../images/4.png'
-            }, {
-                name: '隐婚',
-                icon: '../images/1.png'
-            }, {
-                name: '毕婚',
-                icon: '../images/2.png'
-            }, {
-                name: '婚外恋',
-                icon: '../images/3.png'
-            }, {
-                name: '异国婚姻',
-                icon: '../images/4.png'
-            }, ]
-        }, ]
     },
     pageLifetimes: {
         show() {
@@ -186,7 +43,8 @@ Component({
     methods: {
         onLoad: function (options) {
             getNavHeight(this)
-            app.setTitleWidth(this,true)
+            app.setTitleWidth(this, true)
+            !allData.CommunityClass ? Initialization(this) : null
         },
         tabSelect(e) {
             var id = e.currentTarget.dataset.id,
@@ -208,6 +66,35 @@ Component({
                 url: "special?title=" + title + "&id=" + id,
             })
         },
+        call(e){
+            console.log(e)
+        }
     }
-
 })
+
+function Initialization(that) {
+    wx.showLoading({
+        title: '加载中',
+        mask: true,
+    })
+    utils.GET('getCommunity_class', (res) => {
+        res.status == 0 ? that.setData({
+            sp_list: res.data
+        }) : that.setData({ sp_list: 'ErrorNetwork' }) &
+            wx.showToast({
+                title: '错误:' + res.msg,
+                icon: 'none',
+                mask: true,
+            })
+        utils.GET('getCommunity', (e) => {
+            e.status == 0 ? that.setData({
+                new_list: e.data
+            }) : that.setData({ new_list: 'ErrorNetwork' }) &
+                wx.showToast({
+                    title: '错误:' + e.msg,
+                    icon: 'none',
+                    mask: true,
+                })
+        }, { sortby: 'time', order: 'desc' })
+    })
+}

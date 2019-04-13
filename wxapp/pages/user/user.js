@@ -63,6 +63,7 @@ Component({
     //跳转页面
     toPage(e) {
       var page = e.target.dataset.page
+      allData.that = this
       wx.navigateTo({
         url: page
       })

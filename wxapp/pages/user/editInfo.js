@@ -116,7 +116,7 @@ Page({
     utils.PUT('updateUserInfo', data, function (res) {
       console.log(res)
       res.status==0?
-        allData.isGetUser = false & wx.showToast({
+        allData.isGetUser = false & allData.that.getUserInfo() & wx.showToast({
           title: '保存成功',
           icon: 'none',
           mask: true

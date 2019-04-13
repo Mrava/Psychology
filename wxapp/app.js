@@ -53,13 +53,11 @@ App({
     query.select('#toback').boundingClientRect(function (rect) {
       //console.log(rect)
       var data = t.globalData
-
       if (title) {
         that.setData({
           indexTitle: title,//设置标题文字
         })
       }
-
       that.setData({
         StatusBar: data.StatusBar,//设置状态栏高度
         CustomBar: data.CustomBar,//设置顶部标题高度

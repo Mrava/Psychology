@@ -47,9 +47,12 @@ function url(links) {
       break
 
     /* 问答 */
-    // case 'getCommunity':
-    //   link = root + ''
-    // case 'releaseCommunity':
+    case 'getCommunity_class':
+      link = root + 'community_class/'
+      break
+    case 'getCommunity':
+      link = root + 'community/'
+      break
     // case 'getCommunityInfo':
     // case 'updateCommunityInfo':
     // case 'deleteCommunityInfo':

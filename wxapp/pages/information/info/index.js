@@ -17,6 +17,7 @@ Page({
     app.setTitle1Width(this)
     allData.idInformationInfoId = options.id
     utils.GET('getInformationInfo', function (res) {
+      console.log(res)
       idInformationInfo = res.data
       res.status == 0 ? t.setData({
         idInformationInfo,
