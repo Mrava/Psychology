@@ -1,4 +1,4 @@
-var root = "https://nxxlzx.tpengyun.com/v1/", wss = "wss://nxxlzxim.tpengyun.com/echo";
+var root = require('../setinfo.js').RootUrl;
 function url(links) {
   var link, token = '?token='+ getApp().globalData.token,
     user = wx.getStorageSync("userInfo"),
@@ -61,13 +61,11 @@ function url(links) {
   return link + token
 }
 module.exports = {
-  loginInfo: root + "phone/getPhoneNumber.php",
   rootUrl: root,
   loadingImgUrl:'https://nxxlzx.tpengyun.com/static/src/images/loading/',
-  wss: wss,
   Anum: { //账号
     login: root + "users/login",
     signup: root + "users/signup"
   },
-  url: url,
+  url,
 }

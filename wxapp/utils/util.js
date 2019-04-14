@@ -76,7 +76,7 @@ function login(that) {
       var data = {
         user_code: res.code,
       }
-      console.log(api.Anum.login)
+      //console.log(api.Anum.login)
       wx.request({
         url: api.Anum.login,
         data: data,
@@ -144,7 +144,7 @@ function uploadFile(urlkey, cb, temp) {
  */
 function getReq(urlkey, cb, data) {
   var url = api.url(urlkey)
-  console.log('请求链接:', url)
+  //console.log('请求链接:', url)
   wx.request({
     url: url,
     method: 'GET',

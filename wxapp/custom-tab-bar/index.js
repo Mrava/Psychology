@@ -1,4 +1,4 @@
-// custom-tab-bar/index.js
+const app = getApp()
 Component({
   options: {
     addGlobalClass: true,
@@ -9,6 +9,7 @@ Component({
     selectedColor: "#0081ff",
     backgroundColor: "#FFF",
     borderStyle: "white",
+    msgNum: app.globalData.msgNum, // 简化的定义方式
     list: [{
         iconPath: "/pages/images/tabBar/shouye.png",
         selectedIconPath: "/pages/images/tabBar/shouye_i.png",
@@ -50,8 +51,10 @@ Component({
         url
       })
       this.setData({
-        selected: data.index
+        selected: data.index,
+        msgNum: app.globalData.msgNum,
       })
+      console.log("---------", this.data.msgNum)
       //setTimeout(this._animation(e), 500)
     },
     _animation(e) {
@@ -65,6 +68,6 @@ Component({
           animation: ''
         })
       }, 1000)
-    }
+    },
   }
 })

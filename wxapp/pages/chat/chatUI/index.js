@@ -1,7 +1,6 @@
-const app = getApp();
-const util = require('../../../utils/util.js')
-const WebSocket = require('../../../utils/WebSocket.js')
-var chatContentList = [], MessageInputValue = '', msg = '';
+const app = getApp(), util = require('../../../utils/util.js'),
+  Jim = require('../../../utils/Jim.js'), mjim = Jim.getJim;
+var chatContentList = [], MessageInputValue = '', msg = '', mthat;
 
 /**
  * 初始化数据
@@ -64,16 +63,17 @@ function setScrollViewHeight(that) {
   }).exec();
 }
 Page({
+
   data: {
   },
 
   onLoad: function () {
-    var that = this
-    initData(that);
-    wx.onSocketMessage(function (e) {
-      console.log(e)
-      that.setChatContentList(false, e.data)
-    })
+    mthat = this
+    initData(mthat);
+    mjim.onMsgReceive(function (data) {
+      console.log(data)
+      mthat.setChatContentList(false, data.messages[0].content.msg_body.text)
+    });
   },
 
   onReady: function () {
@@ -108,7 +108,10 @@ Page({
    * 发送点击监听
    */
   sendClick: function (e) {
-    WebSocket.sendMessage(msg)
     this.setChatContentList(true, e.detail.value)
+    Jim.sendSingleMsg({
+      'target_username': 'LoveEmpathy',
+      'content': msg
+    })
   },
 });

@@ -1,4 +1,5 @@
-const app = getApp(), api = require('../../utils/api.js'), utils = require('../../utils/util.js')
+const app = getApp(), api = require('../../utils/api.js'),
+  utils = require('../../utils/util.js'), jim = require('../../utils/Jim.js'), allData = app.globalData
 var gdata
 Component({
   data: {
@@ -11,9 +12,12 @@ Component({
       if (typeof this.getTabBar === 'function' &&
         this.getTabBar()) {
         this.getTabBar().setData({
-          selected: 0
+          selected: 0,
+          msgNum: allData.msgNum
         })
+        jim.setThat(this)
       }
+
     }
   },
 
@@ -28,8 +32,16 @@ Component({
      */
     onLoad: function (options) {
       app.setTitleWidth(this, '首页')
+      jim.init(this)
+      wx.showTabBarRedDot({
+        index: 3,
+        success(res) {
+          console.log(res)
+        }
+      })
     },
-    
+
+
     /**
      * 初始化页面数据 tip:在utils.login()中执行
      */

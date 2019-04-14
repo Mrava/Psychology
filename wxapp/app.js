@@ -1,8 +1,8 @@
-const WebSocket = require('/utils/WebSocket.js')
+
 App({
+
   onLaunch: function () {
-    WebSocket.InitializationSocket();
-    var data = this.globalData;
+    var data = this.globalData
     wx.getSystemInfo({
       success: function (a) {
         data.windowHeight = wx.getSystemInfoSync().windowHeight
@@ -12,6 +12,8 @@ App({
         data.StatusBar = a.statusBarHeight, "android" == a.platform ? data.CustomBar = a.statusBarHeight + 50 : data.CustomBar = a.statusBarHeight + 45;
       }
     });
+
+    
   },
 
   /**
@@ -47,7 +49,7 @@ App({
    * @param {Object} that //必填参数
    * @param {String} title //必填参数，设置标题文字
    */
-  setTitle1Width: function (that, title,query) {
+  setTitle1Width: function (that, title, query) {
     var query = wx.createSelectorQuery(), t = this, //单位px；
       ScreenWidth = wx.getMenuButtonBoundingClientRect().left
     query.select('#toback').boundingClientRect(function (rect) {
@@ -66,7 +68,13 @@ App({
       })
     }).exec();
   },
+
   globalData: {
     isGetUser: false,
+    chatList: [],
+    msgNum:10
   }
 })
+
+
+

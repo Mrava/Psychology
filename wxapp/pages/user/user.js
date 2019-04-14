@@ -1,8 +1,8 @@
-const app = getApp()
-var allData = app.globalData,
+const app = getApp(),
+  allData = app.globalData,
   utils = require('../../utils/util.js'),
   init = require('../../utils/init.js'),
-  api = require('../../utils/api')
+  jim = require('../../utils/Jim.js')
 
 Component({
   /**
@@ -16,8 +16,10 @@ Component({
       if (typeof this.getTabBar === 'function' &&
         this.getTabBar()) {
         this.getTabBar().setData({
-          selected: 4
+          selected: 4,
+          msgNum: allData.msgNum
         })
+        jim.setThat(this)
       }
     }
   },
@@ -62,7 +64,7 @@ Component({
 
     //跳转页面
     toPage(e) {
-      var page = e.target.dataset.page
+      var page = e.currentTarget.dataset.page
       allData.that = this
       wx.navigateTo({
         url: page

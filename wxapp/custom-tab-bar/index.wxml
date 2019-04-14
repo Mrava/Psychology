@@ -4,34 +4,9 @@
       <view class="icon-cu-image">
         <view wx:if="{{index==2}}" class='cu-btn myIcon shequ shadow' style="color:#FFF;top:0rpx;background:{{selectedColor}};height:70rpx;width:70rpx;border-radius:50%;line-height:70rpx;"></view>
         <image wx:else src='{{selected === index ? item.selectedIconPath : item.iconPath}}' class='{{selected === index ? "animation" : "animation"}}'></image>
+        <view wx:if="{{index==3&&msgNum>0}}" class="cu-tag badge">{{msgNum}}</view>
       </view>
       <view style='color:{{selected === index ? selectedColor : color}}'>{{item.text}}</view>
     </view>
   </view>
 </view>
-<!-- <view class="cu-bar tabbar margin-bottom-xl bg-white">
-  <view class="action text-green">
-    <view class='icon-homefill'></view>
-    首页
-  </view>
-  <view class="action text-gray">
-    <view class='icon-similar'></view>
-    分类
-  </view>
-  <view class="action text-gray add-action">
-    <button class='cu-btn icon-add bg-green shadow'></button>
-    发布
-  </view>
-  <view class="action text-gray">
-    <view class='icon-cart'>
-      <view class='cu-tag badge'>99</view>
-    </view>
-    购物车
-  </view>
-  <view class="action text-gray">
-    <view class='icon-my'>
-      <view class='cu-tag badge'></view>
-    </view>
-    我的
-  </view>
-</view> -->

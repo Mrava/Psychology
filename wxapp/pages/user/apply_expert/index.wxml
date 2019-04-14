@@ -38,14 +38,14 @@
             </view>
         </view>
         <!-- 所属领域 -->
-        <view class="cu-form-group">
+        <!-- <view class="cu-form-group">
             <view class="title">所属领域</view>
             <picker mode="multiSelector" bindchange="MultiChange" bindcolumnchange="MultiColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
                 <view class="picker text-blue">
                     {{multiArray[0][multiIndex[0]]}}----{{multiArray[1][multiIndex[1]]}}
                 </view>
             </picker>
-        </view>
+        </view> -->
         <view class="cu-form-group">
             <view class="title">地址选择</view>
             <picker mode="region" bindchange="RegionChange" value="{{region}}" custom-item="{{customItem}}">

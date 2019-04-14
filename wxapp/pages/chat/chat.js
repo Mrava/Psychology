@@ -1,4 +1,4 @@
-const app = getApp();
+const app = getApp(), allData = app.globalData, jim = require('../../utils/Jim.js')
 var id;
 Component({
   data: {
@@ -56,8 +56,10 @@ Component({
       if (typeof this.getTabBar === 'function' &&
         this.getTabBar()) {
         this.getTabBar().setData({
-          selected: 3
+          selected: 3,
+          msgNum: allData.msgNum
         })
+        jim.setThat(this)
       }
     }
   },
@@ -66,6 +68,11 @@ Component({
   methods: {
     onLoad: function (options) {
       app.setTitleWidth(this,'消息')
+      allData.gthat = this
+    },
+
+    refreshData(){
+      console.log(this.data.messageList)
     },
 
     tabSelect(e) {

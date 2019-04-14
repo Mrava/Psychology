@@ -1,4 +1,4 @@
-var app = getApp()
+const app = getApp(),utils = require('../../../utils/util.js')
 
 /**
  * 计算scroll-view实际占界面的高度
@@ -23,16 +23,41 @@ Page({
     StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
     imgList: [],
-    multiArray: [
-      ['恋爱', '婚姻'],
-      ['暗恋', '早恋', '初恋', '失恋', '单恋']
-    ],
     multiIndex: [0, 0, 0],
     region: [],
+    multiArray: [
+        ['恋爱', '婚姻'],
+        ['暗恋', '早恋', '初恋', '失恋', '单恋']
+      ],
   },
 
   onLoad:function (e){
     setScrollViewHeight(this)
+    var t = this
+    utils.GET('getCommunity_class',(res)=>{
+      console.log(res.data, res.data[0].name)
+      // multiArray: [
+      //   ['恋爱', '婚姻'],
+      //   ['暗恋', '早恋', '初恋', '失恋', '单恋']
+      // ],
+      // var arr = t.data.multiArray[0]
+      // for (let index = 0; index < res.data.length; index++) {
+      //   arr.push(res.data[index].name)
+      //   t.setData({
+      //     multiArray: arr
+      //   })
+      // }
+      t.setData({
+        multiArray: res.data
+      })
+      var arr = t.data.multiArray[1]
+      // for (let index = 0; index < res.data[0].sub.length; index++) {
+      //   arr[1].push(res.data[0].sub[index])
+      //   t.setData({
+      //     multiArray: arr
+      //   })
+      // }
+    })
   },
 
   ChooseImage() {
@@ -79,11 +104,13 @@ Page({
   },
 
   MultiChange(e) {
+    console.log("value", e.detail.value)
     this.setData({
       multiIndex: e.detail.value
     })
   },
   MultiColumnChange(e) {
+    console.log("value1", e.detail.value)
     let data = {
       multiArray: this.data.multiArray,
       multiIndex: this.data.multiIndex

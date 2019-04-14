@@ -1,7 +1,5 @@
-var app = getApp()
-var allData = app.globalData
-var api = require('../../utils/api.js')
-var utils = require('../../utils/util.js')
+const app = getApp(), jim = require('../../utils/Jim.js'),
+allData = app.globalData,api = require('../../utils/api.js'),utils = require('../../utils/util.js')
 /**
  * 计算顶部高度
  */
@@ -35,8 +33,10 @@ Component({
             if (typeof this.getTabBar === 'function' &&
                 this.getTabBar()) {
                 this.getTabBar().setData({
-                    selected: 2
+                    selected: 2,
+                    msgNum: allData.msgNum
                 })
+                jim.setThat(this)
             }
         }
     },
@@ -66,7 +66,7 @@ Component({
                 url: "special?title=" + title + "&id=" + id,
             })
         },
-        call(e){
+        call(e) {
             console.log(e)
         }
     }
