@@ -1,0 +1,76 @@
+<view class="bg-img bg-blue shadow-blur">
+  <view class='cu-bar text-white' style="justify-content:left !important;height:{{CustomBar}}px;background-color:transparent">
+    <navigator id="toback" class='action' open-type="navigateBack" delta="1" hover-class="none" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
+      <text class='icon-back'></text>
+      返回
+    </navigator>
+    <view class='action' style="height:{{CustomBar}}px;padding:{{StatusBar}}px 0 0 5px;font-size:30rpx;">
+      <text class="text-center" style='padding-left:{{titleMarginLeft}}px;width:{{titleWidth}}px;'>
+        {{indexTitle}}
+      </text>
+    </view>
+  </view>
+  <view class='padding-xl text-white'>
+    <view class='padding-xs text-xl padding-bottom-sm'>个人资料</view>
+    <view class='padding-xs'>Personal Information</view>
+  </view>
+</view>
+<!-- 头像Title -->
+<view class='cu-bar margin-top'>
+  <view class='action margin-top'>
+    <text class='icon-title text-blue'></text>
+    头像
+  </view>
+</view>
+<!-- 头像 -->
+<view class='cu-form-group' bindtap='choice_img'>
+  <view class="grid col-3 grid-square">
+    <view wx:if='{{iconUrl}}' class="padding-xs solids" style="width:200rpx;height:200rpx">
+      <image mode='widthFix' src='{{iconUrl}}' style='width:100%'></image>
+      <!-- <tag class="bg-red">
+                    <icon class='icon-close'></icon>
+                </tag> -->
+    </view>
+    <view wx:else class="padding-xs solids" style="width:200rpx;height:200rpx">
+      <text class='icon-cameraadd'></text>
+    </view>
+  </view>
+</view>
+<!-- 用户名 -->
+<view class='cu-form-group'>
+  <view class='title'>用户名</view>
+  <input placeholder="请输入用户名" class='radius' value='{{userName}}' bindinput='changeInput' data-name='name'></input>
+</view>
+<!-- 年龄 -->
+<view class='cu-form-group'>
+  <view class='title'>年龄</view>
+  <input placeholder="实际年龄" maxlength='3' type='number' class='radius' value='{{age}}' bindinput='changeInput' data-name='age'></input>
+  <view class='title'>岁</view>
+</view>
+<!-- 性别 -->
+<view class='cu-form-group'>
+  <view class='title'>性别</view>
+  <text class='text-df' style='flex:1'>{{gender?'男士':'女士'}}</text>
+  <switch class='switch-sex sm' checked='{{gender}}' bindchange="switch2Change" />
+</view>
+<!-- 现住址 -->
+<view class='cu-form-group' style='margin-bottom:20rpx'>
+  <view class='title'>现住址</view>
+  <picker mode="region" bindchange="RegionChange">
+    <view class="picker {{!region.length?'icon-discover text-green':'icon-locationfill text-blue'}}">
+      {{!region.length?'很懒，没有选择地址':region}}
+    </view>
+  </picker>
+</view>
+<!-- 手机号码 -->
+<view class='cu-form-group'>
+  <view class='title'>手机号码</view>
+  <input placeholder="11位手机号码" maxlength='11' value="{{phoneNum}}" class='radius' type='number' bindinput='changeInput' data-name='phone'></input>
+  <view class="cu-capsule radius">
+    <view class='cu-tag bg-blue '>+86</view>
+    <view class="cu-tag line-blue">中国大陆</view>
+  </view>
+</view>
+<view class="cu-bar margin-top btn-group" style='position:fixed;bottom:0rpx;padding-bottom:15rpx;width:100%'>
+  <button bindtap='updataUserInfo' class='cu-btn bg-blue shadow-blur round'>保存</button>
+</view>

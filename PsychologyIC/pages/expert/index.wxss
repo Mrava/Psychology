@@ -1,0 +1,16 @@
+.do{
+    height: 65rpx;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+}
+
+.do view{
+    height: 100%;
+    line-height: 60rpx;
+}
+
+.info{
+  background-image:linear-gradient(rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 1));
+}

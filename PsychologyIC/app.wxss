@@ -1,0 +1,65 @@
+@import 'dist/ui.wxss';
+@import 'dist/icon.wxss';
+@import 'dist/animation.wxss';
+@import 'dist/copyright/copyright.wxss';
+
+.division{
+  width:1;
+  height:120rpx;
+}
+
+.green-b {
+    background-color: #00d853;
+}
+
+.green-c {
+    color: #00d853;
+}
+
+.red-b {
+    background-color: #f91154;
+}
+
+.red-c {
+    color: #f91154;
+}
+
+.navy-b {
+    background-color: #47505b;
+}
+
+.navy-c {
+    color: #47505b;
+}
+
+.ErrorNetwork{
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items:center;
+    height: 100%;
+    width: 100%;
+}
+
+page {
+    background: #f1f1f1;
+    font-size: 25rpx;
+    color: #47505b;
+    line-height: 1;
+    vertical-align: 2px;
+    font-family: Helvetica Neue, Helvetica, sans-serif;
+    width: 100%;
+    height: 100%;
+}
+
+.Gshadow {
+    box-shadow: 0 0 25rpx 5rpx rgba(0, 0, 0, 0.1);
+}
+
+.a-fixed {
+    display: flex;
+    flex-direction: column;
+    position:fixed;
+    width: 100%;
+    z-index: 1000;
+}

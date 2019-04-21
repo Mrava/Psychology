@@ -1,0 +1,6 @@
+{
+    "usingComponents": {
+        "wux-animation-group": "../../dist/animation-group/index"
+    },
+    "navigationStyle": "custom"
+}

@@ -1,0 +1,30 @@
+page {
+	background-color: #FFF;
+}
+
+.user-icon {
+	position: absolute;
+	z-index: 1000;
+	width: 100%;
+	height: 600rpx;
+	top: 20rpx;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+}
+
+.badge1 {
+  border-radius: 200rpx;
+  position: absolute;
+  top: -10rpx;
+  right: -10rpx;
+  font-size: 20rpx;
+  padding: 0rpx 10rpx;
+  height: 28rpx;
+  color: #fff;
+}
+
+.transparent{
+	background-color: rgba(255, 255, 255, 0.20) !important;
+}

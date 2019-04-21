@@ -1,0 +1,13 @@
+<view class="UCenter-bg">
+  <image class="logo shadow" src="https://nxxlzx.tpengyun.com/static/src/images/LOGO.png" style='height:250rpx'></image>
+  <view class="text-xl text-black">宁夏心理咨询
+  </view>
+  <view class="margin-top-sm text-black">
+    <text>权限获取</text>
+  </view>
+</view>
+<view class="padding-xl">
+  <button bindgetuserinfo="onGetUserInfo" class="bg-blue shadow lg block" openType="getUserInfo">微信登录</button>
+</view>
+
+<include src='../../dist/copyright/copyright.wxml' />

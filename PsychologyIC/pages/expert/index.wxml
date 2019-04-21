@@ -1,0 +1,76 @@
+<!-- 顶部页面 -->
+<view class="a-fixed bg-blue shadow-blur">
+  <view style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;display:flex;flex-direction:column;justify-content:center;">
+    <view class="cu-bar search" style="width:{{searchWidth}}px;min-height:0rpx;">
+      <view class='search-form round' style="height:{{searchHeight}}px">
+        <text class="icon-search"></text>
+        <input type="text" placeholder="搜索专家名称" confirm-type="search" />
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 专家list -->
+<view style="padding-top:{{CustomBar}}px">
+  <block wx:if="{{expert_list=='ErrorNetwork'}}">
+    <view class="ErrorNetwork" style="padding-top:250rpx;">
+      <image src="../images/ErrorNetwork.png" mode="widthFix" style='width:60%' />
+      <view class="text-bold text-gray" style="letter-spacing:6rpx;line-height:50rpx;font-size:26rpx">
+        网络错误
+      </view>
+    </view>
+  </block>
+  <block wx:if="{{!expert_list&&expert_list!='ErrorNetwork'}}">
+    <view class="ErrorNetwork" style="padding-top:250rpx;">
+      <image src="../images/NotAvailable.png" mode="widthFix" style='width:60%' />
+      <view class="text-bold text-gray" style="letter-spacing:6rpx;line-height:50rpx;font-size:26rpx">
+        暂无专家
+      </view>
+    </view>
+  </block>
+  <block wx:if="{{expert_list.length&&expert_list!='ErrorNetwork'}}">
+    <view class="cu-card case">
+      <view wx:for="{{expert_list}}" wx:key class="cu-item shadow">
+        <view class='image' bindtap='seeInfo' data-id='{{index}}'>
+          <image src="{{item.Photo}}" mode="aspectFill" style="height:500rpx"></image>
+          <!-- <view class="cu-tag bg-blue">{{item.classify}}</view> -->
+          <view class="cu-bar bg-white {{info_class.style!=''&&info_class.index==index?'':'info'}}" style="{{info_class.index==index?info_class.style:''}}padding: 30rpx;">
+            <block wx:if="{{info_class.style!=''&&info_class.index==index}}">
+              <scroll-view scroll-y style='height:100%'>
+                <view style="height:100%;display:flex;align-items:center;">
+                  <text class="text-grey" style="width:100%;">{{item.Info}}</text>
+                </view>
+              </scroll-view>
+            </block>
+            <block wx:else>
+              <view class="text-cut text-black" style="width:100%;">{{item.Info}}</view>
+            </block>
+          </view>
+        </view>
+        <view class="cu-list menu menu-avatar">
+          <view class="cu-item">
+            <view class="cu-avatar round lg" style="background-image:url({{item.Icon}});"></view>
+            <view class='content flex-sub'>
+              <view class='text-grey'>{{item.Name}}</view>
+              <view class='text-gray text-sm flex justify-between'>
+                <text class="text-cut" style="width:300rpx">{{item.Address}}</text>
+                <view class="text-gray text-sm">
+                  <text class="icon-phone"></text>
+                  10
+                  <text class="icon-comment"></text>
+                  20
+                  <text class="icon-appreciate"></text>
+                  30
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class='do'>
+          <view class="icon-phone text-blue" catch:tap="call" data-index="{{index}}">电话联系</view>
+          <view class="icon-message text-green" catch:tap="Online" data-id="{{item.Id}}">在线沟通</view>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>
+<view class='division'></view>

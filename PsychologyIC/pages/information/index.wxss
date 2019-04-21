@@ -1,0 +1,36 @@
+page{
+    display: flex;
+    flex-direction: column;
+}
+
+@keyframes fades {
+    0% {
+        opacity: 1
+    }
+
+    100% {
+        opacity: 0
+    }
+}
+
+.animation-fades {
+    animation-name: fades;
+    animation-duration: .8s;
+    animation-timing-function: linear
+}
+
+.animation-fade {
+    animation-name: fade;
+    animation-duration: .8s;
+    animation-timing-function: linear
+}
+
+@keyframes fade {
+    0% {
+        opacity: 1
+    }
+
+    100% {
+        opacity: 0
+    }
+}

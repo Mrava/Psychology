@@ -1,0 +1,119 @@
+<view class='bg-blue a-fixed shadow-blur'>
+  <view style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;display:flex;flex-direction:column;justify-content:center;">
+    <view class="cu-bar search bg-blue" style="width:{{searchWidth}}px">
+      <view class="cu-item padding-left" bindtap='send'>
+        <text class="icon-writefill"></text>
+        发布
+      </view>
+      <view class='search-form round' style="height:{{searchHeight}}px">
+        <text class="icon-search"></text>
+        <input type="text" placeholder="搜索问题、答案" confirm-type="search" />
+      </view>
+    </view>
+  </view>
+  <view class="nav text-center" style="display:flex;width:100%;justify-content:center" id="nav">
+    <view class="cu-item {{0==TabCur?'text-white cur':''}}" bindtap='tabSelect' data-id="0">
+      <text class='icon-new'></text>
+      最新
+    </view>
+    <view class="cu-item {{1==TabCur?'text-white cur':''}}" bindtap='tabSelect' data-id="1">
+      <text class='icon-discover'></text>
+      专题
+    </view>
+  </view>
+</view>
+<view style="padding-top:{{NavHeight}}px">
+  <wux-animation-group in="{{ news.in }}" exit='{{news.exit}}' class-names="{{ news.classNames }}">
+    <block wx:if="{{new_list=='ErrorNetwork'}}">
+      <view class="ErrorNetwork" style="padding-top:250rpx;">
+        <image src="../images/ErrorNetwork.png" mode="widthFix" style='width:60%' />
+        <view class="text-bold text-gray" style="letter-spacing:6rpx;line-height:50rpx;font-size:26rpx">
+          网络错误
+        </view>
+      </view>
+    </block>
+    <block wx:if="{{!new_list&&new_list!='ErrorNetwork'}}">
+      <view class="ErrorNetwork" style="padding-top:250rpx;">
+        <image src="../images/NotAvailable.png" mode="widthFix" style='width:60%' />
+        <view class="text-bold text-gray" style="letter-spacing:6rpx;line-height:50rpx;font-size:26rpx">
+          暂无帖子
+        </view>
+      </view>
+    </block>
+    <block wx:if="{{new_list&&new_list!='ErrorNetwork'}}">
+      <view class="cu-card dynamic" wx:for="{{new_list}}" wx:for-item="i">
+        <view wx:for="1" wx:key class="cu-item shadow">
+          <view class="cu-list menu menu-avatar">
+            <view class="cu-item">
+              <view class="cu-avatar round lg" style="background-image:url({{i.icon}});"></view>
+              <view class='content flex-sub'>
+                <view>{{i.name}}</view>
+                <view class='text-gray text-sm flex justify-between'>{{i.time}}</view>
+              </view>
+            </view>
+          </view>
+          <view class='text-content' style="margin-bottom:0rpx">{{i.content}}</view>
+          <view class='text-gray text-sm text-right padding '>
+            <text class="icon-attentionfill" />
+            {{i.see}}
+            <text class="icon-messagefill" />
+            {{i.message_num}}
+          </view>
+          <view wx:if="{{i.message}}" class="cu-list menu menu-avatar comment solids-top">
+            <view class="cu-item" wx:key>
+              <view class="cu-avatar round" style="background-image:url({{i.message[0].icon}});"></view>
+              <view class='content'>
+                <view class='text-grey'>{{i.message[0].name}}</view>
+                <view class='text-gray text-content text-df'>{{i.message[0].content}}</view>
+                <view class='margin-top-sm flex justify-between'>
+                  <view class='text-gray text-df'>2018年12月5日</view>
+                  <view class="text-sm">
+                    <text class="icon-messagefill text-gray margin-left-sm" data-id='e{{i.message[0].user_id}}'> 咨询</text>
+                    <text class="icon-phone text-gray margin-left-sm" catch:tap="call" data-ePhone='{{i.message[0].telephone}}'> 电话</text>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </wux-animation-group>
+</view>
+<wux-animation-group in="{{ special.in }}" exit='{{special.exit}}' class-names="{{ special.classNames }}">
+  <block wx:if="{{sp_list=='ErrorNetwork'}}">
+    <view class="ErrorNetwork" style="padding-top:250rpx;">
+      <image src="../images/ErrorNetwork.png" mode="widthFix" style='width:60%' />
+      <view class="text-bold text-gray" style="letter-spacing:6rpx;line-height:50rpx;font-size:26rpx">
+        网络错误
+      </view>
+    </view>
+  </block>
+  <block wx:if="{{!sp_list&&sp_list!='ErrorNetwork'}}">
+    <view class="ErrorNetwork" style="padding-top:250rpx;">
+      <image src="../images/NotAvailable.png" mode="widthFix" style='width:60%' />
+      <view class="text-bold text-gray" style="letter-spacing:6rpx;line-height:50rpx;font-size:26rpx">
+        暂无分类
+      </view>
+    </view>
+  </block>
+  <block wx:for='{{sp_list}}' wx:for-item="i" wx:if="{{sp_list&&sp_list!='ErrorNetwork'}}">
+    <view class="cu-bar margin-top solid-bottom" style='height:100rpx'>
+      <view class='action'>
+        <text class='icon-title text-{{i.color}}'></text>
+        {{i.name}}
+      </view>
+    </view>
+    <view class="cu-list grid no-border col-4">
+      <block wx:for='{{i.sub}}' wx:for-item="a">
+        <view class='cu-item' style='align-items:center;'>
+          <view class='v' hover-class='v-hover' bindtap='toSpecial' data-title='{{a.Title}}' data-id='{{a.Id}}'>
+            <image style='width:56rpx' mode='widthFix' src='{{a.Icon}}' />
+            <text>{{a.Title}}</text>
+          </view>
+        </view>
+      </block>
+    </view>
+  </block>
+</wux-animation-group>
+<view class='division'></view>

@@ -1,0 +1,45 @@
+<!-- 顶部栏 -->
+<view class="bg-blue">
+  <view class='cu-bar text-white' style="justify-content:left !important;height:{{CustomBar}}px;background-color:transparent">
+    <navigator id="toback" class='action' open-type="navigateBack" delta="1" hover-class="none" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
+      <text class='icon-back'></text>
+      返回
+    </navigator>
+    <view class='action' bind:tap="doubleClick" style="height:{{CustomBar}}px;padding:{{StatusBar}}px 0 0 5px;font-size:30rpx;">
+      <view class="text-center" style='padding-left:{{titleMarginLeft}}px;width:{{titleWidth}}px;'>
+        {{indexTitle}}
+      </view>
+    </view>
+  </view>
+</view>
+<form bindsubmit="sendCommunity">
+  <view class="cu-card case no-card">
+    <view class="cu-item">
+      <!-- 所属领域 -->
+      <view class="cu-form-group">
+        <view class="title">所属领域</view>
+        <picker mode="multiSelector" name='field' bindchange="Change" bindcolumnchange="ColumnChange" value="{{dataIndex}}" range="{{dataArray}}">
+          <view class="picker text-blue">
+            {{dataArray[0][dataIndex[0]]}}--{{dataArray[1][dataIndex[1]]}}
+          </view>
+        </picker>
+      </view>
+    </view>
+    <!-- 内容 -->
+    <view class="cu-bar bg-white solid-bottom margin-top">
+      <view class="action">
+        <text class="icon-title text-blue"></text>
+        内容
+      </view>
+    </view>
+    <view class="cu-form-group">
+      <textarea name='textarea' placeholder="请输入咨询内容,最少输入10字" maxlength="-1" style="height:800rpx" placeholder-class="placeholder" class="value"></textarea>
+    </view>
+  </view>
+  <!-- 提交按钮 -->
+  <view class="cu-bar btn-group" style='padding:15rpx 0;width:100%'>
+    <button bindtap='updataUserInfo' form-type="submit" class='cu-btn bg-blue shadow-blur round'>
+      提交发布
+    </button>
+  </view>
+</form>

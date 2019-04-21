@@ -1,0 +1,12 @@
+<view class="cu-bar tabbar bg-white shadow">
+  <view data-class='scale-down' class="action {{index==2?'add-action':''}}" wx:for="{{list}}" wx:key="index" data-path="{{item.pagePath}}" data-index="{{index}}" bindtap="switchTab">
+    <view class="animation-{{animation=='scale-down'&&selected===index&&index!==2? 'scale-down' :''}}">
+      <view class="icon-cu-image">
+        <view wx:if="{{index==2}}" class='cu-btn myIcon shequ shadow' style="color:#FFF;top:0rpx;background:{{selectedColor}};height:70rpx;width:70rpx;border-radius:50%;line-height:70rpx;"></view>
+        <image wx:else src='{{selected === index ? item.selectedIconPath : item.iconPath}}' class='{{selected === index ? "animation" : "animation"}}'></image>
+        <view wx:if="{{index==3&&msgNum>0}}" class="cu-tag badge">{{msgNum}}</view>
+      </view>
+      <view style='color:{{selected === index ? selectedColor : color}}'>{{item.text}}</view>
+    </view>
+  </view>
+</view>

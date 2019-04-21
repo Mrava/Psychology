@@ -1,0 +1,48 @@
+<import src="../../dist/template/title.wxml"></import>
+<template is="title" data="{{CustomBar,StatusBar,titleWidth,indexTitle}}"></template>
+<swiper class='swiperClass' autoplay indicator-color="#a39f99" indicator-active-color="#f49641" interval="4000" duration="1000" previous-margin="80rpx" next-margin="80rpx" circular bindchange="bindchange" style='height: {{swiperHeight}}rpx'>
+  <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+    <swiper-item>
+      <image bindtap='toLinks' data-type='{{item.Type}}' data-url='{{item.Url}}' src="{{item.ImgUrls}}" class="slide-image {{swiperIndex == index ? 'active' : 'quiet'}}" mode='aspectFill'></image>
+    </swiper-item>
+  </block>
+</swiper>
+<view class="nav shadow-lg" wx:if='{{nav}}'>
+  <view class="item" wx:for="{{nav}}" bindtap='toLinks' data-type='{{item.Type}}' data-url='{{item.Url}}'>
+    <image class="img" src="{{item.ImgUrls}}" mode="widthFix" />
+    <view class="text">{{item.Title}}</view>
+  </view>
+</view>
+<block wx:if="{{info_list=='ErrorNetwork'}}">
+  <view class="padding-xl ErrorNetwork">
+    <image src="../images/ErrorNetwork.png" mode="widthFix" style='width:60%' />
+    <view class="text-bold text-gray" style="letter-spacing:6rpx;line-height:50rpx;font-size:26rpx">
+      网络错误
+    </view>
+  </view>
+</block>
+<block wx:if="{{!info_list.length}}">
+  <view class="padding-xl ErrorNetwork">
+    <image src="../images/NotAvailable.png" mode="widthFix" style='width:60%' />
+    <view class="text-bold text-gray" style="letter-spacing:6rpx;line-height:50rpx;font-size:26rpx">
+      暂无资讯
+    </view>
+  </view>
+</block>
+<block wx:if="{{info_list.length&&info_list!='ErrorNetwork'}}">
+  <view class="cu-card article">
+    <navigator wx:for="{{info_list}}" wx:key class="cu-item shadow" url='../information/info/index?id={{item.Id}}&img={{item.Icon}}'>
+      <view class="title">{{item.Title}}</view>
+      <view class="content">
+        <image src="{{item.Icon}}" mode="aspectFill"></image>
+        <view class="desc">
+          <view class='text-content'>{{item.Content}}</view>
+          <view>
+            <view class='cu-tag bg-red light sm round'>{{item.Time}}</view>
+          </view>
+        </view>
+      </view>
+    </navigator>
+  </view>
+</block>
+<view class='division'></view>

@@ -1,0 +1,24 @@
+<view style="{{ style }}" bindtouchstart="bindtouchstart" bindtouchmove="bindtouchmove" bindtouchend="bindtouchend">
+    <view class="{{ classes.wrap }}">
+        <view class="{{ classes.content }}">
+            <view class="{{ classes.iconPulling }}">
+                <text class="{{ classes.pIcon }}"></text>
+            </view>
+            <view class="{{ classes.textPulling }}">{{ pullingText }}</view>
+            <view class="{{ classes.iconRefreshing }}">
+                <text class="{{ classes.rIcon }}"></text>
+            </view>
+            <view class="{{ classes.textRefreshing }}">{{ refreshingText }}</view>
+        </view>
+    </view>
+    <slot></slot>
+    <view class="{{ classes.lWrap }}">
+        <view class="{{ classes.lContent }}">
+            <text wx:if="{{noData === false}}" class="{{ classes.rIcon }}"></text>
+            <text class="wux-loader__text-loading" wx:if="{{noData === false && isShowLoadingText === true}}">{{loadingText}}</text>
+            <view wx:if="{{noData === true}}">
+                {{loadNoDataText}}
+            </view>
+        </view>
+    </view>
+</view>

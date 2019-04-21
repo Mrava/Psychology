@@ -1,0 +1,34 @@
+<!-- 顶部栏 -->
+<view class="cu-custom" style="height:{{CustomBar}}px;">
+  <view class="cu-bar fixed bg-blue" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
+    <navigator class='action' open-type="navigateBack" delta="1" hover-class="none">
+      <text class='icon-back'></text>
+      聊天
+    </navigator>
+  </view>
+</view>
+<!-- 聊天内容 -->
+<scroll-view class="cu-chat" scroll-y scroll-into-view='{{toMsg}}' style='margin-top:{{CustomBar}};height:{{ScrollViewHeight}}px;'>
+  <view class="cu-item {{chatContentList.name==item.content.from_id?'':'self'}}" wx:for="{{chatContentList.msgs}}" style="padding:10rpx 10rpx 60rpx" id='msg-{{index}}'>
+    <view class="cu-avatar radius" wx:if="{{chatContentList.name==item.content.from_id}}" style="background-image:url({{otherAvatar}});"></view>
+    <view class="main">
+      <view class="content {{chatContentList.name!=item.content.from_id?'bg-blue':''}} shadow">
+        <text>{{item.content.msg_body.text}}</text>
+      </view>
+    </view>
+    <view class="cu-avatar radius" wx:if="{{chatContentList.name!=item.content.from_id}}" style="background-image:url({{selfAvatar}});"></view>
+    <view class='date'>{{item.time}}</view>
+  </view>
+</scroll-view>
+<!-- 底部输入栏 -->
+<view class="cu-bar foot input" id="inputView">
+  <view class='action'>
+    <text class='icon-sound text-grey'></text>
+  </view>
+  <input class='solid-bottom' focus="{{false}}" bindinput='inputSendMessage' maxlength="300" cursor-spacing="10" value='{{MessageInputValue}}' bindconfirm='sendClick' adjust-position confirm-hold confirm-type='send'></input>
+  <view class='action'>
+    <text class='icon-emojifill text-grey'></text>
+  </view>
+  <!-- 废弃 -->
+  <!-- <button bindtap='sendMessage' class='cu-btn bg-green shadow'>发送</button> -->
+</view>

@@ -1,6 +1,0 @@
-{
-  "usingComponents": {
-    "wux-rater": "../../dist/rater/index"
-  },
-  "navigationStyle": "custom"
-}

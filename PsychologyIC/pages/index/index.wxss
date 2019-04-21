@@ -1,0 +1,165 @@
+
+.swiperClass {
+    margin: 0;
+    margin-top: 10px;
+}
+
+.slide-image {
+    width: 100%;
+    height: 90%;
+    border-radius: 10px;
+    position: relative;
+}
+
+image.active {
+    transform: none;
+    transition: all 0.2s ease-in 0s;
+}
+
+image.quiet {
+    transform: scale(0.8333333);
+    transition: all 0.2s ease-in 0s;
+}
+
+.nav{
+	margin:0 25rpx;
+	display: flex;
+	border-radius:5rpx;
+	background-color: #fff;
+	height: 142rpx;
+}
+
+.nav .item{
+	width: 25%;
+	padding: 15rpx;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.nav .item .img{
+	width: 80rpx;
+	margin-bottom: 10rpx;
+}
+
+.nav .item .text{
+	
+}
+
+.info{
+	margin: 25rpx;
+	padding: 25rpx 25rpx 0rpx 25rpx;
+	background-color: #fff;
+}
+
+.Title{
+	display: flex;
+	align-items: center;
+}
+
+.Title .h{
+	margin-right: 10rpx;
+	width: 10rpx;
+	height: 30rpx;
+	background: #00D853;
+}
+
+.list{
+	padding: 25rpx 15rpx;
+}
+
+.list .item{
+	padding: 15rpx 0;
+	display: flex;
+}
+
+.list .icon{
+	max-width: 120rpx;
+	min-width: 120rpx;
+}
+
+.list image{
+	width: 100%;
+}
+
+.list .l{
+	margin-left: 5%;
+	width: 90%;
+	height: 4rpx;
+	background-color: rgba(200,200,200,0.1);
+}
+
+.list .content{
+	padding-left: 30rpx;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	margin: 15rpx 0;
+}
+
+.list .s{
+	font-size: 20rpx;
+}
+
+.people{
+	margin: 25rpx;
+	padding: 25rpx 25rpx 0 25rpx;
+	background-color: #fff;
+}
+
+.plist{
+	padding: 15rpx 20rpx;
+}
+
+.plist .item{
+	padding: 15rpx 0;
+	display: flex;
+}
+
+.plist .pic{
+	width: 240rpx;
+}
+
+.plist image{
+	width: 90%;
+}
+
+.plist .content{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.plist .name{
+	margin: 20rpx 0;
+	font-size: 30rpx;
+}
+
+.plist .present{
+	font-size: 25rpx;
+}
+
+.plist .star{
+	margin: 20rpx 0;
+}
+
+.plist .address{
+	font-size: 20rpx;
+}
+
+.plist .panle{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.plist .l{
+	margin-left: 5%;
+	width: 90%;
+	height: 4rpx;
+	background-color: rgba(200,200,200,0.1);
+}
+
+.ErrorNetwork{
+	height: auto;
+}

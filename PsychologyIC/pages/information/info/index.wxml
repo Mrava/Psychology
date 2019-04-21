@@ -1,0 +1,61 @@
+<!-- 顶部栏 -->
+<view class="bg-blue a-fixed">
+    <view class='cu-bar text-white' style="justify-content:left !important;height:{{CustomBar}}px;background-color:transparent">
+        <navigator id="toback" class='action' open-type="navigateBack" delta="1" hover-class="none" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
+            <text class='icon-back'></text>
+            返回
+        </navigator>
+        <view class='action' bind:tap="doubleClick" style="height:{{CustomBar}}px;padding:{{StatusBar}}px 0 0 5px;font-size:30rpx;">
+            <view class="text-center" style='padding-left:{{titleMarginLeft}}px;width:{{titleWidth}}px;'>
+                {{indexTitle}}
+            </view>
+        </view>
+    </view>
+</view>
+<!-- 加载中 -->
+<block wx:if="{{!idInformationInfo&&idInformationInfo!='ErrorNetwork'}}">
+    <view class="ErrorNetwork" style="height:{{ViewHeight}}px;padding-top:{{CustomBar}}px">
+        <image mode="widthFix" style="width:50%;" src="{{loadingImg}}" />
+        <view class='text-grey text-center'>正在加载</view>
+    </view>
+</block>
+<block wx:if="{{idInformationInfo=='ErrorNetwork'}}">
+    <view class="padding-xl ErrorNetwork" style="height:{{ViewHeight}}px;padding-top:{{CustomBar}}px">
+        <image src="../../images/ErrorNetwork.png" mode="widthFix" style='width:60%' />
+        <view class="text-bold text-gray" style="letter-spacing:6rpx;line-height:50rpx;font-size:26rpx">
+            网络错误
+        </view>
+    </view>
+</block>
+<!-- 资讯内容 -->
+<block wx:if="{{idInformationInfo.title}}">
+    <scroll-view scroll-y scroll-with-animation scroll-top='{{scrollTop}}' style="height:{{ViewHeight}}px;padding:{{CustomBar}}px 0 124rpx 0">
+        <view class="padding-lr padding-top">
+            <view class="img">
+                <image mode="widthFix" src="{{imgurl}}" style="width:100%" />
+            </view>
+            <view class="solid-bottom text-black text-lg padding margin-tb">
+                <text class="text-black">{{idInformationInfo.title}}</text>
+            </view>
+            <view class='text-df text-grey padding' style="line-height:60rpx">
+                {{idInformationInfo.content}}
+            </view>
+        </view>
+    </scroll-view>
+</block>
+<view class="padding mshadow justify-between flex text-sm text-center text-blue" hidden="{{idInformationInfo.title?false:true}}" id="bottomBar" style="bottom:0rpx">
+    <button class='button text-blue' hover-class="none">
+        <text class="icon-people padding-right-xs"></text>
+        {{idInformationInfo.author}}
+    </button>
+    <button class='button text-blue' open-type="share" hover-class="none">
+        <!--  -->
+        <text class="icon-share padding-right-xs"></text>
+        分享
+    </button>
+    <button class='button text-blue' hover-class="none">
+        <text class="icon-time padding-right-xs"></text>
+        04-07
+        <!-- {{idInformationInfo.time}} -->
+    </button>
+</view>

@@ -1,0 +1,45 @@
+<!-- 顶部标题 -->
+<import src="../../dist/template/title.wxml"></import>
+<template is="title" data="{{CustomBar,StatusBar,titleWidth,indexTitle}}"></template>
+
+<block wx:if="{{!messageList}}">
+  <view class="padding-xl ErrorNetwork" style="height:80%">
+    <image src="../images/NoChat.png" mode="widthFix" style='width:60%' />
+    <view class="text-bold text-gray" style="letter-spacing:6rpx;line-height:50rpx;font-size:26rpx">
+      暂无消息
+    </view>
+  </view>
+</block>
+
+<!-- 消息列表 -->
+<view wx:if="{{messageList}}" class="cu-list menu menu-avatar" style='margin-bottom:140rpx;'>
+  <view class="cu-item" wx:for="{{messageList}}" bind:longpress="showMenu" bind:tap="toChatUI" data-id='{{index}}'>
+    <view class="cu-avatar round lg" style="background-image:url({{item.avatar}});"></view>
+    <view class='content'>
+      <view class='text-grey'>{{item.nickName}}</view>
+      <view class='text-cut text-gray text-xs' style="width:480rpx">{{item.msgs[item.msgs.length-1].content.msg_body.text}}</view>
+    </view>
+    <view class='action'>
+      <view class='text-grey text-xs'>{{item.msgs[item.msgs.length-1].content.create_time}}</view>
+    </view>
+  </view>
+</view>
+
+<view class="cu-modal {{ModalShow?'show':''}}" bindtap='hideModal'>
+  <view class="cu-dialog" catchtap>
+    <view class="block">
+      <view class='cu-list menu text-center'>
+        <view class='cu-item' catch:tap="delete">
+          <label class='flex justify-between align-center flex-sub'>
+            <view class='flex-sub'>删除</view>
+          </label>
+        </view>
+        <!-- <view class='cu-item'  catch:tap="stick">
+          <label class='flex justify-between align-center flex-sub'>
+            <view class='flex-sub'>置顶</view>
+          </label>
+        </view> -->
+      </view>
+    </view>
+  </view>
+</view>

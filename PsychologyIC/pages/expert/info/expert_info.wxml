@@ -1,0 +1,31 @@
+<!-- 顶部页面 -->
+<view class="bg-blue a-fixed">
+  <view class='cu-bar text-white' style="height:{{CustomBar}}px;background-color:transparent">
+    <navigator class='action' open-type="navigateBack" delta="1" hover-class="none" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
+      <text class='icon-back'></text> 返回
+    </navigator>
+    <view class='action' style="flex:1;height:{{CustomBar}}px;padding-top:{{StatusBar}}px;font-size:30rpx">{{Title}}</view>
+    <view style='width:120rpx'></view>
+  </view>
+</view>
+
+<!-- 头部 -->
+<view class='header'>
+  <!-- 头像 -->
+  <view class='header_i'>
+    <!-- 头像图片 -->
+    <view class='img'>
+      <image src='{{expert_data.icon}}'></image>
+    </view>
+    <!-- 文字 -->
+    <view class='text'>
+      <view class='name'>马勇龙</view>
+      <view class="text-cut content-tag padding-top_bottom">
+        <block wx:for="{{5}}" wx:for-item="i">
+          <!-- tag标签 -->
+          <view class="cu-tag bg-{{expert_data.tags[i].color}} radius text-white">{{expert_data.tags[i].name}}</view>
+        </block>
+      </view>
+    </view>
+  </view>
+</view>

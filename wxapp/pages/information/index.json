@@ -1,7 +1,0 @@
-{
-  "usingComponents": {
-    "wux-refresher": "../../dist/refresher/index"
-  },
-  "navigationStyle": "custom",
-  "onReachBottomDistance":50
-}

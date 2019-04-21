@@ -1,0 +1,138 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"nodeModules": true,
+		"autoAudits": false,
+		"uglifyFileName": true,
+		"checkInvalidKey": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.6.4",
+	"appid": "wx737c3211676c7ff5",
+	"projectname": "%E5%AE%81%E5%A4%8F%E5%BF%83%E7%90%86%E5%92%A8%E8%AF%A2",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"scripts": {
+		"beforeCompile": "",
+		"beforePreview": "",
+		"beforeUpload": ""
+	},
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 11,
+			"list": [
+				{
+					"id": -1,
+					"name": "专家",
+					"pathName": "pages/expert/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "问答",
+					"pathName": "pages/forum/forum",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "发布",
+					"pathName": "pages/release/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 4,
+					"name": "专家详情",
+					"pathName": "pages/expert/info/expert_info",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "消息",
+					"pathName": "pages/chat/chat",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "界面",
+					"pathName": "pages/chat/chatUI/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 7,
+					"name": "帖子详情",
+					"pathName": "pages/forum/info/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的",
+					"pathName": "pages/user/user",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "成为专家",
+					"pathName": "pages/user/apply_expert/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "资讯详情",
+					"pathName": "pages/information/info/index",
+					"query": "id=3&img=https://img.psy525.cn/upload/2018/12/11/ba3223704fe14582a736a2d1addbffef.jpg",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "资讯列表",
+					"pathName": "pages/information/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "发布",
+					"pathName": "pages/release/index",
+					"scene": null
+				}
+			]
+		}
+	}
+}
